@@ -15,8 +15,8 @@ class CreateInclusoesTable extends Migration
     {
         Schema::create('inclusoes', function (Blueprint $table) {
             $table->id(); // Auto-incrementing id
-            $table->integer('cod_viagens_inclusoes')->default(0);
-            $table->string('nome_inclusoes', 150)->default('0')->charset('utf8mb4')->collation('utf8mb4_0900_ai_ci');
+            $table->unsignedBigInteger('cod_viagens_inclusoes')->default(0);
+            $table->string('nome_inclusoes', 150)->default('0');
             $table->integer('status_inclusoes')->default(1);
             
             // Foreign key constraint

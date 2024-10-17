@@ -27,7 +27,7 @@ class CreateViagemsTable extends Migration
             
 
             $table->foreign('cod_dificuldade')
-                ->references('id')->on('dificuldadeviagems')
+                ->references('id')->on('dificuldade_viagems')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
                 $table->timestamps();

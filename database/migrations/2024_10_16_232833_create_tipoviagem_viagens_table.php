@@ -15,8 +15,8 @@ class CreateTipoviagemViagensTable extends Migration
     {
         Schema::create('tipoviagem_viagens', function (Blueprint $table) {
             $table->id('id'); // Auto-incrementing id with custom name
-            $table->integer('cod_viagens_tv_v')->nullable(); // Allows NULL values
-            $table->integer('cod_tipoviagem_tv_v')->nullable(); // Allows NULL values
+            $table->unsignedBigInteger('cod_viagens_tv_v')->nullable(); // Allows NULL values
+            $table->unsignedBigInteger('cod_tipoviagem_tv_v')->nullable(); // Allows NULL values
 
             // Indexes
             $table->index('cod_viagens_tv_v');

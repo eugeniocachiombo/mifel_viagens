@@ -15,11 +15,9 @@ class CreateTagsTable extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->id('id'); // Auto-incrementing id with custom name
-            $table->string('titulo_tag', 150)->charset('utf8mb4')->collation('utf8mb4_0900_ai_ci')->nullable(); // Allows NULL values
-            $table->integer('cod_viagem')->nullable(); // Allows NULL values
+            $table->string('titulo_tag', 150)->nullable(); // Allows NULL values
+            $table->unsignedBigInteger('cod_viagem')->nullable(); // Allows NULL values
             
-            // Primary key declaration (optional since it's already done by $table->id())
-            $table->primary('id_tag');
 
             // Index
             $table->index('cod_viagem');

@@ -15,7 +15,7 @@ class CreateMapaviagemsTable extends Migration
     {
         Schema::create('mapaviagems', function (Blueprint $table) {
             $table->id(); // Auto-incrementing id
-            $table->integer('cod_viagens_mapaViagem')->default(0);
+            $table->unsignedBigInteger('cod_viagens_mapaViagem')->default(0);
             $table->string('iframe_mapaViagem', 1000)->default('0');
             $table->string('img_mapaViagem', 1000)->default('0');
             $table->integer('status_mapaViagem')->default(1);

@@ -15,8 +15,8 @@ class CreateAdminsTable extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->string('nome_admin', 100)->nullable()->charset('utf8mb4')->collation('utf8mb4_general_ci');
-            $table->string('sobrenome_admin', 100)->nullable()->charset('utf8mb4')->collation('utf8mb4_general_ci');
+            $table->string('nome_admin', 100)->nullable();
+            $table->string('sobrenome_admin', 100)->nullable();
             $table->unsignedBigInteger('id_usuario');
 
             $table->foreign('id_usuario')

@@ -18,12 +18,12 @@ class CreateComentariospostsTable extends Migration
             $table->id(); // Auto-incremental
             $table->unsignedBigInteger('cod_viagem_comentarios');
             $table->unsignedBigInteger('cod_cliente_comentarios');
-            $table->text('desc_comentario')->charset('utf8mb4')->collation('utf8mb4_0900_ai_ci');
+            $table->text('desc_comentario');
             $table->timestamp('data_comentario')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->enum('status_comentario', ['Pendente', 'Aprovado', 'Rejeitado'])->default('Pendente');
 
             $table->foreign('cod_viagem_comentarios')
-                ->references('id')->on('viagens')
+                ->references('id')->on('viagems')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 

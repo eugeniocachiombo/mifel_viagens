@@ -15,8 +15,8 @@ class CreateClientesTable extends Migration
     {
         Schema::create('clientes', function (Blueprint $table) {
             $table->id();
-            $table->string('nome_cliente', 100)->nullable()->charset('utf8mb4')->collation('utf8mb4_general_ci');
-            $table->string('sobrenome_cliente', 100)->nullable()->charset('utf8mb4')->collation('utf8mb4_general_ci');
+            $table->string('nome_cliente', 100)->nullable();
+            $table->string('sobrenome_cliente', 100)->nullable();
             $table->integer('estado_cliente')->default(1);
             $table->unsignedBigInteger('id_usuario');
 
