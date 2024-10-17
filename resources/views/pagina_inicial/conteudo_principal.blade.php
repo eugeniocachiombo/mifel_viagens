@@ -851,5 +851,4 @@
             </div>
         </div>
     </div>
-    @include('inclusao.footer')
 </div>

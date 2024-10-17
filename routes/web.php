@@ -7,5 +7,9 @@ Route::get('/', function () {
     return view('pagina_inicial.index');
 });
 
+Route::get('/login', function () {
+    return view('usuario.login');
+});
+
 
 
