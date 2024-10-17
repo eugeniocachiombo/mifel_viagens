@@ -1,4 +1,4 @@
-<nav class="sidebar sidebar-offcanvas" id="sidebar">
+<nav class="sidebar sidebar-offcanvas pt-4"  id="sidebar">
     <ul class="nav">
         <li class="nav-item">
             <a class="nav-link" href="index.html">
@@ -361,14 +361,6 @@
                     <li class="nav-item"><a class="nav-link" href="tipoviagem_viagens/deletar.html">Deletar</a></li>
                 </ul>
             </div>
-        </li>
-
-        <li class="nav-item nav-category">Help</li>
-        <li class="nav-item">
-            <a class="nav-link" href="http://bootstrapdash.com/demo/star-admin2-free/docs/documentation.html">
-                <i class="menu-icon mdi mdi-file-document"></i>
-                <span class="menu-title">Documentation</span>
-            </a>
         </li>
     </ul>
 </nav>

@@ -1,4 +1,4 @@
-<nav class="navbar default-layout col-lg-12 col-12 fixed-top d-flex align-items-top flex-row">
+<nav style="padding-bottom: 10px" class="navbar default-layout col-lg-12 col-12 fixed-top d-flex align-items-top flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
       <div class="me-3">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
