@@ -13,4 +13,10 @@ class Lista extends Component
         $this->destinos = Destino::all();
         return view('livewire.destino.lista');
     }
+
+    public function eliminar($id){
+        $destino = Destino::find($id);
+        $destino->delete();
+        $this->emit('alerta', ['mensagem' => 'Destino Eliminado', 'icon' => 'success']);
+    }
 }
