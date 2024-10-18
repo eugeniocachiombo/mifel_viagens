@@ -17,10 +17,12 @@
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"><a class="nav-link" href="pages/ui-features/buttons.html">Ver Perfil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('dificuldade.viagem.cadastrar') }}">Editar Dados</a>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('usuario.actualizar.dados') }}">Editar Dados</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('dificuldade.viagem.lista') }}">Estado da
-                            conta</a>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('usuario.alterar.senha') }}">Alterar Senha</a>
+                    </li>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('usuario.sair') }}">Sair</a>
                     </li>
                 </ul>
             </div>
@@ -333,4 +335,3 @@
 
     </ul>
 </nav>
-
