@@ -4,7 +4,7 @@
         <div class="table-responsive mt-4">
             <table id="minhaTabela" class="table table-bordered datatablePT table-hover">
                 <thead class="bg-dark text-light">
-                    <tr>
+                    <tr class="text-center">
                         <th>Nome do Destino</th>
                         <th>Descrição</th>
                         <th>Imagem</th>
@@ -14,20 +14,28 @@
                 </thead>
                 <tbody>
                     @foreach ($destinos as $destino)
-                        <tr>
-                            <td>{{ $destino->nome_destino }}</td>
-                            <td>{{ $destino->desc_destino }}</td>
-                            <td>
+                        <tr class="border">
+                            <td class="border">{{ $destino->nome_destino }}</td>
+                            <td class="border">{{ $destino->desc_destino }}</td>
+                            <td class="text-center border">
                                 <a href="{{ asset('storage/' . $destino->img_destino) }}"> 
                                     <img
                                         src="{{ asset('storage/' . $destino->img_destino) }}"
-                                        alt="{{ $destino->nome_destino }}" style="width: 100px;">
+                                        alt="{{ $destino->nome_destino }}" style="width: 100px; height: 100px">
                                 </a>
                             </td>
-                            <td>{{ $destino->status_destino ? 'Ativo' : 'Inativo' }}</td>
-                            <td>
-                                <a href="{{route("destino.actualizar", $destino->id )}}"><button class="btn btn-warning btn-sm">Editar</button></a>
-                                <button class="btn btn-danger btn-sm" wire:click.prevent='eliminar({{ $destino->id }})'>Excluir</button>
+                            <td class="text-center border">
+                                @if ($destino->status_destino)
+                                    <span class="badge bg-success">Ativo</span>
+                                @else
+                                    <span class="badge bg-danger">Inativo</span>
+                                @endif
+                            </td>
+                            <td class="text-center border">
+                                <a href="{{route("destino.actualizar", $destino->id )}}">
+                                    <button style="min-height: 40px" class="btn btn-warning btn-sm"> <i class="fas fa-pen"></i> Editar</button>
+                                </a> &nbsp;
+                                <button  style="min-height: 40px"class="btn btn-danger btn-sm" wire:click.prevent='eliminar({{ $destino->id }})'><i class="fas fa-trash"></i> Excluir</button>
                             </td>
                         </tr>
                     @endforeach
@@ -36,4 +44,3 @@
         </div>
     </div>
 </div>
-
