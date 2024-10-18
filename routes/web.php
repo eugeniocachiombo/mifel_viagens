@@ -19,6 +19,7 @@ Route::prefix("usuario")->name("usuario.")->group(function () {
 Route::prefix("destino")->name("destino.")->group(function () {
     Route::get("/cadastrar", [DestinoController::class, "cadastrar"])->name("cadastrar");
     Route::get("/lista", [DestinoController::class, "listar"])->name("lista");
+    Route::get("/actualizar/{id}", [DestinoController::class, "actualizar"])->name("actualizar");
 });
 
 Route::get("/migrate", function(){

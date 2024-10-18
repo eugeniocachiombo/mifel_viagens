@@ -150,8 +150,6 @@
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"><a class="nav-link" href="{{route("destino.cadastrar")}}">Cadastrar</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route("destino.lista")}}">Listar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="destinos/editar.html">Editar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="destinos/deletar.html">Deletar</a></li>
                 </ul>
             </div>
         </li>

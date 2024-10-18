@@ -15,4 +15,9 @@ class DestinoController extends Controller
     {
         return view("destino.lista");
     }
+
+    public function actualizar($id)
+    {
+        return view("destino.actualizar", ["id" => $id]);
+    }
 }

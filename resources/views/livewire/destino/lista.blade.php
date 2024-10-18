@@ -26,7 +26,7 @@
                             </td>
                             <td>{{ $destino->status_destino ? 'Ativo' : 'Inativo' }}</td>
                             <td>
-                                <button class="btn btn-warning btn-sm">Editar</button>
+                                <a href="{{route("destino.actualizar", $destino->id )}}"><button class="btn btn-warning btn-sm">Editar</button></a>
                                 <button class="btn btn-danger btn-sm" wire:click.prevent='eliminar({{ $destino->id }})'>Excluir</button>
                             </td>
                         </tr>
