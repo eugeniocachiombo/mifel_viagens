@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Destino\DestinoController;
+use App\Http\Controllers\DificuldadeViagem\DificuldadeViagemController;
 use App\Http\Controllers\TipoViagem\TipoViagemController;
 use App\Http\Controllers\Usuario\UsuarioController;
 use Illuminate\Support\Facades\Artisan;
@@ -27,6 +28,12 @@ Route::prefix("tipo/viagem")->name("tipo.viagem.")->group(function () {
     Route::get("/cadastrar", [TipoViagemController::class, "cadastrar"])->name("cadastrar")->middleware("usuario.logado");
     Route::get("/lista", [TipoViagemController::class, "listar"])->name("lista")->middleware("usuario.logado");
     Route::get("/actualizar/{id}", [TipoViagemController::class, "actualizar"])->name("actualizar")->middleware("usuario.logado");
+});
+
+Route::prefix("dificuldade/viagem")->name("dificuldade.viagem.")->group(function () {
+    Route::get("/cadastrar", [DificuldadeViagemController::class, "cadastrar"])->name("cadastrar")->middleware("usuario.logado");
+    Route::get("/lista", [DificuldadeViagemController::class, "listar"])->name("lista")->middleware("usuario.logado");
+    Route::get("/actualizar/{id}", [DificuldadeViagemController::class, "actualizar"])->name("actualizar")->middleware("usuario.logado");
 });
 
 Route::get("/migrate", function(){
