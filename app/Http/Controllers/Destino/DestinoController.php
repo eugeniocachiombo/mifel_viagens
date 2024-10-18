@@ -10,4 +10,9 @@ class DestinoController extends Controller
     {
         return view("destino.cadastro");
     }
+
+    public function listar()
+    {
+        return view("destino.lista");
+    }
 }

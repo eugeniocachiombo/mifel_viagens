@@ -6,11 +6,12 @@
                 <span class="icon-menu"></span>
             </button>
         </div>
+        
         <div>
-            <a class="navbar-brand brand-logo" href="index.html">
+            <a class="navbar-brand brand-logo" href="/">
                 @include('inclusao.logo')
             </a>
-            <a class="navbar-brand brand-logo-mini" href="index.html">
+            <a class="navbar-brand brand-logo-mini" href="/">
                 <i class="menu-icon mdi mdi-airplane"></i>
             </a>
         </div>
