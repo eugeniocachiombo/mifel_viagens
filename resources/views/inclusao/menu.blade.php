@@ -1,4 +1,4 @@
-<nav class="sidebar sidebar-offcanvas pt-4"  id="sidebar">
+<nav class="sidebar sidebar-offcanvas pt-4" id="sidebar">
     <ul class="nav">
         <li class="nav-item">
             <a class="nav-link" href="/">
@@ -17,8 +17,10 @@
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"><a class="nav-link" href="pages/ui-features/buttons.html">Ver Perfil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pages/ui-features/dropdowns.html">Editar Dados</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pages/ui-features/typography.html">Estado da conta</a>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('dificuldade.viagem.cadastrar') }}">Editar Dados</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('dificuldade.viagem.lista') }}">Estado da
+                            conta</a>
                     </li>
                 </ul>
             </div>
@@ -52,11 +54,14 @@
             </a>
             <div class="collapse" id="dificuldadeviagem">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="{{route("dificuldade.viagem.cadastrar")}}">Cadastrar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{route("dificuldade.viagem.lista")}}">Listar</a></li> 
+                    <li class="nav-item"><a class="nav-link"
+                            href="{{ route('dificuldade.viagem.cadastrar') }}">Cadastrar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('dificuldade.viagem.lista') }}">Listar</a>
+                    </li>
                 </ul>
             </div>
         </li>
+
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#viagens" aria-expanded="false" aria-controls="viagens">
                 <i class="menu-icon mdi mdi-airplane"></i>
@@ -65,8 +70,8 @@
             </a>
             <div class="collapse" id="viagens">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="{{route("viagem.cadastrar")}}">Cadastrar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{route("viagem.lista")}}">Listar</a></li> 
+                    <li class="nav-item"><a class="nav-link" href="{{ route('viagem.cadastrar') }}">Cadastrar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('viagem.lista') }}">Listar</a></li>
                 </ul>
             </div>
         </li>
@@ -144,12 +149,13 @@
             </a>
             <div class="collapse" id="destinos">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="{{route("destino.cadastrar")}}">Cadastrar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{route("destino.lista")}}">Listar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('destino.cadastrar') }}">Cadastrar</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('destino.lista') }}">Listar</a></li>
                 </ul>
             </div>
         </li>
-       
+
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#etinerarioviagem" aria-expanded="false"
                 aria-controls="etinerarioviagem">
@@ -318,10 +324,13 @@
             </a>
             <div class="collapse" id="tipoviagem">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="{{route("tipo.viagem.cadastrar")}}">Cadastrar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{route("tipo.viagem.lista")}}">Listar</a></li> </ul>
+                    <li class="nav-item"><a class="nav-link"
+                            href="{{ route('tipo.viagem.cadastrar') }}">Cadastrar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('tipo.viagem.lista') }}">Listar</a></li>
+                </ul>
             </div>
         </li>
-        
+
     </ul>
 </nav>
+

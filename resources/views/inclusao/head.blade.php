@@ -15,6 +15,7 @@
     <script src="{{ asset('assets/js/temps/off-canvas.js') }}"></script>
     <script src="{{ asset('assets/js/temps/hoverable-collapse.js') }}"></script>
     <script src="{{ asset('assets/js/temps/template.js') }}"></script>
+    
     <script src="{{ asset('assets/js/temps/settings.js') }}"></script>
     <script src="{{ asset('assets/js/temps/todolist.js') }}"></script>
     <script src="{{ asset('assets/js/temps/dashboard.js') }}"></script>
