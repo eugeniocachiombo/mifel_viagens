@@ -11,15 +11,15 @@ Route::get('/', function () {
 });
 
 Route::prefix("usuario")->name("usuario.")->group(function () {
-    Route::get("/cadastrar", [UsuarioController::class, "cadastrar"])->name("cadastrar");
-    Route::get("/logar", [UsuarioController::class, "logar"])->name("logar");
-    Route::get("/pagina_inicial", [UsuarioController::class, "irEmInicio"])->name("pagina_inicial");
+    Route::get("/cadastrar", [UsuarioController::class, "cadastrar"])->name("cadastrar")->middleware("usuario.terminado");
+    Route::get("/logar", [UsuarioController::class, "logar"])->name("logar")->middleware("usuario.terminado");
+    Route::get("/pagina_inicial", [UsuarioController::class, "irEmInicio"])->name("pagina_inicial")->middleware("usuario.logado");
 });
 
 Route::prefix("destino")->name("destino.")->group(function () {
-    Route::get("/cadastrar", [DestinoController::class, "cadastrar"])->name("cadastrar");
-    Route::get("/lista", [DestinoController::class, "listar"])->name("lista");
-    Route::get("/actualizar/{id}", [DestinoController::class, "actualizar"])->name("actualizar");
+    Route::get("/cadastrar", [DestinoController::class, "cadastrar"])->name("cadastrar")->middleware("usuario.logado");
+    Route::get("/lista", [DestinoController::class, "listar"])->name("lista")->middleware("usuario.logado");
+    Route::get("/actualizar/{id}", [DestinoController::class, "actualizar"])->name("actualizar")->middleware("usuario.logado");
 });
 
 Route::get("/migrate", function(){
