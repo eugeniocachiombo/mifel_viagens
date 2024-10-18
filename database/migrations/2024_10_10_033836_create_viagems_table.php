@@ -20,7 +20,7 @@ class CreateViagemsTable extends Migration
             $table->unsignedBigInteger('cod_dificuldade')->nullable();
             $table->integer('EmDestaque_viagens')->default(0);
             $table->integer('duracao_viagens')->default(1);
-            $table->integer('vagas__viagens')->nullable();
+            $table->integer('vagas_viagens')->nullable();
             $table->decimal('preco_viagens', 10, 2)->nullable();
             $table->integer('status_viagens')->default(1);
             $table->integer('estrelas_viagens')->default(1);

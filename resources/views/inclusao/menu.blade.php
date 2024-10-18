@@ -337,11 +337,8 @@
             </a>
             <div class="collapse" id="tipoviagem">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="tipoviagem/criar.html">Criar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="tipoviagem/listar.html">Listar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="tipoviagem/editar.html">Editar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="tipoviagem/deletar.html">Deletar</a></li>
-                </ul>
+                    <li class="nav-item"><a class="nav-link" href="{{route("tipo.viagem.cadastrar")}}">Cadastrar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route("tipo.viagem.lista")}}">Listar</a></li> </ul>
             </div>
         </li>
         <li class="nav-item">
