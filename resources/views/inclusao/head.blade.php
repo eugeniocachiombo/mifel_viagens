@@ -31,11 +31,10 @@
     <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/ellipsis.js') }}"></script>
 
-   {{--
 
- @livewireScripts
+    @livewireScripts
     @livewireStyles
---}}
+
 </head>
 
 <body>

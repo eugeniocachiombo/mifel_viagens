@@ -1,15 +1,14 @@
 <?php
 
+use App\Http\Controllers\Usuario\UsuarioController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
-    return view('pagina_inicial.index');
+    return redirect()->route("usuario.logar");
 });
 
-Route::get('/login', function () {
-    return view('usuario.login');
+Route::prefix("usuario")->name("usuario.")->group(function () {
+    Route::get("/cadastrar", [UsuarioController::class, "cadastrar"])->name("cadastrar");
+    Route::get("/logar", [UsuarioController::class, "logar"])->name("logar");
 });
-
-
 

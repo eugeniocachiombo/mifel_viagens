@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Acesso;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,6 +19,8 @@ class CreateAcessosTable extends Migration
             $table->enum("tipo", ["admin", "cliente"])->default("cliente");
             $table->timestamps();
         });
+
+        Acesso::create(["admin" => "admin", "cliente" =>  "cliente"]);
     }
 
     /**

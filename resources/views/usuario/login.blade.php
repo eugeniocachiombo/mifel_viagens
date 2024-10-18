@@ -37,6 +37,10 @@
                   </d>
                 </form>
               </div>
+
+              <div class="card-footer text-center" >
+               <i class="fas fa-user-plus"></i> <a href="{{route("usuario.cadastrar")}}" style="text-decoration: none">Criar uma conta</a>
+              </div>
             </div>
           </div>
     </div>
