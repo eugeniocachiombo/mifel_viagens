@@ -14,4 +14,8 @@ class UsuarioController extends Controller
     public function logar() {
         return view('usuario.login');
     }
+
+    public function irEmInicio() {
+        return view('pagina_inicial.index');
+    }
 }

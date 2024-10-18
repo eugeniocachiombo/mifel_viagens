@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('telefone')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->unsignedBigInteger('id_acesso');
+            $table->unsignedBigInteger('id_acesso')->default(1);
 
             $table->foreign('id_acesso')
                 ->references('id')->on('acessos')

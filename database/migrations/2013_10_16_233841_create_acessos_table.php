@@ -16,7 +16,7 @@ class CreateAcessosTable extends Migration
     {
         Schema::create('acessos', function (Blueprint $table) {
             $table->id();
-            $table->enum("tipo", ["admin", "cliente"])->default("cliente");
+            $table->enum("tipo", ["admin", "cliente"]);
             $table->timestamps();
         });
 

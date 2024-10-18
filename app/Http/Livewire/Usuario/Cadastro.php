@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire\Usuario;
 
-use App\Models\Acesso;
 use App\Models\Cliente;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -34,7 +33,7 @@ class Cadastro extends Component
         'telefone.unique' => 'Este Telefone já está cadastrado.',
         'password.required' => 'O campo Senha é obrigatório.',
         'password.min' => 'A Senha deve ter pelo menos 6 caracteres.',
-       ];
+    ];
 
     public function render()
     {
@@ -53,16 +52,14 @@ class Cadastro extends Component
             'id_acesso' => 2,
         ]);
 
-        if ($this->id_acesso == 1) {
-            Cliente::create([
-                'nome_cliente' => $this->nome,
-                'sobrenome_cliente' => $this->sobrenome,
-                'id_usuario' => $user->id,
-            ]);
-        }
+        Cliente::create([
+            'nome_cliente' => $this->nome,
+            'sobrenome_cliente' => $this->sobrenome,
+            'id_usuario' => $user->id,
+        ]);
 
+        $this->emit('alerta', ['mensagem' => 'Cadastrado com sucesso', 'icon' => 'success']);
         $this->limparCampos();
-        session()->flash('message', 'Usuário cadastrado com sucesso!');
     }
 
     private function limparCampos()
