@@ -4,6 +4,7 @@ use App\Http\Controllers\Destino\DestinoController;
 use App\Http\Controllers\DificuldadeViagem\DificuldadeViagemController;
 use App\Http\Controllers\TipoViagem\TipoViagemController;
 use App\Http\Controllers\Usuario\UsuarioController;
+use App\Http\Controllers\Viagem\ViagemController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,12 @@ Route::prefix("dificuldade/viagem")->name("dificuldade.viagem.")->group(function
     Route::get("/cadastrar", [DificuldadeViagemController::class, "cadastrar"])->name("cadastrar")->middleware("usuario.logado");
     Route::get("/lista", [DificuldadeViagemController::class, "listar"])->name("lista")->middleware("usuario.logado");
     Route::get("/actualizar/{id}", [DificuldadeViagemController::class, "actualizar"])->name("actualizar")->middleware("usuario.logado");
+});
+
+Route::prefix("viagem")->name("viagem.")->group(function () {
+    Route::get("/cadastrar", [ViagemController::class, "cadastrar"])->name("cadastrar")->middleware("usuario.logado");
+    Route::get("/lista", [ViagemController::class, "listar"])->name("lista")->middleware("usuario.logado");
+    Route::get("/actualizar/{id}", [ViagemController::class, "actualizar"])->name("actualizar")->middleware("usuario.logado");
 });
 
 Route::get("/migrate", function(){

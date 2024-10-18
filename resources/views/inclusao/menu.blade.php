@@ -25,20 +25,20 @@
         </li>
 
         <!-- Novos itens com submenus CRUD -->
-        <li class="nav-item nav-category">Atividades e Viagens</li>
+        <li class="nav-item nav-category">Actividades e Viagens</li>
         <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#atividades" aria-expanded="false"
-                aria-controls="atividades">
+            <a class="nav-link" data-bs-toggle="collapse" href="#actividades" aria-expanded="false"
+                aria-controls="actividades">
                 <i class="menu-icon mdi mdi-format-list-bulleted"></i>
-                <span class="menu-title">Atividades</span>
+                <span class="menu-title">Actividades</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="atividades">
+            <div class="collapse" id="actividades">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="atividades/criar.html">Criar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="atividades/listar.html">Listar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="atividades/editar.html">Editar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="atividades/deletar.html">Deletar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="actividades/criar.html">Criar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="actividades/listar.html">Listar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="actividades/editar.html">Editar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="actividades/deletar.html">Deletar</a></li>
                 </ul>
             </div>
         </li>
@@ -65,10 +65,8 @@
             </a>
             <div class="collapse" id="viagens">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="viagens/criar.html">Criar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="viagens/listar.html">Listar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="viagens/editar.html">Editar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="viagens/deletar.html">Deletar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route("viagem.cadastrar")}}">Cadastrar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route("viagem.lista")}}">Listar</a></li> 
                 </ul>
             </div>
         </li>
@@ -77,7 +75,7 @@
             <a class="nav-link" data-bs-toggle="collapse" href="#actividadesviagem" aria-expanded="false"
                 aria-controls="actividadesviagem">
                 <i class="menu-icon mdi mdi-timeline"></i>
-                <span class="menu-title">Atividades da Viagem</span>
+                <span class="menu-title">Actividades da Viagem</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="actividadesviagem">
