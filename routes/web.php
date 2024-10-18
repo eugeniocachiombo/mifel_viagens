@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Destino\DestinoController;
 use App\Http\Controllers\Usuario\UsuarioController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
@@ -13,6 +14,10 @@ Route::prefix("usuario")->name("usuario.")->group(function () {
     Route::get("/cadastrar", [UsuarioController::class, "cadastrar"])->name("cadastrar");
     Route::get("/logar", [UsuarioController::class, "logar"])->name("logar");
     Route::get("/pagina_inicial", [UsuarioController::class, "irEmInicio"])->name("pagina_inicial");
+});
+
+Route::prefix("destino")->name("destino.")->group(function () {
+    Route::get("/cadastrar", [DestinoController::class, "cadastrar"])->name("cadastrar");
 });
 
 Route::get("/migrate", function(){

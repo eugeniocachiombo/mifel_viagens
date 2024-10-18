@@ -148,7 +148,7 @@
             </a>
             <div class="collapse" id="destinos">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="destinos/criar.html">Criar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route("destino.cadastrar")}}">Cadastrar</a></li>
                     <li class="nav-item"><a class="nav-link" href="destinos/listar.html">Listar</a></li>
                     <li class="nav-item"><a class="nav-link" href="destinos/editar.html">Editar</a></li>
                     <li class="nav-item"><a class="nav-link" href="destinos/deletar.html">Deletar</a></li>
