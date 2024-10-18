@@ -19,15 +19,13 @@ class CreateEtinerarioviagemsTable extends Migration
             $table->integer('dia_etinerarioViagem')->default(0);
             $table->string('desc_etinerarioViagem', 1500)->default('0');
             $table->integer('status_etinerario')->default(1);
-            $table->timestamps(); // Adiciona created_at e updated_at
+            $table->timestamps(); 
 
-            // Chave estrangeira
             $table->foreign('cod_viagens_ev')
-                ->references('id')->on('viagems') // Corrigido de 'viagems' para 'viagens'
+                ->references('id')->on('viagems') 
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            // Índice
             $table->index('cod_viagens_ev');
         });
     }

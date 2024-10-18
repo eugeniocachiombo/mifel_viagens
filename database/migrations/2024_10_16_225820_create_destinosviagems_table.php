@@ -14,14 +14,14 @@ class CreateDestinosviagemsTable extends Migration
     public function up()
     {
         Schema::create('destinosviagems', function (Blueprint $table) {
-            $table->id('id'); // Auto-incremental
+            $table->id('id'); 
             $table->unsignedBigInteger('cod_viagens_dv')->nullable();
             $table->unsignedBigInteger('cod_destinos_dv')->nullable();
             $table->integer('status_destinosViagem')->default(1);
 
-            // Chaves estrangeiras
+            
             $table->foreign('cod_viagens_dv')
-                ->references('id')->on('viagems') // Corrigido de 'viagems' para 'viagens'
+                ->references('id')->on('viagems') 
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
@@ -30,7 +30,7 @@ class CreateDestinosviagemsTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            // Índices
+            
             $table->index('cod_viagens_dv');
             $table->index('cod_destinos_dv');
             $table->timestamps();

@@ -2,12 +2,15 @@
 
 namespace App\Http\Livewire\Viagem;
 
+use App\Models\Destino;
 use App\Models\DificuldadeViagem;
+use App\Models\Tipoviagem;
 use App\Models\Viagem;
 use Livewire\Component;
 
 class Cadastro extends Component
 {
+    
     public $dificuldades;
     public $titulo_viagens;
     public $desc_viagens;
@@ -17,6 +20,9 @@ class Cadastro extends Component
     public $vagas_viagens;
     public $preco_viagens;
     public $status_viagens;
+
+    public $tipoviagens, $destinos;
+
 
     protected $rules = [
         'titulo_viagens' => 'required|string|max:255',
@@ -31,6 +37,8 @@ class Cadastro extends Component
 
     public function mount()
     {
+        $this->tipoviagens = Tipoviagem::all();
+        $this->destinos = Destino::all();
         $this->dificuldades = DificuldadeViagem::all();
     }
 

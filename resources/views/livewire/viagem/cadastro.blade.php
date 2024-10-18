@@ -7,7 +7,7 @@
                         <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
                             <div class="container-scroller d-flex align-items-center justify-content-center" style="min-height: 100vh; border: 1px solid #ddd;">
                                 <div class="container d-flex justify-content-center align-items-center">
-                                    <div class="col-10 col-md-8 grid-margin stretch-card">
+                                    <div class="col-10 col-md-12 grid-margin stretch-card">
                                         <div class="card mt-4">
                                             <div class="card-body">
                                                 <h4 class="card-title"><i class="fas fa-plane pe-2"></i> Cadastro de Viagem</h4>
@@ -15,7 +15,7 @@
 
                                                 <form class="forms-sample" wire:submit.prevent="cadastrar">
                                                     <div class="row g-3">
-                                                        <div class="col-12">
+                                                        <div class="col-6">
                                                             <div class="form-group">
                                                                 <label for="titulo_viagens"><i class="fas fa-tag pe-2"></i> Título da Viagem</label>
                                                                 <input type="text" class="form-control" id="titulo_viagens" wire:model="titulo_viagens" placeholder="Título da Viagem">
@@ -25,7 +25,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-12">
+                                                        <div class="col-6">
                                                             <div class="form-group">
                                                                 <label for="desc_viagens"><i class="fas fa-info-circle pe-2"></i> Descrição da Viagem</label>
                                                                 <textarea class="form-control" id="desc_viagens" wire:model="desc_viagens" placeholder="Descrição da Viagem" rows="4"></textarea>
@@ -108,17 +108,115 @@
 
                                                     <hr>
                                                     <div class="row g-3">
-                                                        <h1>Etinerários</h1>
+                                                        <div class="col-12 bg-dark text-white">
+                                                            <label ><i class="fas fa-tag pe-2"></i> Etinerário</label>
+                                                        </div>
+                                                    
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label for="dia_etinerario"><i class="fas fa-calendar-day pe-2"></i> Dia do Itinerário</label>
+                                                                <input type="number" class="form-control" id="dia_etinerario" wire:model="dia_etinerario" placeholder="Dia do Itinerário" min="1">
+                                                                @error('dia_etinerario')
+                                                                    <span class="text-danger">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label for="desc_etinerario"><i class="fas fa-info-circle pe-2"></i> Descrição do Itinerário</label>
+                                                                <textarea class="form-control" id="desc_etinerario" wire:model="desc_etinerario" placeholder="Descrição do Itinerário" rows="4"></textarea>
+                                                                @error('desc_etinerario')
+                                                                    <span class="text-danger">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    
+                                                        <div class="col-12 col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="status_etinerario"><i class="fas fa-toggle-on pe-2"></i> Status</label>
+                                                                <select class="form-control" id="status_etinerario" wire:model="status_etinerario">
+                                                                    <option class="d-none">Selecione</option>
+                                                                    <option value="1">Ativo</option>
+                                                                    <option value="0">Inativo</option>
+                                                                </select>
+                                                                @error('status_etinerario')
+                                                                    <span class="text-danger">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
                                                     </div>
-
+                                                    
                                                     <hr>
                                                     <div class="row g-3">
-                                                        <h1>Tipo de viagem</h1>
+                                                        <div class="col-12 bg-dark text-white">
+                                                            <label><i class="fas fa-tag pe-2"></i> Tipo de Viagem</label>
+                                                        </div>
+                                                    
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label for="cod_tipoviagem_tv_v"><i class="fas fa-flag pe-2"></i> Selecionar Tipo de Viagem</label>
+                                                                <select class="form-control" id="cod_tipoviagem_tv_v" wire:model="cod_tipoviagem_tv_v">
+                                                                    <option class="d-none">Selecione um Tipo de Viagem</option>
+                                                                    @foreach($tipoviagens as $tipoviagem)
+                                                                        <option value="{{ $tipoviagem->id }}">{{ $tipoviagem->nome_tipoViagem }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                                @error('cod_tipoviagem_tv_v')
+                                                                    <span class="text-danger">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    
+                                                        <div class="col-12 col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="status_viagem"><i class="fas fa-toggle-on pe-2"></i> Status</label>
+                                                                <select class="form-control" id="status_viagem" wire:model="status_viagem">
+                                                                    <option class="d-none">Selecione</option>
+                                                                    <option value="1">Ativo</option>
+                                                                    <option value="0">Inativo</option>
+                                                                </select>
+                                                                @error('status_viagem')
+                                                                    <span class="text-danger">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
                                                     </div>
-
+                                                    
                                                     <hr>
                                                     <div class="row g-3">
-                                                        <h1>Destino</h1>
+                                                        <div class="col-12 bg-dark text-white">
+                                                            <label><i class="fas fa-tag pe-2"></i> Destino da Viagem</label>
+                                                        </div>
+                                                    
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label for="cod_destinos_dv"><i class="fas fa-map-marker-alt pe-2"></i> Selecionar Destino</label>
+                                                                <select class="form-control" id="cod_destinos_dv" wire:model="cod_destinos_dv">
+                                                                    <option class="d-none">Selecione um Destino</option>
+                                                                    @foreach($destinos as $destino)
+                                                                        <option value="{{ $destino->id }}">{{ $destino->nome_destino }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                                @error('cod_destinos_dv')
+                                                                    <span class="text-danger">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    
+                                                        <div class="col-12 col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="status_destinosViagem"><i class="fas fa-toggle-on pe-2"></i> Status</label>
+                                                                <select class="form-control" id="status_destinosViagem" wire:model="status_destinosViagem">
+                                                                    <option class="d-none">Selecione</option>
+                                                                    <option value="1">Ativo</option>
+                                                                    <option value="0">Inativo</option>
+                                                                </select>
+                                                                @error('status_destinosViagem')
+                                                                    <span class="text-danger">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
                                                     </div>
 
                                                     <div class="col-12">
