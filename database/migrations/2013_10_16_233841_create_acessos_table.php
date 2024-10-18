@@ -20,7 +20,8 @@ class CreateAcessosTable extends Migration
             $table->timestamps();
         });
 
-        Acesso::create(["admin" => "admin", "cliente" =>  "cliente"]);
+        Acesso::create(["tipo" => "admin"]);
+        Acesso::create(["tipo" => "cliente"]);
     }
 
     /**
