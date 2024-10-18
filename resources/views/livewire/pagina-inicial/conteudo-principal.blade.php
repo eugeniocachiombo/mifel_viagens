@@ -5,7 +5,7 @@
                 <div class="home-tab">
                     <div class="tab-content tab-content-basic">
                         <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
-                            @include('pagina_inicial.classificacao')
+                            @livewire('pagina-inicial.classificacao')
                             
                             <div class="row">
                                 <div class="col-lg-8 d-flex flex-column">
