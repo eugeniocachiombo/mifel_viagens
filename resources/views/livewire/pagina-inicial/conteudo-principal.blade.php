@@ -15,7 +15,9 @@
                                     </div>
 
                                     <div class="col d-flex justify-content-end">
-                                        <button class="btn btn-primary text-white pe-5 ps-5"><i class="fas fa-forward"></i></button>
+                                        <a href="{{route("viagem.cadastrar")}}">
+                                            <button class="btn btn-primary text-white pe-5 ps-5"><i class="fas fa-forward"></i></button>
+                                        </a>
                                     </div>
                                 </div>
 
@@ -49,7 +51,7 @@
                                 </div>
                             </div>
 
-                            <div class="row mt-4">
+                            <div class="row mt-4 d-none">
                                 <div class="col-lg-8 d-flex flex-column">
                                     <div class="row flex-grow">
                                         <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
@@ -131,7 +133,7 @@
                                 </div>
                             </div>
 
-                            <div class="row mt-4">
+                            <div class="row mt-4 d-none">
                                 <div class="col-lg-8 d-flex flex-column">
                                     <div class="row flex-grow">
                                         <div class="col-12 grid-margin stretch-card">
