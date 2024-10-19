@@ -60,7 +60,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
                     <style>
-                        .badge {
+                        .badgeCarrinho {
                           position: absolute;
                           top: -5px; 
                           right: -10px; 
@@ -71,14 +71,14 @@
                           font-size: 10px;
                         }
                       
-                        .cart-container {
+                        .cart-containerCarrinho {
                           position: relative; 
                           display: inline-block; 
                         }
                       </style>
-                    <div class="cart-container">
+                    <div class="cart-container cart-containerCarrinho">
                         <i class="mdi mdi-cart"></i>
-                        <span class="badge badge-danger">0</span>
+                        <span class="badge badge-danger badgeCarrinho">0</span>
                       </div>
                 </a>
             </li>
