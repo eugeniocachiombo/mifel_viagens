@@ -19,7 +19,7 @@ class Cadastro extends Component
         'nome' => 'required|string|max:255',
         'sobrenome' => 'required|string|max:255',
         'email' => 'required|email|unique:users,email',
-        'telefone' => 'required|string|max:15|unique:users,telefone',
+        'telefone' => 'required|string|max:9|min:9|unique:users,telefone',
         'password' => 'required|string|min:6',
     ];
 
@@ -31,6 +31,8 @@ class Cadastro extends Component
         'email.unique' => 'Este Email já está cadastrado.',
         'telefone.required' => 'O campo Telefone é obrigatório.',
         'telefone.unique' => 'Este Telefone já está cadastrado.',
+        'telefone.min' => 'Este Telefone deve conter somente 9 digitos.',
+        'telefone.max' => 'Este Telefone deve conter somente 9 digitos.',
         'password.required' => 'O campo Senha é obrigatório.',
         'password.min' => 'A Senha deve ter pelo menos 6 caracteres.',
     ];

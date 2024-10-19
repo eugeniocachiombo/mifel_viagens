@@ -5,10 +5,10 @@
                 <div class="home-tab">
                     <div class="tab-content tab-content-basic">
                         <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
-                            <div class="container-scroller d-flex align-items-center justify-content-center"
+                            <div class="container-scroller d-flex  justify-content-center"
                                 style="min-height: 100vh; border: 1px solid #ddd;">
-                                <div class="container d-flex justify-content-center align-items-center">
-                                    <div class="col-10 col-md-8 grid-margin stretch-card">
+                                <div class="container d-flex justify-content-center ">
+                                    <div class="col-10 col-md-12 grid-margin stretch-card">
                                         <div class="card mt-4">
                                             <div class="card-body">
                                                 <h4 class="card-title"><i class="fas fa-plane pe-2"></i> Cadastro de Dificuldade de Viagem</h4>
@@ -56,8 +56,10 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-12">
-                                                            <button type="submit" class="btn btn-primary text-light" style="width: 100%;">Cadastrar</button>
+                                                        <div class="">
+                                                            <div class="col-4">
+                                                                <button type="submit" class="btn btn-primary text-light" style="width: 100%;">Cadastrar</button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </form>

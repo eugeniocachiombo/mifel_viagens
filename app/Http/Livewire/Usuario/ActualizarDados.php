@@ -21,7 +21,7 @@ class ActualizarDados extends Component
         'nome' => 'required|string|max:255',
         'sobrenome' => 'required|string|max:255',
         'email' => 'required|email',
-        'telefone' => 'required|string|max:15',
+        'telefone' => 'required|string|max:9|min:9',
     ];
 
     protected $messages = [
@@ -32,6 +32,8 @@ class ActualizarDados extends Component
         'email.unique' => 'Este Email já está cadastrado.',
         'telefone.required' => 'O campo Telefone é obrigatório.',
         'telefone.unique' => 'Este Telefone já está cadastrado.',
+        'telefone.min' => 'Este Telefone deve conter somente 9 digitos.',
+        'telefone.max' => 'Este Telefone deve conter somente 9 digitos.',
     ];
 
     public function update(Request $request, $id)
@@ -41,7 +43,7 @@ class ActualizarDados extends Component
             'nome' => 'required|string|max:255',
             'sobrenome' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id,
-            'telefone' => 'required|string|max:15|unique:users,telefone,' . $user->id,
+            'telefone' => 'required|string|min:9|max:9|unique:users,telefone,' . $user->id,
         ];
         $this->validate($request, $rules);
     }

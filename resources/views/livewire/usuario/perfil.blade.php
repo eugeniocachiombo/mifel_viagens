@@ -1,8 +1,8 @@
 <div class="main-panel">
     <div class="content-wrapper">
-        <h4 class="card-title"><i class="fas fa-user pe-2"></i> Dados do Usuário</h4>
         <div class="card mt-4">
             <div class="card-body">
+                <h4 class="card-title"><i class="fas fa-user pe-2"></i> Dados do Usuário</h4>
                 <div class="text-center mb-3">
                     @if ($foto)
                         <a href="{{ asset('storage/' . $foto) }}">

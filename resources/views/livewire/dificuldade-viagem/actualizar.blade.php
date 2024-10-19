@@ -39,8 +39,10 @@
                             </div>
                         </div>
 
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary text-light" style="width: 100%;">Actualizar</button>
+                        <div>
+                            <div class="col-4">
+                                <button type="submit" class="btn btn-primary text-light" style="width: 100%;">Actualizar</button>
+                            </div>
                         </div>
                     </div>
                 </form>
