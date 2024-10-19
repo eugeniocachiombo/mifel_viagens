@@ -59,14 +59,27 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
-                    <i class="icon-mail icon-lg"></i>
-                </a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    <i class="icon-bell"></i>
-                    <span class="count"></span>
+                    <style>
+                        .badge {
+                          position: absolute;
+                          top: -5px; 
+                          right: -10px; 
+                          background-color: red; 
+                          color: white; 
+                          border-radius: 50%; 
+                          padding: 0.5em; 
+                          font-size: 10px;
+                        }
+                      
+                        .cart-container {
+                          position: relative; 
+                          display: inline-block; 
+                        }
+                      </style>
+                    <div class="cart-container">
+                        <i class="mdi mdi-cart"></i>
+                        <span class="badge badge-danger">0</span>
+                      </div>
                 </a>
             </li>
             <li class="nav-item dropdown d-none d-lg-block user-dropdown">

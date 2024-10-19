@@ -8,6 +8,29 @@
                             @livewire('pagina-inicial.classificacao')
                             
                             <div class="row">
+                                <h1 class="d-flex justify-content-center">Conheça o Destino...</h1>
+                                <hr>
+
+                                <div class="col d-flex justify-content-center m-4">
+                                    <h3>Destinos Turísticos</h3>
+                                </div>
+                            
+                                <div class="container  ">
+                                    <div class="row p-2">
+                                        <div class="col">
+                                            <div class="card" style="width: 12rem;">
+                                                <img src="{{ asset('assets/images/faces/empty.jpg') }}" class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <label class="card-title">Luanda</label>
+                                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                </div>
+                                              </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
                                 <div class="col-lg-8 d-flex flex-column">
                                     <div class="row flex-grow">
                                         <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">

@@ -5,10 +5,10 @@
                 <div class="home-tab">
                     <div class="tab-content tab-content-basic">
                         <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
-                            <div class="container-scroller d-flex align-items-center justify-content-center" style="min-height: 100vh; border: 1px solid #ddd;">
+                            <div class="container-scroller d-flex align-items-center justify-content-center" style="min-height: 100vh; ">
                                 <div class="container d-flex justify-content-center align-items-center">
                                     <div class="col-10 col-md-12 grid-margin stretch-card">
-                                        <div class="card mt-4">
+                                        <div class="card ">
                                             <div class="card-body">
                                                 <h4 class="card-title"><i class="fas fa-plane pe-2"></i> Cadastro de Viagem</h4>
                                                 <p class="card-description">Preencha os dados da viagem</p>
