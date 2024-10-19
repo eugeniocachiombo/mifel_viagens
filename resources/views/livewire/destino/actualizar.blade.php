@@ -6,10 +6,10 @@
                     <div class="tab-content tab-content-basic">
                         <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
                             <div class="container-scroller d-flex  justify-content-center"
-                                style="min-height: 100vh; border: 1px solid #ddd;">
+                                style="min-height: 100vh; ">
                                 <div class="container d-flex justify-content-center ">
                                     <div class="col-10 col-md-12 grid-margin stretch-card">
-                                        <div class="card mt-4">
+                                        <div class="card ">
                                             <div class="card-body">
                                                 <h4 class="card-title"><i class="fas fa-map-marker-alt pe-2"></i> Actualizar Destino</h4>
                                                 <p class="card-description">Preencha os dados do destino</p>
@@ -63,8 +63,8 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-6">
-                                                            <button type="submit" class="btn btn-primary text-light" style="width: 100%;">Cadastrar</button>
+                                                        <div class="col-5">
+                                                            <button type="submit" class="btn btn-primary text-light p-3" style="width: 100%;">Actualizar</button>
                                                         </div>
                                                     </div>
                                                 </form>

@@ -2,7 +2,7 @@
     <div class="content-wrapper">
         <div class="card mt-4">
             <div class="card-body">
-                <h4 class="card-title"><i class="fas fa-plane pe-2"></i> Atualizar Tipo de Viagem</h4>
+                <h4 class="card-title"><i class="fas fa-plane pe-2"></i> Actualizar Tipo de Viagem</h4>
                 <form class="forms-sample" wire:submit.prevent="atualizar">
                     <div class="row g-3">
                         <div class="col-12 col-md-6">
@@ -41,7 +41,7 @@
 
                         <div>
                             <div class="col-4">
-                                <button type="submit" class="btn btn-primary text-light" style="width: 100%;">Atualizar</button>
+                                <button type="submit" class="btn btn-primary text-light" style="width: 100%;">Actualizar</button>
                             </div>
                         </div>
                     </div>

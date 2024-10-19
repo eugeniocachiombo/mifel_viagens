@@ -48,8 +48,8 @@
                                                             </div>
                                                         </div>
                                             
-                                                        <div class="col-12">
-                                                            <button type="submit" class="btn text-white btn-primary" style="width: 100%;">Alterar Senha</button>
+                                                        <div class="col-6">
+                                                            <button type="submit" class="btn text-white btn-primary p-3" style="width: 100%;">Alterar Senha</button>
                                                         </div>
                                                     </div>
                                                 </form>

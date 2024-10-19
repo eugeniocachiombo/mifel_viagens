@@ -1,8 +1,8 @@
 <div class="main-panel">
     <div class="content-wrapper">
-        <h4 class="card-title"><i class="fas fa-plane pe-2"></i> Actualizar Dificuldade de Viagem</h4>
         <div class="card mt-4">
             <div class="card-body">
+                <h4 class="card-title"><i class="fas fa-plane pe-2"></i> Actualizar Dificuldade de Viagem</h4>
                 <form class="forms-sample" wire:submit.prevent="actualizar">
                     <div class="row g-3">
                         <div class="col-12 col-md-6">
