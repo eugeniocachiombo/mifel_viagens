@@ -15,23 +15,24 @@
                                                 <h2 class="text-center mt-5 mb-5">Escolha o seu pacote de viagens ideal
                                                 </h2>
 
-                                                {{--Pacote Viagem --}}
+                                                {{-- Pacote Viagem --}}
                                                 <div class="d-flex">
                                                     <div class="col-6">
                                                         <div class="col bg-dark text-white mb-3">
                                                             <label class="ps-2 "><i class="fas fa-tag"></i> Pacotes de
                                                                 Viagem</label>
                                                         </div>
-    
+
                                                         <div class="form-group">
                                                             <label for="pacoteEscolhido"><i class="fas fa-tag pe-2"></i>
                                                                 Selecionar Pacote</label>
                                                             <select class="form-control" id="pacoteEscolhido"
-                                                                wire:model="pacoteEscolhido" wire:change="autoPreencher">
+                                                                wire:model="pacoteEscolhido"
+                                                                wire:change="autoPreencher">
                                                                 <option class="d-none">Selecione um Pacote</option>
                                                                 @foreach ($pacotesViagem as $item)
-                                                                    <option value="{{$item->id}}">
-                                                                    {{$item->titulo_pacote}}
+                                                                    <option value="{{ $item->id }}">
+                                                                        {{ $item->titulo_pacote }}
                                                                     </option>
                                                                 @endforeach
                                                             </select>
@@ -40,8 +41,9 @@
                                                             @enderror
                                                         </div>
                                                     </div>
-    
-                                                    <div class="col-6 d-flex justify-content-center align-items-center" style="font-size: 30px">
+
+                                                    <div class="col-6 d-flex justify-content-center align-items-center"
+                                                        style="font-size: 30px">
                                                         Preço: {{ number_format($precoFinal, 2, ',', '.') }} kz
                                                     </div>
                                                 </div>
@@ -67,7 +69,8 @@
                                                                             class="fas fa-map-marker-alt pe-2"></i>
                                                                         Selecionar Destino</label>
                                                                     <select class="form-select" id="cod_destino"
-                                                                        wire:model="cod_destino">
+                                                                        wire:model="cod_destino"
+                                                                        wire:change="mudarPrecario">
                                                                         <option class="d-none">Selecione um Destino
                                                                         </option>
                                                                         @foreach ($destinos as $destino)
@@ -94,9 +97,9 @@
                                                                     <label for="cod_tipoviagem"><i
                                                                             class="fas fa-flag pe-2"></i> Selecionar
                                                                         Tipo de Viagem</label>
-                                                                    <select class="form-select"
-                                                                        id="cod_tipoviagem"
-                                                                        wire:model="cod_tipoviagem">
+                                                                    <select class="form-select" id="cod_tipoviagem"
+                                                                        wire:model="cod_tipoviagem"
+                                                                        wire:change="mudarPrecario">
                                                                         <option class="d-none">Selecione um Tipo de
                                                                             Viagem</option>
                                                                         @foreach ($tipoviagens as $tipoviagem)
@@ -138,8 +141,8 @@
                                                                 <label for="desc_itinerario"><i
                                                                         class="fas fa-info-circle pe-2"></i> Descrição
                                                                     do Itinerário</label>
-                                                                <textarea class="form-control" id="desc_itinerario" wire:model="desc_itinerario"
-                                                                    placeholder="Descrição do Itinerário" rows="4"></textarea>
+                                                                <textarea class="form-control" id="desc_itinerario" wire:model="desc_itinerario" placeholder="Descrição do Itinerário"
+                                                                    rows="4"></textarea>
                                                                 @error('desc_itinerario')
                                                                     <span class="text-danger">{{ $message }}</span>
                                                                 @enderror

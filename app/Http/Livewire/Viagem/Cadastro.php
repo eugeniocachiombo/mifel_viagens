@@ -57,6 +57,15 @@ class Cadastro extends Component
         }
     }
 
+    public function mudarPrecario(){
+        if($this->cod_tipoviagem != null && $this->cod_destino != null && $this->pacoteEscolhido != null){
+            $novoInfoPacote = PacoteViagem::where("id_destino", $this->cod_destino)
+            ->where("id_tipoviagem", $this->cod_tipoviagem)
+            ->first();
+            $this->precoFinal = $novoInfoPacote->preco_pacote;
+        }
+    }
+
     public function cadastrar()
     {
         $this->validate();
