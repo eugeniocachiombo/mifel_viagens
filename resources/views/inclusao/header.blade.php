@@ -21,16 +21,31 @@
             <li class="nav-item font-weight-semibold d-lg-block ms-0">
                 @php
                     use App\Models\Cliente;
+                    use App\Models\Admin;
                     use App\Models\User;
                     $user = Auth::user();
-                    $cliente = Cliente::where('id_usuario', $user->id)->first();
+                    $logado = array();
+
+                    if ($user->id_acesso == 1) {
+                        $admin = Admin::where('id_usuario', $user->id)->first();
+                        $logado = [
+                            'nome' => $admin->nome_admin,
+                            'sobrenome' => $admin->sobrenome_admin,
+                        ];
+                    } else {
+                        $cliente = Cliente::where('id_usuario', $user->id)->first();
+                        $logado = [
+                            'nome' => $cliente->nome_cliente,
+                            'sobrenome' => $cliente->sobrenome_cliente,
+                        ];
+                    }
                 @endphp
 
-                <h1 class="welcome-text d-none d-lg-block">Olá, <span
-                        class="text-black fw-bold">{{ $cliente->nome_cliente }} {{ $cliente->sobrenome_cliente }}</span>
+                <h1 class="welcome-text d-none d-lg-block">Olá, <span class="text-black fw-bold">{{ $logado["nome"] }}
+                        {{ $logado["sobrenome"] }}</span>
                 </h1>
-                <p class="d-lg-none"> <span class="text-black fw-bold">{{ $cliente->nome_cliente }}
-                        {{ $cliente->sobrenome_cliente }}</span></p>
+                <p class="d-lg-none"> <span class="text-black fw-bold">{{ $logado["nome"] }}
+                        {{ $logado["sobrenome"] }}</span></p>
                 <h3 class="welcome-sub-text"></h3>
             </li>
         </ul>

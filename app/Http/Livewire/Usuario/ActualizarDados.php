@@ -50,8 +50,16 @@ class ActualizarDados extends Component
     {
         $user = User::find($id);
         $cliente = Cliente::where("id_usuario", $user->id)->first();
-        $this->nome = $cliente->nome_cliente;
-        $this->sobrenome = $cliente->sobrenome_cliente;
+        $admin = Admin::where("id_usuario", $user->id)->first();
+
+        if ($user->id_acesso == 1) {
+            $this->nome = $admin->nome_admin;
+            $this->sobrenome = $admin->sobrenome_admin;
+        } else {
+            $this->nome = $cliente->nome_cliente;
+            $this->sobrenome = $cliente->sobrenome_cliente;
+        }
+
         $this->email = $user->email;
         $this->telefone = $user->telefone;
         $this->userId = $user->id;

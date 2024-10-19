@@ -35,7 +35,7 @@ class CreateAdminsTable extends Migration
             'email' => "fredyferreira@mifelviagens.com",
             'telefone' => "921465533",
             'password' => Hash::make("123456"),
-            'id_acesso' => 2,
+            'id_acesso' => 1,
         ]);
 
         Admin::create([
