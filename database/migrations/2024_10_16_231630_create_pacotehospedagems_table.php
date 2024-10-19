@@ -14,7 +14,7 @@ class CreatePacotehospedagemsTable extends Migration
     public function up()
     {
         Schema::create('pacotehospedagems', function (Blueprint $table) {
-            $table->id(); // Auto-incrementing id
+            $table->id(); 
             $table->string('titulo_pacoteHospedagem', 50)->default('0');
             $table->string('desc_pacoteHospedagem', 200)->default('0');
             $table->float('preco_pacoteHospedagem')->default(1);

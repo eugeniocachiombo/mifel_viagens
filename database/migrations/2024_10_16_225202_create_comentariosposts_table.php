@@ -15,7 +15,7 @@ class CreateComentariospostsTable extends Migration
     public function up()
     {
         Schema::create('comentariosposts', function (Blueprint $table) {
-            $table->id(); // Auto-incremental
+            $table->id(); 
             $table->unsignedBigInteger('cod_viagem_comentarios');
             $table->unsignedBigInteger('cod_cliente_comentarios');
             $table->text('desc_comentario');

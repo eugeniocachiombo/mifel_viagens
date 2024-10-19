@@ -18,7 +18,6 @@ class CreateDestinosviagemsTable extends Migration
             $table->unsignedBigInteger('cod_viagens_dv')->nullable();
             $table->unsignedBigInteger('cod_destinos_dv')->nullable();
             $table->integer('status_destinosViagem')->default(1);
-
             
             $table->foreign('cod_viagens_dv')
                 ->references('id')->on('viagems') 

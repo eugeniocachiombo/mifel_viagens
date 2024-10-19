@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Tipoviagem_viagens extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        "cod_viagens",
+        "cod_tipoviagem",
+    ];
 }

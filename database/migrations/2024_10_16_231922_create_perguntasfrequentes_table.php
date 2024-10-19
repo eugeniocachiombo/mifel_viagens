@@ -14,7 +14,7 @@ class CreatePerguntasfrequentesTable extends Migration
     public function up()
     {
         Schema::create('perguntasfrequentes', function (Blueprint $table) {
-            $table->id('id'); // Auto-incrementing id with custom name
+            $table->id('id'); 
             $table->string('pergunta', 150)->default('0');
             $table->string('resposta', 500)->default('0');
             $table->string('status_perguntasFrequentes', 500)->default('0');

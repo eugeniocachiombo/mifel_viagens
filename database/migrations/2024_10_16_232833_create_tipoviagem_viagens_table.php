@@ -14,21 +14,21 @@ class CreateTipoviagemViagensTable extends Migration
     public function up()
     {
         Schema::create('tipoviagem_viagens', function (Blueprint $table) {
-            $table->id('id'); // Auto-incrementing id with custom name
-            $table->unsignedBigInteger('cod_viagens_tv_v')->nullable(); // Allows NULL values
-            $table->unsignedBigInteger('cod_tipoviagem_tv_v')->nullable(); // Allows NULL values
+            $table->id('id'); 
+            $table->unsignedBigInteger('cod_viagens')->nullable(); 
+            $table->unsignedBigInteger('cod_tipoviagem')->nullable(); 
 
-            // Indexes
-            $table->index('cod_viagens_tv_v');
-            $table->index('cod_tipoviagem_tv_v');
+            
+            $table->index('cod_viagens');
+            $table->index('cod_tipoviagem');
 
-            // Foreign key constraints
-            $table->foreign('cod_viagens_tv_v')
+            
+            $table->foreign('cod_viagens')
                   ->references('id')
                   ->on('viagems')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
-            $table->foreign('cod_tipoviagem_tv_v')
+            $table->foreign('cod_tipoviagem')
                   ->references('id')
                   ->on('tipoviagems')
                   ->onDelete('cascade')

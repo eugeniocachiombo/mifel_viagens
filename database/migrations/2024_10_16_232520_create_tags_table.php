@@ -14,15 +14,12 @@ class CreateTagsTable extends Migration
     public function up()
     {
         Schema::create('tags', function (Blueprint $table) {
-            $table->id('id'); // Auto-incrementing id with custom name
-            $table->string('titulo_tag', 150)->nullable(); // Allows NULL values
-            $table->unsignedBigInteger('cod_viagem')->nullable(); // Allows NULL values
-            
-
-            // Index
+            $table->id('id'); 
+            $table->string('titulo_tag', 150)->nullable(); 
+            $table->unsignedBigInteger('cod_viagem')->nullable(); 
+        
             $table->index('cod_viagem');
-
-            // Foreign key constraint
+            
             $table->foreign('cod_viagem')
                   ->references('id')
                   ->on('viagems')

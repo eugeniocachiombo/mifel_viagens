@@ -14,7 +14,7 @@ class CreateEtinerarioviagemsTable extends Migration
     public function up()
     {
         Schema::create('etinerarioviagems', function (Blueprint $table) {
-            $table->id('id'); // Auto-incremental
+            $table->id('id'); 
             $table->unsignedBigInteger('cod_viagens_ev')->nullable();
             $table->integer('dia_etinerarioViagem')->default(0);
             $table->string('desc_etinerarioViagem', 1500)->default('0');
