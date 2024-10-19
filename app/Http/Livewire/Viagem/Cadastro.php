@@ -4,6 +4,8 @@ namespace App\Http\Livewire\Viagem;
 
 use App\Models\Destino;
 use App\Models\DificuldadeViagem;
+use App\Models\Pacotehospedagem;
+use App\Models\Pacoterefeicao;
 use App\Models\PacoteViagem;
 use App\Models\Tipoviagem;
 use App\Models\Viagem;
@@ -23,15 +25,17 @@ class Cadastro extends Component
     public $status_viagens;
 
     public $tipoviagens, $destinos, $cod_destino, $cod_tipoviagem;
-
     public $dia_itinerario, $desc_itinerario;
-
     public $pacotesViagem, $pacoteEscolhido, $infoPacoteV;
-
-    public $precoFinal = 0;
+    
+    public $pacotesHospedagem, $pacoteHospId, $pacoteHospedagemEscolhido, $temPacHosp = false;
+    public $pacotesRefeicao, $pacoteRefId, $pacoteRefeicaoEscolhido, $temPacRef = false;
+    public $precoFinal = 0, $precoAdicionalPacHosp, $precoAdicionalPacRef;
 
     public function mount()
     {
+        $this->pacotesHospedagem = Pacotehospedagem::all();
+        $this->pacotesRefeicao = Pacoterefeicao::all();
         $this->pacotesViagem = PacoteViagem::all();
         $this->tipoviagens = Tipoviagem::all();
         $this->destinos = Destino::all();
@@ -41,6 +45,34 @@ class Cadastro extends Component
     public function render()
     {
         return view('livewire.viagem.cadastro');
+    }
+
+    public function pacoteHospListar(){
+        if ($this->pacoteHospId != null) {
+            $this->precoAdicionalPacHosp = 0;
+            $this->pacoteHospedagemEscolhido = Pacotehospedagem::find($this->pacoteHospId); 
+            $this->precoAdicionalPacHosp += $this->pacoteHospedagemEscolhido->preco_pacoteHospedagem;
+            $this->temPacHosp = true;
+            $this->adicionarPrecoHosp();
+        }else{
+            $this->pacoteHospedagemEscolhido = null;
+            $this->temPacHosp = false;
+            $this->adicionarPrecoHosp();
+        }
+    }
+
+    public function pacoteRefListar(){
+        if ($this->pacoteRefId != null) {
+            $this->precoAdicionalPacRef = 0;
+            $this->pacoteRefeicaoEscolhido = Pacotehospedagem::find($this->pacoteRefId); 
+            $this->precoAdicionalPacRef += $this->pacoteRefeicaoEscolhido->preco_pacoteRefeicao;
+            $this->temPacRef = true;
+            $this->adicionarPrecoRef();
+        }else{
+            $this->pacoteRefeicaoEscolhido = null;
+            $this->temPacRef = false;
+            $this->adicionarPrecoRef();
+        }
     }
 
     public function autoPreencher()
@@ -63,6 +95,22 @@ class Cadastro extends Component
             ->where("id_tipoviagem", $this->cod_tipoviagem)
             ->first();
             $this->precoFinal = $novoInfoPacote->preco_pacote;
+        }
+    }
+
+    public function adicionarPrecoHosp(){
+        if($this->temPacHosp == true){
+            $this->precoFinal += $this->precoAdicionalPacHosp;
+        }else{
+            $this->precoFinal -= $this->precoAdicionalPacHosp;
+        }
+    }
+
+    public function adicionarPrecoRef(){
+        if($this->temPacRef == true){
+            $this->precoFinal += $this->precoAdicionalPacRef;
+        }else{
+            $this->precoFinal -= $this->precoAdicionalPacRef;
         }
     }
 

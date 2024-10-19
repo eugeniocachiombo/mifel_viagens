@@ -9,7 +9,7 @@
                                 style="min-height: 100vh; ">
                                 <div class="container d-flex justify-content-center align-items-center">
                                     <div class="col-10 col-md-12 grid-margin ">
-                                        <div class="card bg-dark text-light">
+                                        <div class="card bg-dark text-light" style="height: auto">
                                             <div class="card-body">
                                                 <h1 class="text-center"><i class="fas fa-tag pe-2"></i> Pacotes</h1>
                                                 <h2 class="text-center mt-5 mb-5">Escolha o seu pacote de viagens ideal
@@ -62,6 +62,8 @@
                                                     @include('livewire/viagem/inclusao-cadastro/viagem')
                                                     <hr>
                                                     @include('livewire/viagem/inclusao-cadastro/hospedagem')
+                                                    <hr>
+                                                    @include('livewire/viagem/inclusao-cadastro/refeicao')
 
                                                     <div class="col-12">
                                                         <button type="submit" class="btn btn-primary text-light"
