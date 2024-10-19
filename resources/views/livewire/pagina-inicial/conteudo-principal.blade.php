@@ -6,31 +6,50 @@
                     <div class="tab-content tab-content-basic">
                         <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
                             @livewire('pagina-inicial.classificacao')
-                            
+
                             <div class="row">
-                                <h1 class="d-flex justify-content-center">Conheça o Destino...</h1>
-                                <hr>
+                                <div class="d-flex justify-content-center flex-column bg-dark text-light p-5">
+                                    <div class="col d-flex justify-content-center">
+                                        <h1 style="font-family: fantasy"><i class="fas fa-plane"></i> Conheça o Destino...
+                                        </h1>
+                                    </div>
+
+                                    <div class="col d-flex justify-content-end">
+                                        <button class="btn btn-primary text-white pe-5 ps-5"><i class="fas fa-forward"></i></button>
+                                    </div>
+                                </div>
 
                                 <div class="col d-flex justify-content-center m-4">
-                                    <h3>Destinos Turísticos</h3>
+                                    <h3 style="font-family: verdana">"Destinos Turísticos"</h3>
                                 </div>
-                            
+
                                 <div class="container  ">
                                     <div class="row p-2">
-                                        <div class="col">
-                                            <div class="card" style="width: 12rem;">
-                                                <img src="{{ asset('assets/images/faces/empty.jpg') }}" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <label class="card-title">Luanda</label>
-                                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        @foreach ($destinos as $destino)
+                                            <div class="col-6 col-md-3 p-2">
+                                                <div class="card" style="width: 12rem;">
+                                                    <a href="{{ asset('storage/' . $destino->img_destino) }}">
+                                                        <img src="{{ asset('storage/' . $destino->img_destino) }}"
+                                                            alt="{{ $destino->nome_destino }}" class="card-img-top"
+                                                            alt="...">
+                                                    </a>
+
+                                                    <div class="card-body">
+                                                        <label class="card-title">{{ $destino->nome_destino }}</label>
+                                                        <p class="card-text">{{ $destino->desc_destino }}</p>
+                                                    </div>
                                                 </div>
-                                              </div>
-                                        </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+
+                                    <div class="col d-flex justify-content-center pt-4">
+                                        <button class="btn btn-primary text-white pe-5 ps-5"><i class="fas fa-forward"></i></button>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="row">
+                            <div class="row mt-4">
                                 <div class="col-lg-8 d-flex flex-column">
                                     <div class="row flex-grow">
                                         <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
@@ -112,7 +131,7 @@
                                 </div>
                             </div>
 
-                            <div class="row">
+                            <div class="row mt-4">
                                 <div class="col-lg-8 d-flex flex-column">
                                     <div class="row flex-grow">
                                         <div class="col-12 grid-margin stretch-card">
