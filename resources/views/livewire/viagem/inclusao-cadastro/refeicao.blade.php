@@ -3,7 +3,7 @@
         <label><i class="fas fa-hotel pe-2"></i> Pacotes de Refeição</label>
     </div>
 
-    <div class="col-6">
+    <div class="col-12 col-md-6">
         <div class="form-group">
             <label for="pacoteHospId"><i class="fas fa-tags pe-2"></i> Selecionar Pacote</label>
             <select class="form-control" id="pacoteRefId" wire:model="pacoteRefId" wire:change="pacoteRefListar">

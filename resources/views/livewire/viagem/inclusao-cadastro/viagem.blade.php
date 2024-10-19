@@ -3,7 +3,7 @@
         <label><i class="fas fa-tag pe-2"></i> Viagem</label>
     </div>
 
-    <div class="col-6">
+    <div class="col-12 col-md-6">
         <div class="form-group">
             <label for="titulo_viagens"><i
                     class="fas fa-tag pe-2"></i> Título da
@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <div class="col-6">
+    <div class="col-12 col-md-6">
         <div class="form-group">
             <label for="desc_viagens"><i
                     class="fas fa-info-circle pe-2"></i> Descrição

@@ -16,7 +16,7 @@
 
                                     <div class="col d-flex justify-content-end">
                                         <a href="{{route("viagem.cadastrar")}}">
-                                            <button class="btn btn-primary text-white pe-5 ps-5"><i class="fas fa-forward"></i></button>
+                                            <button class="btn btn-primary text-white pe-5 ps-5 d-flex align-items-center" style="font-size: 20px">Ir em pacotes <i class="fas fa-forward ps-2"></i></button>
                                         </a>
                                     </div>
                                 </div>

@@ -65,9 +65,9 @@
                                                     <hr>
                                                     @include('livewire/viagem/inclusao-cadastro/refeicao')
 
-                                                    <div class="col-12">
-                                                        <button type="submit" class="btn btn-primary text-light"
-                                                            style="width: 100%;">Cadastrar</button>
+                                                    <div class="col-5">
+                                                        <button type="submit" class="btn btn-primary text-light p-3"
+                                                            style="width: 100%; font-size: 16px">Cadastrar</button>
                                                     </div>
                                                 </form>
                                             </div>

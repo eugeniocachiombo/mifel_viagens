@@ -3,7 +3,7 @@
         <label><i class="fas fa-tag pe-2"></i> Itinerário</label>
     </div>
 
-    <div class="col-6">
+    <div class="col-12 col-md-6">
         <div class="form-group">
             <label for="dia_itinerario"><i
                     class="fas fa-calendar-day pe-2"></i> Dia do
@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <div class="col-6">
+    <div class="col-12 col-md-6">
         <div class="form-group">
             <label for="desc_itinerario"><i
                     class="fas fa-info-circle pe-2"></i> Descrição

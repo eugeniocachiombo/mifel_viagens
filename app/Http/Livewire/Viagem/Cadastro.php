@@ -64,7 +64,7 @@ class Cadastro extends Component
     public function pacoteRefListar(){
         if ($this->pacoteRefId != null) {
             $this->precoAdicionalPacRef = 0;
-            $this->pacoteRefeicaoEscolhido = Pacotehospedagem::find($this->pacoteRefId); 
+            $this->pacoteRefeicaoEscolhido = Pacoterefeicao::find($this->pacoteRefId); 
             $this->precoAdicionalPacRef += $this->pacoteRefeicaoEscolhido->preco_pacoteRefeicao;
             $this->temPacRef = true;
             $this->adicionarPrecoRef();
