@@ -27,10 +27,12 @@ class Cadastro extends Component
     public $tipoviagens, $destinos, $cod_destino, $cod_tipoviagem;
     public $dia_itinerario, $desc_itinerario;
     public $pacotesViagem, $pacoteEscolhido, $infoPacoteV;
-    
+
     public $pacotesHospedagem, $pacoteHospId, $pacoteHospedagemEscolhido, $temPacHosp = false;
     public $pacotesRefeicao, $pacoteRefId, $pacoteRefeicaoEscolhido, $temPacRef = false;
     public $precoFinal = 0, $precoAdicionalPacHosp, $precoAdicionalPacRef;
+
+    public $numMaxVaga;
 
     public function mount()
     {
@@ -44,34 +46,57 @@ class Cadastro extends Component
 
     public function render()
     {
+        $this->preco_viagem = $this->precoFinal;
         return view('livewire.viagem.cadastro');
     }
 
-    public function pacoteHospListar(){
+    public function pacoteHospListar()
+    {
         if ($this->pacoteHospId != null) {
-            $this->precoAdicionalPacHosp = 0;
-            $this->pacoteHospedagemEscolhido = Pacotehospedagem::find($this->pacoteHospId); 
-            $this->precoAdicionalPacHosp += $this->pacoteHospedagemEscolhido->preco_pacoteHospedagem;
+            $this->precoFinal -= $this->precoAdicionalPacHosp;
+            $this->pacoteHospedagemEscolhido = Pacotehospedagem::find($this->pacoteHospId);
+            $this->precoAdicionalPacHosp = $this->pacoteHospedagemEscolhido->preco_pacoteHospedagem;
             $this->temPacHosp = true;
+            $this->vagas_viagens = $this->pacoteHospedagemEscolhido->max_qtd_pessoas;
+            $this->numMaxVaga = $this->pacoteHospedagemEscolhido->max_qtd_pessoas;
             $this->adicionarPrecoHosp();
-        }else{
+        } else {
             $this->pacoteHospedagemEscolhido = null;
             $this->temPacHosp = false;
             $this->adicionarPrecoHosp();
         }
     }
 
-    public function pacoteRefListar(){
+    public function pacoteRefListar()
+    {
         if ($this->pacoteRefId != null) {
-            $this->precoAdicionalPacRef = 0;
-            $this->pacoteRefeicaoEscolhido = Pacoterefeicao::find($this->pacoteRefId); 
-            $this->precoAdicionalPacRef += $this->pacoteRefeicaoEscolhido->preco_pacoteRefeicao;
+            $this->precoFinal -= $this->precoAdicionalPacRef;
+            $this->pacoteRefeicaoEscolhido = Pacoterefeicao::find($this->pacoteRefId);
+            $this->precoAdicionalPacRef = $this->pacoteRefeicaoEscolhido->preco_pacoteRefeicao;
             $this->temPacRef = true;
             $this->adicionarPrecoRef();
-        }else{
+        } else {
             $this->pacoteRefeicaoEscolhido = null;
             $this->temPacRef = false;
             $this->adicionarPrecoRef();
+        }
+    }
+
+    public function adicionarPrecoHosp()
+    {
+        if ($this->temPacHosp == true) {
+            $this->precoFinal += $this->precoAdicionalPacHosp;
+        } else {
+            $this->precoFinal -= $this->precoAdicionalPacHosp;
+        }
+    }
+
+    public function adicionarPrecoRef()
+    {
+        if ($this->temPacRef == true) {
+            $this->precoFinal += $this->precoAdicionalPacRef;
+        } else {
+            $this->precoFinal -= $this->precoAdicionalPacRef;
         }
     }
 
@@ -89,28 +114,15 @@ class Cadastro extends Component
         }
     }
 
-    public function mudarPrecario(){
-        if($this->cod_tipoviagem != null && $this->cod_destino != null && $this->pacoteEscolhido != null){
+    public function mudarPrecario()
+    {
+        if ($this->cod_tipoviagem != null && $this->cod_destino != null && $this->pacoteEscolhido != null) {
             $novoInfoPacote = PacoteViagem::where("id_destino", $this->cod_destino)
-            ->where("id_tipoviagem", $this->cod_tipoviagem)
-            ->first();
+                ->where("id_tipoviagem", $this->cod_tipoviagem)
+                ->first();
             $this->precoFinal = $novoInfoPacote->preco_pacote;
-        }
-    }
-
-    public function adicionarPrecoHosp(){
-        if($this->temPacHosp == true){
-            $this->precoFinal += $this->precoAdicionalPacHosp;
-        }else{
-            $this->precoFinal -= $this->precoAdicionalPacHosp;
-        }
-    }
-
-    public function adicionarPrecoRef(){
-        if($this->temPacRef == true){
-            $this->precoFinal += $this->precoAdicionalPacRef;
-        }else{
-            $this->precoFinal -= $this->precoAdicionalPacRef;
+            $this->pacoteHospListar();
+            $this->pacoteRefListar();
         }
     }
 

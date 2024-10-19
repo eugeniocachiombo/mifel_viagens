@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\DificuldadeViagem;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,9 +18,14 @@ class CreateDificuldadeViagemsTable extends Migration
             $table->id();
             $table->string("nome_dificuldadeViagem");
             $table->string("desc_dificuldadeViagem");
-            $table->integer("status_dificuldadeViagem");
+            $table->integer("status_dificuldadeViagem")->default(1);
             $table->timestamps();
         });
+
+        DificuldadeViagem::create([
+            "nome_dificuldadeViagem" => "Dificuldade 1",
+            "desc_dificuldadeViagem" => "Dificuldade 2",
+        ]);
     }
 
     /**

@@ -1,12 +1,11 @@
 <div class="row g-3">
     <div class="col-12 bg-dark text-white">
-        <label><i class="fas fa-tag pe-2"></i> Itinerário</label>
+        <label><i class="fas fa-route pe-2"></i> Itinerário</label>
     </div>
 
     <div class="col-12 col-md-6">
         <div class="form-group">
-            <label for="dia_itinerario"><i
-                    class="fas fa-calendar-day pe-2"></i> Dia do
+            <label for="dia_itinerario"><i class="fas fa-calendar-alt pe-2"></i> Dia do
                 Itinerário</label>
             <input type="number" class="form-control"
                 id="dia_itinerario" wire:model="dia_itinerario"
@@ -19,8 +18,7 @@
 
     <div class="col-12 col-md-6">
         <div class="form-group">
-            <label for="desc_itinerario"><i
-                    class="fas fa-info-circle pe-2"></i> Descrição
+            <label for="desc_itinerario"><i class="fas fa-pencil-alt pe-2"></i> Descrição
                 do Itinerário</label>
             <textarea class="form-control" id="desc_itinerario" wire:model="desc_itinerario" placeholder="Descrição do Itinerário"
                 rows="4"></textarea>

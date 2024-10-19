@@ -16,8 +16,8 @@
                                                 </h2>
 
                                                 {{-- Pacote Viagem --}}
-                                                <div class="d-flex">
-                                                    <div class="col-6">
+                                                <div class="row">
+                                                    <div class="col-12 col-md-6">
                                                         <div class="col bg-dark text-white mb-3">
                                                             <label class="ps-2 "><i class="fas fa-tag"></i> Pacotes de
                                                                 Viagem</label>
@@ -42,7 +42,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-6 d-flex justify-content-center align-items-center"
+                                                    <div class="col-12 col-md-6 d-flex justify-content-center align-items-center"
                                                         style="font-size: 30px">
                                                         Preço: {{ number_format($precoFinal, 2, ',', '.') }} kz
                                                     </div>
@@ -59,13 +59,13 @@
                                                     <hr>
                                                     @include('livewire/viagem/inclusao-cadastro/itinerario')
                                                     <hr>
-                                                    @include('livewire/viagem/inclusao-cadastro/viagem')
-                                                    <hr>
                                                     @include('livewire/viagem/inclusao-cadastro/hospedagem')
                                                     <hr>
                                                     @include('livewire/viagem/inclusao-cadastro/refeicao')
+                                                    <hr>
+                                                    @include('livewire/viagem/inclusao-cadastro/viagem')
 
-                                                    <div class="col-5">
+                                                    <div class="col-6 col-md-3 mt-2">
                                                         <button type="submit" class="btn btn-primary text-light p-3"
                                                             style="width: 100%; font-size: 16px">Cadastrar</button>
                                                     </div>

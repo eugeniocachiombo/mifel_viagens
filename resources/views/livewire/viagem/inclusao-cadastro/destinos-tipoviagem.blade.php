@@ -2,7 +2,7 @@
     {{-- Destinos --}}
     <div class="col-12 col-md-6">
         <div class="col bg-dark text-white mb-3">
-            <label class="ps-2 "><i class="fas fa-tag"></i> Destino
+            <label class="ps-2 "><i class="fas fa-plane"></i> Destino
                 da
                 Viagem</label>
         </div>
@@ -29,13 +29,13 @@
     {{-- Tipo de viagem --}}
     <div class="col-12 col-md-6">
         <div class="col bg-dark text-white mb-3">
-            <label class="ps-2"><i class="fas fa-tag"></i> Tipo de
+            <label class="ps-2"><i class="fas fa-suitcase"></i> Tipo de
                 Viagem</label>
         </div>
 
         <div class="col-12">
             <div class="form-group">
-                <label for="cod_tipoviagem"><i class="fas fa-flag pe-2"></i> Selecionar
+                <label for="cod_tipoviagem"><i class="fas fa-plane-departure pe-2"></i> Selecionar
                     Tipo de Viagem</label>
                 <select class="form-select" id="cod_tipoviagem" wire:model="cod_tipoviagem" wire:change="mudarPrecario">
                     <option class="d-none">Selecione um Tipo de

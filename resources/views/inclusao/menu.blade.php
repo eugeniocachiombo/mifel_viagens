@@ -79,22 +79,6 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#actividadesviagem" aria-expanded="false"
-                aria-controls="actividadesviagem">
-                <i class="menu-icon mdi mdi-timeline"></i>
-                <span class="menu-title">Actividades da Viagem</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="actividadesviagem">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="actividadesviagem/criar.html">Criar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="actividadesviagem/listar.html">Listar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="actividadesviagem/editar.html">Editar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="actividadesviagem/deletar.html">Deletar</a></li>
-                </ul>
-            </div>
-        </li>
-        <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#catpreco" aria-expanded="false"
                 aria-controls="catpreco">
                 <i class="menu-icon mdi mdi-tag"></i>
@@ -142,38 +126,7 @@
                 </ul>
             </div>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#destinos" aria-expanded="false"
-                aria-controls="destinos">
-                <i class="menu-icon mdi mdi-map-marker"></i>
-                <span class="menu-title">Destinos</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="destinos">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="{{ route('destino.cadastrar') }}">Cadastrar</a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('destino.lista') }}">Listar</a></li>
-                </ul>
-            </div>
-        </li>
 
-        <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#etinerarioviagem" aria-expanded="false"
-                aria-controls="etinerarioviagem">
-                <i class="menu-icon mdi mdi-road"></i>
-                <span class="menu-title">Itinerário da Viagem</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="etinerarioviagem">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="etinerarioviagem/criar.html">Criar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="etinerarioviagem/listar.html">Listar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="etinerarioviagem/editar.html">Editar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="etinerarioviagem/deletar.html">Deletar</a></li>
-                </ul>
-            </div>
-        </li>
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#favoritos" aria-expanded="false"
                 aria-controls="favoritos">
@@ -238,6 +191,7 @@
                 </ul>
             </div>
         </li>
+
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#pacotehospedagem" aria-expanded="false"
                 aria-controls="pacotehospedagem">
@@ -254,6 +208,7 @@
                 </ul>
             </div>
         </li>
+
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#pacoterefeicao" aria-expanded="false"
                 aria-controls="pacoterefeicao">
@@ -270,6 +225,7 @@
                 </ul>
             </div>
         </li>
+
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#perguntasfrequentes" aria-expanded="false"
                 aria-controls="perguntasfrequentes">
@@ -286,6 +242,7 @@
                 </ul>
             </div>
         </li>
+
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#reservas" aria-expanded="false"
                 aria-controls="reservas">
@@ -302,6 +259,7 @@
                 </ul>
             </div>
         </li>
+
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#tag" aria-expanded="false" aria-controls="tag">
                 <i class="menu-icon mdi mdi-tag-outline"></i>
@@ -317,21 +275,5 @@
                 </ul>
             </div>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#tipoviagem" aria-expanded="false"
-                aria-controls="tipoviagem">
-                <i class="menu-icon mdi mdi-briefcase"></i>
-                <span class="menu-title">Tipo de Viagem</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="tipoviagem">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link"
-                            href="{{ route('tipo.viagem.cadastrar') }}">Cadastrar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('tipo.viagem.lista') }}">Listar</a></li>
-                </ul>
-            </div>
-        </li>
-
     </ul>
 </nav>
