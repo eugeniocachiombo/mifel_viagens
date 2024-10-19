@@ -17,12 +17,16 @@ class UsuarioController extends Controller
         return view('usuario.login');
     }
 
-    public function actualizarDados() {
-        //return view('usuario.login');
+    public function actualizarDados($id) {
+        return view('usuario.actualizar-dados', ["id"=> $id]);
     }
 
     public function irEmInicio() {
         return view('pagina_inicial.index');
+    }
+
+    public function irEmPerfil($id) {
+        return view('usuario.perfil', ["id"=> $id]);
     }
 
     public function sair() {

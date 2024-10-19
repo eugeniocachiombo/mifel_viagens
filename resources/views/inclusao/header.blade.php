@@ -56,13 +56,13 @@
             </li>
             <li class="nav-item dropdown d-none d-lg-block user-dropdown">
                 @if ($user->foto)
-                <a class="nav-link" id="UserDropdown" href="{{ asset('storage/' . $user->foto) }}" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a href="{{ asset('storage/' . $user->foto) }}">
                         <img class="img-xs rounded-circle" src="{{ asset('storage/' . $user->foto) }}"
                             alt="Profile image">
-                </a>
-            @else
-                <img class="img-xs rounded-circle" src="{{ asset('assets/images/faces/empty.jpg') }}"
-                    alt="Profile image">
+                    </a>
+                @else
+                    <img class="img-xs rounded-circle" src="{{ asset('assets/images/faces/empty.jpg') }}"
+                        alt="Profile image">
                 @endif
             </li>
         </ul>
