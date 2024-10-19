@@ -106,10 +106,7 @@
         </a>
         <div class="collapse" id="clientes">
             <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="clientes/criar.html">Criar</a></li>
-                <li class="nav-item"><a class="nav-link" href="clientes/listar.html">Listar</a></li>
-                <li class="nav-item"><a class="nav-link" href="clientes/editar.html">Editar</a></li>
-                <li class="nav-item"><a class="nav-link" href="clientes/deletar.html">Deletar</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('cliente.lista') }}">Listar</a></li>
             </ul>
         </div>
     </li>
