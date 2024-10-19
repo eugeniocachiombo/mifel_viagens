@@ -17,12 +17,14 @@ class Cadastro extends Component
     public $desc_viagens;
     public $cod_dificuldade;
     public $EmDestaque_viagens;
-    public $duracao_viagens;
+    public $duracao_viagem;
     public $vagas_viagens;
-    public $preco_viagens;
+    public $preco_viagem;
     public $status_viagens;
 
     public $tipoviagens, $destinos, $cod_destino, $cod_tipoviagem;
+
+    public $dia_itinerario, $desc_itinerario;
 
     public $pacotesViagem, $pacoteEscolhido, $infoPacoteV;
 
@@ -48,6 +50,10 @@ class Cadastro extends Component
             $this->cod_destino = $this->infoPacoteV->id_destino;
             $this->cod_tipoviagem = $this->infoPacoteV->id_tipoviagem;
             $this->precoFinal = $this->infoPacoteV->preco_pacote;
+            $this->dia_itinerario = $this->infoPacoteV->dia_itinerario;
+            $this->desc_itinerario = $this->infoPacoteV->desc_itinerario;
+            $this->duracao_viagem = $this->infoPacoteV->duracao_viagem;
+            $this->preco_viagem = $this->infoPacoteV->preco_pacote;
         }
     }
 
@@ -60,9 +66,9 @@ class Cadastro extends Component
             'desc_viagens' => $this->desc_viagens,
             'cod_dificuldade' => $this->cod_dificuldade,
             'EmDestaque_viagens' => $this->EmDestaque_viagens,
-            'duracao_viagens' => $this->duracao_viagens,
+            'duracao_viagem' => $this->duracao_viagem,
             'vagas_viagens' => $this->vagas_viagens,
-            'preco_viagens' => $this->preco_viagens,
+            'preco_viagem' => $this->preco_viagem,
             'status_viagens' => $this->status_viagens,
         ]);
 

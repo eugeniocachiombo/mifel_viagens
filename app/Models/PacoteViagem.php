@@ -16,6 +16,11 @@ class PacoteViagem extends Model
         "id_destino",
         "id_tipoviagem",
         "status_pacote",
+
+        "dia_itinerario",
+        "desc_itinerario",
+        "duracao_viagem",
+
         "max_qtd_pessoas",
     ];
 }

@@ -121,13 +121,13 @@
 
                                                         <div class="col-6">
                                                             <div class="form-group">
-                                                                <label for="dia_etinerario"><i
+                                                                <label for="dia_itinerario"><i
                                                                         class="fas fa-calendar-day pe-2"></i> Dia do
                                                                     Itinerário</label>
                                                                 <input type="number" class="form-control"
-                                                                    id="dia_etinerario" wire:model="dia_etinerario"
+                                                                    id="dia_itinerario" wire:model="dia_itinerario"
                                                                     placeholder="Dia do Itinerário" min="1">
-                                                                @error('dia_etinerario')
+                                                                @error('dia_itinerario')
                                                                     <span class="text-danger">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
@@ -135,12 +135,12 @@
 
                                                         <div class="col-6">
                                                             <div class="form-group">
-                                                                <label for="desc_etinerario"><i
+                                                                <label for="desc_itinerario"><i
                                                                         class="fas fa-info-circle pe-2"></i> Descrição
                                                                     do Itinerário</label>
-                                                                <textarea class="form-control" id="desc_etinerario" wire:model="desc_etinerario"
+                                                                <textarea class="form-control" id="desc_itinerario" wire:model="desc_itinerario"
                                                                     placeholder="Descrição do Itinerário" rows="4"></textarea>
-                                                                @error('desc_etinerario')
+                                                                @error('desc_itinerario')
                                                                     <span class="text-danger">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
@@ -203,13 +203,13 @@
 
                                                         <div class="col-12 col-md-6">
                                                             <div class="form-group">
-                                                                <label for="duracao_viagens"><i
+                                                                <label for="duracao_viagem"><i
                                                                         class="fas fa-clock pe-2"></i> Duração
                                                                     (dias)</label>
                                                                 <input type="number" class="form-control"
-                                                                    id="duracao_viagens" wire:model="duracao_viagens"
+                                                                    id="duracao_viagem" wire:model="duracao_viagem"
                                                                     placeholder="Duração da Viagem" min="1">
-                                                                @error('duracao_viagens')
+                                                                @error('duracao_viagem')
                                                                     <span class="text-danger">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
@@ -230,13 +230,13 @@
 
                                                         <div class="col-12 col-md-6">
                                                             <div class="form-group">
-                                                                <label for="preco_viagens"><i
+                                                                <label for="preco_viagem"><i
                                                                         class="fas fa-money-bill-wave pe-2"></i>
                                                                     Preço</label>
                                                                 <input type="text" class="form-control"
-                                                                    id="preco_viagens" wire:model="preco_viagens"
+                                                                    id="preco_viagem" wire:model="preco_viagem"
                                                                     placeholder="Preço da Viagem" step="0.01">
-                                                                @error('preco_viagens')
+                                                                @error('preco_viagem')
                                                                     <span class="text-danger">{{ $message }}</span>
                                                                 @enderror
                                                             </div>

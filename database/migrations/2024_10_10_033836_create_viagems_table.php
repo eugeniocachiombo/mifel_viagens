@@ -15,15 +15,15 @@ class CreateViagemsTable extends Migration
     {
         Schema::create('viagems', function (Blueprint $table) {
             $table->id();
-            $table->string('titulo_viagens')->default('0');
-            $table->string('desc_viagens', 1500)->default('0');
+            $table->string('titulo_viagem')->default('0');
+            $table->string('desc_viagem', 1500)->default('0');
             $table->unsignedBigInteger('cod_dificuldade')->nullable();
-            $table->integer('EmDestaque_viagens')->default(0);
-            $table->integer('duracao_viagens')->default(1);
-            $table->integer('vagas_viagens')->nullable();
-            $table->decimal('preco_viagens', 10, 2)->nullable();
-            $table->integer('status_viagens')->default(1);
-            $table->integer('estrelas_viagens')->default(1);
+            $table->integer('EmDestaque_viagem')->default(0);
+            $table->integer('duracao_viagem')->default(1);
+            $table->integer('vagas_viagem')->nullable();
+            $table->decimal('preco_viagem', 10, 2)->nullable();
+            $table->integer('status_viagem')->default(1);
+            $table->integer('estrelas_viagem')->default(1);
             
 
             $table->foreign('cod_dificuldade')
