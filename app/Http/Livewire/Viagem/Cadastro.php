@@ -4,13 +4,14 @@ namespace App\Http\Livewire\Viagem;
 
 use App\Models\Destino;
 use App\Models\DificuldadeViagem;
+use App\Models\PacoteViagem;
 use App\Models\Tipoviagem;
 use App\Models\Viagem;
 use Livewire\Component;
 
 class Cadastro extends Component
 {
-    
+
     public $dificuldades;
     public $titulo_viagens;
     public $desc_viagens;
@@ -21,22 +22,15 @@ class Cadastro extends Component
     public $preco_viagens;
     public $status_viagens;
 
-    public $tipoviagens, $destinos;
+    public $tipoviagens, $destinos, $cod_destino, $cod_tipoviagem;
 
+    public $pacotesViagem, $pacoteEscolhido, $infoPacoteV;
 
-    protected $rules = [
-        'titulo_viagens' => 'required|string|max:255',
-        'desc_viagens' => 'required|string|max:1500',
-        'cod_dificuldade' => 'required|exists:dificuldade_viagems,id',
-        'EmDestaque_viagens' => 'boolean',
-        'duracao_viagens' => 'required|integer|min:1',
-        'vagas_viagens' => 'nullable|integer|min:1',
-        'preco_viagens' => 'nullable|numeric',
-        'status_viagens' => 'required|boolean',
-    ];
+    public $precoFinal = 0;
 
     public function mount()
     {
+        $this->pacotesViagem = PacoteViagem::all();
         $this->tipoviagens = Tipoviagem::all();
         $this->destinos = Destino::all();
         $this->dificuldades = DificuldadeViagem::all();
@@ -47,10 +41,20 @@ class Cadastro extends Component
         return view('livewire.viagem.cadastro');
     }
 
+    public function autoPreencher()
+    {
+        if ($this->pacoteEscolhido != null) {
+            $this->infoPacoteV = PacoteViagem::where("id", $this->pacoteEscolhido)->first();
+            $this->cod_destino = $this->infoPacoteV->id_destino;
+            $this->cod_tipoviagem = $this->infoPacoteV->id_tipoviagem;
+            $this->precoFinal = $this->infoPacoteV->preco_pacote;
+        }
+    }
+
     public function cadastrar()
     {
         $this->validate();
-        
+
         Viagem::create([
             'titulo_viagens' => $this->titulo_viagens,
             'desc_viagens' => $this->desc_viagens,
