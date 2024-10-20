@@ -18,7 +18,7 @@
                         <tr class="border">
                             <td class="border">{{ $pacoteHospedagem->titulo_pacoteHospedagem }}</td>
                             <td class="border">{{ $pacoteHospedagem->desc_pacoteHospedagem }}</td>
-                            <td class="border">{{ number_format($pacoteHospedagem->preco_pacoteHospedagem, 2, ',', '.') }} €</td>
+                            <td class="border">{{ number_format($pacoteHospedagem->preco_pacoteHospedagem, 2, ',', '.') }} Kz</td>
                             <td class="border">{{ $pacoteHospedagem->max_qtd_pessoas ?? 'N/A' }}</td>
                             <td class="text-center border">
                                 @if ($pacoteHospedagem->status_pacoteHospedagem)
