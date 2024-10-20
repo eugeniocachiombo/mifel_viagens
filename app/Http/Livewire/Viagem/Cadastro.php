@@ -14,15 +14,9 @@ use Livewire\Component;
 class Cadastro extends Component
 {
 
-    public $dificuldades;
-    public $titulo_viagens;
-    public $desc_viagens;
-    public $cod_dificuldade;
-    public $EmDestaque_viagens;
-    public $duracao_viagem;
-    public $vagas_viagens;
-    public $preco_viagem;
-    public $status_viagens;
+    public $dificuldades, $titulo_viagens, $desc_viagens, $cod_dificuldade;
+    public $EmDestaque_viagens, $duracao_viagem, $vagas_viagens; 
+    public $preco_viagem, $status_viagens;
 
     public $tipoviagens, $destinos, $cod_destino, $cod_tipoviagem;
     public $dia_itinerario, $desc_itinerario;
