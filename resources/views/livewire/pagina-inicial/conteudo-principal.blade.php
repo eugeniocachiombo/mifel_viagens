@@ -13,12 +13,15 @@
                                         <h1 style="font-family: fantasy"><i class="fas fa-plane"></i> Conheça o Destino...
                                         </h1>
                                     </div>
-
-                                    <div class="col d-flex justify-content-end">
-                                        <a href="{{route("viagem.cadastrar")}}">
-                                            <button class="btn btn-primary text-white pe-5 ps-5 d-flex align-items-center" style="font-size: 20px">Ir em pacotes <i class="fas fa-forward ps-2"></i></button>
+                                    
+                                    <div class="col d-flex justify-content-end pt-5">
+                                        <a href="{{route('viagem.cadastrar')}}">
+                                            <button class="btn btn-primary text-white d-flex align-items-center animated-button" style="font-size: 20px">
+                                                Pacotes <i class="fas fa-tag ps-2"></i> <!-- Ícone de viagem -->
+                                            </button>
                                         </a>
                                     </div>
+                                                            
                                 </div>
 
                                 <div class="col d-flex justify-content-center m-4">

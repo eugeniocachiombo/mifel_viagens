@@ -5,6 +5,7 @@
             <table id="minhaTabela" class="table table-bordered datatablePT table-hover">
                 <thead class="bg-dark text-light">
                     <tr class="text-center">
+                        <th>Id</th>
                         <th>Nome</th>
                         <th>Sobrenome</th>
                         <th>Email</th>
@@ -16,6 +17,7 @@
                 <tbody>
                     @forelse ($clientes as $cliente)
                         <tr class="border">
+                            <td class="border">{{ $cliente->id }}</td>
                             <td class="border">{{ $cliente->nome_cliente }}</td>
                             <td class="border">{{ $cliente->sobrenome_cliente }}</td>
                             <td class="border">{{ $this->dadosUser($cliente->id_usuario)->email }}</td>
