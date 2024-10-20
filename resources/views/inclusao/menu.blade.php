@@ -31,6 +31,56 @@
     </div>
     </li>
 
+    <li class="nav-item nav-category">Pacotes</li>
+    <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#pacoteviagem" aria-expanded="false" aria-controls="pacoteviagem">
+            <i class="menu-icon mdi mdi-earth"></i> 
+            <span class="menu-title">Pacote de Viagem</span>
+            <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="pacoteviagem">
+            <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="{{ route('pacote.viagem.cadastrar') }}">Cadastrar</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('pacote.viagem.lista') }}">Listar</a></li>
+            </ul>
+        </div>
+    </li>
+    
+
+    <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#pacotehospedagem" aria-expanded="false"
+            aria-controls="pacotehospedagem">
+            <i class="menu-icon mdi mdi-hotel"></i>
+            <span class="menu-title">Pacote de Hospedagem</span>
+            <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="pacotehospedagem">
+            <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link"
+                        href="{{ route('pacote.hospedagem.cadastrar') }}">Cadastrar</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('pacote.hospedagem.lista') }}">Listar</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#pacoterefeicao" aria-expanded="false"
+            aria-controls="pacoterefeicao">
+            <i class="menu-icon mdi mdi-food"></i>
+            <span class="menu-title">Pacote de Refeição</span>
+            <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="pacoterefeicao">
+            <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link"
+                        href="{{ route('pacote.refeicao.cadastrar') }}">Cadastrar</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('pacote.refeicao.lista') }}">Listar</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+
     <!-- Novos itens com submenus CRUD -->
     <li class="nav-item nav-category">Actividades e Viagens</li>
     <li class="nav-item">
@@ -49,7 +99,7 @@
             </ul>
         </div>
     </li>
-    
+
     <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#viagens" aria-expanded="false" aria-controls="viagens">
             <i class="menu-icon mdi mdi-airplane"></i>
@@ -99,7 +149,8 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#clientes" aria-expanded="false" aria-controls="clientes">
+        <a class="nav-link" data-bs-toggle="collapse" href="#clientes" aria-expanded="false"
+            aria-controls="clientes">
             <i class="menu-icon mdi mdi-account-group"></i>
             <span class="menu-title">Clientes</span>
             <i class="menu-arrow"></i>
@@ -207,40 +258,6 @@
                 <li class="nav-item"><a class="nav-link" href="mapaviagem/listar.html">Listar</a></li>
                 <li class="nav-item"><a class="nav-link" href="mapaviagem/editar.html">Editar</a></li>
                 <li class="nav-item"><a class="nav-link" href="mapaviagem/deletar.html">Deletar</a></li>
-            </ul>
-        </div>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#pacotehospedagem" aria-expanded="false"
-            aria-controls="pacotehospedagem">
-            <i class="menu-icon mdi mdi-hotel"></i>
-            <span class="menu-title">Pacote de Hospedagem</span>
-            <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="pacotehospedagem">
-            <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="pacotehospedagem/criar.html">Criar</a></li>
-                <li class="nav-item"><a class="nav-link" href="pacotehospedagem/listar.html">Listar</a></li>
-                <li class="nav-item"><a class="nav-link" href="pacotehospedagem/editar.html">Editar</a></li>
-                <li class="nav-item"><a class="nav-link" href="pacotehospedagem/deletar.html">Deletar</a></li>
-            </ul>
-        </div>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#pacoterefeicao" aria-expanded="false"
-            aria-controls="pacoterefeicao">
-            <i class="menu-icon mdi mdi-food"></i>
-            <span class="menu-title">Pacote de Refeição</span>
-            <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="pacoterefeicao">
-            <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="pacoterefeicao/criar.html">Criar</a></li>
-                <li class="nav-item"><a class="nav-link" href="pacoterefeicao/listar.html">Listar</a></li>
-                <li class="nav-item"><a class="nav-link" href="pacoterefeicao/editar.html">Editar</a></li>
-                <li class="nav-item"><a class="nav-link" href="pacoterefeicao/deletar.html">Deletar</a></li>
             </ul>
         </div>
     </li>

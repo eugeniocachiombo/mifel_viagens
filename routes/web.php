@@ -5,6 +5,7 @@ use App\Http\Controllers\Destino\DestinoController;
 use App\Http\Controllers\DificuldadeViagem\DificuldadeViagemController;
 use App\Http\Controllers\PacoteHospedagem\PacoteHospedagemcontroller;
 use App\Http\Controllers\PacoteRefeicao\PacoteRefeicaocontroller;
+use App\Http\Controllers\PacoteViagem\PacoteViagemController;
 use App\Http\Controllers\TipoViagem\TipoViagemController;
 use App\Http\Controllers\Usuario\UsuarioController;
 use App\Http\Controllers\Viagem\ViagemController;
@@ -52,6 +53,12 @@ Route::prefix("viagem")->name("viagem.")->group(function () {
 
 Route::prefix("cliente")->name("cliente.")->group(function () {
     Route::get("/lista", [ClienteController::class, "listar"])->name("lista")->middleware("usuario.logado");
+});
+
+Route::prefix("pacote/viagem")->name("pacote.viagem.")->group(function () {
+    Route::get("/cadastrar", [PacoteViagemController::class, "cadastrar"])->name("cadastrar")->middleware("usuario.logado");
+    Route::get("/lista", [PacoteViagemController::class, "listar"])->name("lista")->middleware("usuario.logado");
+    Route::get("/actualizar/{id}", [PacoteViagemController::class, "actualizar"])->name("actualizar")->middleware("usuario.logado");
 });
 
 Route::prefix("pacote/hospedagem")->name("pacote.hospedagem.")->group(function () {
