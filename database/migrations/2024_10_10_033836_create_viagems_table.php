@@ -24,6 +24,7 @@ class CreateViagemsTable extends Migration
             $table->decimal('preco_viagem', 10, 2)->nullable();
             $table->integer('status_viagem')->default(1);
             $table->integer('estrelas_viagem')->default(1);
+            $table->date('data_viagem');
             
 
             $table->foreign('cod_dificuldade')

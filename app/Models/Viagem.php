@@ -10,14 +10,15 @@ class Viagem extends Model
     use HasFactory;
 
     protected $fillable = [
-        "titulo_viagens",
-        "desc_viagens",
+        "titulo_viagem",
+        "desc_viagem",
         "cod_dificuldade",
-        "EmDestaque_viagens",
-        "duracao_viagens",
-        "vagas_viagens",
-        "preco_viagens",
-        "status_viagens",
-        "estrelas_viagens",
+        "EmDestaque_viagem",
+        "duracao_viagem",
+        "vagas_viagem",
+        "preco_viagem",
+        "status_viagem",
+        "estrelas_viagem",
+        "data_viagem",
     ];
 }

@@ -16,7 +16,7 @@ class Cadastro extends Component
 
     public $dificuldades, $titulo_viagens, $desc_viagens, $cod_dificuldade;
     public $EmDestaque_viagens, $duracao_viagem, $vagas_viagens; 
-    public $preco_viagem, $status_viagens;
+    public $preco_viagem, $status_viagens, $data_viagem;
 
     public $tipoviagens, $destinos, $cod_destino, $cod_tipoviagem;
     public $dia_itinerario, $desc_itinerario;
