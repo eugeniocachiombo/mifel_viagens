@@ -30,12 +30,14 @@ class Cadastro extends Component
 
     public $pacotesHospedagem, $pacoteHospId, $pacoteHospedagemEscolhido, $temPacHosp = false;
     public $pacotesRefeicao, $pacoteRefId, $pacoteRefeicaoEscolhido, $temPacRef = false;
-    public $precoFinal = 0, $precoAdicionalPacHosp, $precoAdicionalPacRef;
+    public $precoFinalHosp = [], $precoFinal = 0, $precoFinalRef = [];
 
     public $numMaxVaga;
 
     public function mount()
     {
+        array_push($this->precoFinalHosp, ["hospedagem" => 0]);
+        array_push($this->precoFinalRef, ["refeicao" => 0]);
         $this->pacotesHospedagem = Pacotehospedagem::all();
         $this->pacotesRefeicao = Pacoterefeicao::all();
         $this->pacotesViagem = PacoteViagem::all();
@@ -53,50 +55,33 @@ class Cadastro extends Component
     public function pacoteHospListar()
     {
         if ($this->pacoteHospId != null) {
-            $this->precoFinal -= $this->precoAdicionalPacHosp;
             $this->pacoteHospedagemEscolhido = Pacotehospedagem::find($this->pacoteHospId);
-            $this->precoAdicionalPacHosp = $this->pacoteHospedagemEscolhido->preco_pacoteHospedagem;
-            $this->temPacHosp = true;
+            array_push($this->precoFinalHosp, ["hospedagem" => $this->pacoteHospedagemEscolhido->preco_pacoteHospedagem]);
             $this->vagas_viagens = $this->pacoteHospedagemEscolhido->max_qtd_pessoas;
             $this->numMaxVaga = $this->pacoteHospedagemEscolhido->max_qtd_pessoas;
-            $this->adicionarPrecoHosp();
         } else {
+            array_push($this->precoFinalHosp, ["hospedagem" => 0]);
             $this->pacoteHospedagemEscolhido = null;
-            $this->temPacHosp = false;
-            $this->adicionarPrecoHosp();
         }
+        $this->precoAdicionalPacotes();
     }
 
     public function pacoteRefListar()
     {
         if ($this->pacoteRefId != null) {
-            $this->precoFinal -= $this->precoAdicionalPacRef;
             $this->pacoteRefeicaoEscolhido = Pacoterefeicao::find($this->pacoteRefId);
-            $this->precoAdicionalPacRef = $this->pacoteRefeicaoEscolhido->preco_pacoteRefeicao;
-            $this->temPacRef = true;
-            $this->adicionarPrecoRef();
+            array_push($this->precoFinalRef, ["refeicao" => $this->pacoteRefeicaoEscolhido->preco_pacoteRefeicao]);
         } else {
+            array_push($this->precoFinalRef, ["refeicao" => 0]);
             $this->pacoteRefeicaoEscolhido = null;
-            $this->temPacRef = false;
-            $this->adicionarPrecoRef();
         }
+        $this->precoAdicionalPacotes();
     }
 
-    public function adicionarPrecoHosp()
-    {
-        if ($this->temPacHosp == true) {
-            $this->precoFinal += $this->precoAdicionalPacHosp;
-        } else {
-            $this->precoFinal -= $this->precoAdicionalPacHosp;
-        }
-    }
-
-    public function adicionarPrecoRef()
-    {
-        if ($this->temPacRef == true) {
-            $this->precoFinal += $this->precoAdicionalPacRef;
-        } else {
-            $this->precoFinal -= $this->precoAdicionalPacRef;
+    public function precoAdicionalPacotes(){
+        if ($this->pacoteEscolhido != null) {
+            $this->infoPacoteV = PacoteViagem::where("id", $this->pacoteEscolhido)->first();
+            $this->precoFinal = $this->infoPacoteV->preco_pacote + end($this->precoFinalHosp)["hospedagem"] + end($this->precoFinalRef)["refeicao"];
         }
     }
 
@@ -111,6 +96,7 @@ class Cadastro extends Component
             $this->desc_itinerario = $this->infoPacoteV->desc_itinerario;
             $this->duracao_viagem = $this->infoPacoteV->duracao_viagem;
             $this->preco_viagem = $this->infoPacoteV->preco_pacote;
+            $this->precoFinal = $this->infoPacoteV->preco_pacote + end($this->precoFinalHosp)["hospedagem"] + end($this->precoFinalRef)["refeicao"];
         }
     }
 
@@ -120,9 +106,7 @@ class Cadastro extends Component
             $novoInfoPacote = PacoteViagem::where("id_destino", $this->cod_destino)
                 ->where("id_tipoviagem", $this->cod_tipoviagem)
                 ->first();
-            $this->precoFinal = $novoInfoPacote->preco_pacote;
-            $this->pacoteHospListar();
-            $this->pacoteRefListar();
+            $this->precoFinal = $novoInfoPacote->preco_pacote + end($this->precoFinalHosp)["hospedagem"] + end($this->precoFinalRef)["refeicao"];
         }
     }
 
