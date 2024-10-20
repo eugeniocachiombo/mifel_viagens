@@ -3,6 +3,8 @@
 use App\Http\Controllers\Cliente\ClienteController;
 use App\Http\Controllers\Destino\DestinoController;
 use App\Http\Controllers\DificuldadeViagem\DificuldadeViagemController;
+use App\Http\Controllers\PacoteHospedagem\PacoteHospedagemcontroller;
+use App\Http\Controllers\PacoteRefeicao\PacoteRefeicaocontroller;
 use App\Http\Controllers\TipoViagem\TipoViagemController;
 use App\Http\Controllers\Usuario\UsuarioController;
 use App\Http\Controllers\Viagem\ViagemController;
@@ -51,6 +53,21 @@ Route::prefix("viagem")->name("viagem.")->group(function () {
 Route::prefix("cliente")->name("cliente.")->group(function () {
     Route::get("/lista", [ClienteController::class, "listar"])->name("lista")->middleware("usuario.logado");
 });
+
+Route::prefix("pacote/hospedagem")->name("pacote.hospedagem.")->group(function () {
+    Route::get("/cadastrar", [PacoteHospedagemcontroller::class, "cadastrar"])->name("cadastrar")->middleware("usuario.logado");
+    Route::get("/lista", [PacoteHospedagemcontroller::class, "listar"])->name("lista")->middleware("usuario.logado");
+    Route::get("/actualizar/{id}", [PacoteHospedagemcontroller::class, "actualizar"])->name("actualizar")->middleware("usuario.logado");
+});
+
+Route::prefix("pacote/refeicao")->name("pacote.refeicao.")->group(function () {
+    Route::get("/cadastrar", [PacoteRefeicaocontroller::class, "cadastrar"])->name("cadastrar")->middleware("usuario.logado");
+    Route::get("/lista", [PacoteRefeicaocontroller::class, "listar"])->name("lista")->middleware("usuario.logado");
+    Route::get("/actualizar/{id}", [PacoteRefeicaocontroller::class, "actualizar"])->name("actualizar")->middleware("usuario.logado");
+});
+
+
+
 
 Route::get("/migrate", function(){
     Artisan::call("migrate");
