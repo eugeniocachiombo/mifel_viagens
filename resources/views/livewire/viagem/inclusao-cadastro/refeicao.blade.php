@@ -22,7 +22,7 @@
 </div>
 
 <div>
-    @if ($pacoteRefeicaoEscolhido)
+    @if ($pacoteRefArrayEscolha)
         <h4 class="card-title"><i class="fas fa-list-alt pe-2"></i> Listagem de Pacotes de Refeição</h4>
         <div class="table-responsive mt-4">
             <table class="table table-bordered datatablePT table-hover">
@@ -34,9 +34,9 @@
                 </thead>
                 <tbody>
                     <tr class="border">
-                        <td class="border">{{ $pacoteRefeicaoEscolhido->desc_pacoteRefeicao }}</td>
+                        <td class="border">{{ $pacoteRefArrayEscolha->desc_pacoteRefeicao }}</td>
                         <td class="border text-center">
-                            {{ number_format($pacoteRefeicaoEscolhido->preco_pacoteRefeicao, 2, ',', '.') }} Kz</td>
+                            {{ number_format($pacoteRefArrayEscolha->preco_pacoteRefeicao, 2, ',', '.') }} Kz</td>
                     </tr>
                 </tbody>
             </table>

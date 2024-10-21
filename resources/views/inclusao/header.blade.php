@@ -76,10 +76,7 @@
                           display: inline-block; 
                         }
                       </style>
-                    <div class="cart-container cart-containerCarrinho">
-                        <i class="mdi mdi-cart"></i>
-                        <span class="badge badge-danger badgeCarrinho">0</span>
-                      </div>
+                        @livewire('pagina-inicial.lista-carrinho')
                 </a>
             </li>
             <li class="nav-item dropdown d-none d-lg-block user-dropdown">
