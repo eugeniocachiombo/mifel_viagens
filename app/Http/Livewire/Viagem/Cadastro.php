@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Viagem;
 
+use App\Models\Carrinho;
 use App\Models\Destino;
 use App\Models\DificuldadeViagem;
 use App\Models\Pacotehospedagem;
@@ -9,6 +10,7 @@ use App\Models\Pacoterefeicao;
 use App\Models\PacoteViagem;
 use App\Models\Tipoviagem;
 use App\Models\Viagem;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Cadastro extends Component
@@ -22,8 +24,8 @@ class Cadastro extends Component
     public $dia_itinerario, $desc_itinerario;
     public $pacotesViagem, $pacoteEscolhido, $infoPacoteV;
 
-    public $pacotesHospedagem, $pacoteHospId, $pacoteHospedagemEscolhido, $temPacHosp = false;
-    public $pacotesRefeicao, $pacoteRefId, $pacoteRefeicaoEscolhido, $temPacRef = false;
+    public $pacotesHospedagem, $pacoteHospId, $pacoteHospArrayEscolha, $temPacHosp = false;
+    public $pacotesRefeicao, $pacoteRefId, $pacoteRefArrayEscolha, $temPacRef = false;
     public $precoFinalHosp = [], $precoFinal = 0, $precoFinalRef = [];
 
     public $numMaxVaga;
@@ -86,13 +88,13 @@ class Cadastro extends Component
     public function pacoteHospListar()
     {
         if ($this->pacoteHospId != null) {
-            $this->pacoteHospedagemEscolhido = Pacotehospedagem::find($this->pacoteHospId);
-            array_push($this->precoFinalHosp, ["hospedagem" => $this->pacoteHospedagemEscolhido->preco_pacoteHospedagem]);
-            $this->vagas_viagens = $this->pacoteHospedagemEscolhido->max_qtd_pessoas;
-            $this->numMaxVaga = $this->pacoteHospedagemEscolhido->max_qtd_pessoas;
+            $this->pacoteHospArrayEscolha = Pacotehospedagem::find($this->pacoteHospId);
+            array_push($this->precoFinalHosp, ["hospedagem" => $this->pacoteHospArrayEscolha->preco_pacoteHospedagem]);
+            $this->vagas_viagens = $this->pacoteHospArrayEscolha->max_qtd_pessoas;
+            $this->numMaxVaga = $this->pacoteHospArrayEscolha->max_qtd_pessoas;
         } else {
             array_push($this->precoFinalHosp, ["hospedagem" => 0]);
-            $this->pacoteHospedagemEscolhido = null;
+            $this->pacoteHospArrayEscolha = null;
         }
         $this->precoAdicionalPacotes();
     }
@@ -100,11 +102,11 @@ class Cadastro extends Component
     public function pacoteRefListar()
     {
         if ($this->pacoteRefId != null) {
-            $this->pacoteRefeicaoEscolhido = Pacoterefeicao::find($this->pacoteRefId);
-            array_push($this->precoFinalRef, ["refeicao" => $this->pacoteRefeicaoEscolhido->preco_pacoteRefeicao]);
+            $this->pacoteRefArrayEscolha = Pacoterefeicao::find($this->pacoteRefId);
+            array_push($this->precoFinalRef, ["refeicao" => $this->pacoteRefArrayEscolha->preco_pacoteRefeicao]);
         } else {
             array_push($this->precoFinalRef, ["refeicao" => 0]);
-            $this->pacoteRefeicaoEscolhido = null;
+            $this->pacoteRefArrayEscolha = null;
         }
         $this->precoAdicionalPacotes();
     }
@@ -157,9 +159,18 @@ class Cadastro extends Component
             'data_viagem' => $this->data_viagem,
         ]);
 
+        Carrinho::create([
+            "id_usuario" => Auth::user()->id,
+            "id_pacote_viagems" => $this->pacoteEscolhido,
+            "id_pacotehospedagems" => $this->pacoteHospId,
+            "id_pacoterefeicaos" =>$this->pacoteRefId,
+            "id_viagem" => $viagem->id
+        ]);
+
         $this->emit('alerta', [
             'mensagem' => 'Adicionado ao carrinho com sucesso',
             'icon' => 'success',
+            'tempo' => 4000,
         ]);
 
         $this->limparCampos();
@@ -175,8 +186,8 @@ class Cadastro extends Component
         $this->dia_itinerario = $this->desc_itinerario = null;
         $this->pacoteEscolhido = $this->infoPacoteV = null;
 
-        $this->pacoteHospId = $this->pacoteHospedagemEscolhido = $this->temPacHosp = false;
-        $this->pacoteRefId = $this->pacoteRefeicaoEscolhido = $this->temPacRef = false;
+        $this->pacoteHospId = $this->pacoteHospArrayEscolha = $this->temPacHosp = false;
+        $this->pacoteRefId = $this->pacoteRefArrayEscolha = $this->temPacRef = false;
         $this->precoFinalHosp = [];
         $this->precoFinal = 0;
         $this->precoFinalRef = [];
