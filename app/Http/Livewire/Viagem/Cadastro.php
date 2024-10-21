@@ -157,6 +157,7 @@ class Cadastro extends Component
             'vagas_viagem' => $this->vagas_viagens,
             'preco_viagem' => $this->preco_viagem,
             'data_viagem' => $this->data_viagem,
+            "status_viagem" => 0
         ]);
 
         Carrinho::create([

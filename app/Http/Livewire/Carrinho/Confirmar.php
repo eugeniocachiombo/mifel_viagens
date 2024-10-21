@@ -46,6 +46,8 @@ class Confirmar extends Component
             "cod_viagens" => $viagem->id,
             "cod_tipoviagem" => $tipoViagem->id,
         ]);
+
+        $viagem->update(["status_viagem" => 1]);
         $this->emit('alerta', ['mensagem' => 'Viagem confirmada com sucesso', 'icon' => 'success', 'tempo' => 4000]);
         $carrinho->delete();
     }

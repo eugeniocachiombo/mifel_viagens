@@ -16,7 +16,7 @@ class Classificacao extends Component
     {
         $this->destinos = Destino::all();
          $this->clientes = Cliente::all();
-         $this->viagens = Viagem::all();
+         $this->viagens = Viagem::where("status_viagem", 1)->get();
          $this->reservas = Reservas::all();
         return view('livewire.pagina-inicial.classificacao');
     }
