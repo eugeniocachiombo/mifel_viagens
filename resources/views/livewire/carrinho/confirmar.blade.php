@@ -9,7 +9,6 @@
             <div class="card-body">
                 <div class="row">
                     {{-- Pacotes --}}
-
                     <div class="border col-12 col-md-8">
                         {{-- Pacote viagem --}}
                         @if ($this->buscarPacoteViagem($carrinho->id_pacote_viagems))
@@ -135,7 +134,6 @@
                         @endif
                     </div>
 
-
                     {{-- Viagem --}}
                     @if ($this->buscarViagem($carrinho->id_viagem))
                         <div class="col-12 col-md-4">
@@ -149,19 +147,22 @@
                                 <strong>Descrição da Viagem:</strong> {{$viagem->desc_viagem}}
                             </div>
                             <div class="bg-light text-dark p-3 mb-2">
-                                <strong>Nível de Dificuldade:</strong> {{$viagem->cod_dificuldade}}
+                                @php
+                                    $dificuldade = $this->buscarDificuldade($viagem->cod_dificuldade);
+                                @endphp
+                                <strong>Nível de Dificuldade:</strong> {{$dificuldade->nome_dificuldadeViagem}}
                             </div>
                             <div class="bg-light text-dark p-3 mb-2">
                                 <strong>Duração:</strong> {{$viagem->duracao_viagem}} dia(s)
                             </div>
                             <div class="bg-light text-dark p-3 mb-2">
-                                <strong>Vagas Disponíveis:</strong> {{$viagem->vagas_viagem}}
+                                <strong>Vagas Ocupadas:</strong> {{$viagem->vagas_viagem}}
                             </div>
                             <div class="bg-light text-dark p-3 mb-2">
-                                <strong>Preço:</strong> {{$viagem->preco_viagem}}
+                                <strong>Preço:</strong> {{number_format($viagem->preco_viagem, 2, ",", ".")}} Kz
                             </div>
                             <div class="bg-light text-dark p-3 mb-2">
-                                <strong>Data da Viagem:</strong> {{$viagem->data_viagem}}
+                                <strong>Data da Viagem:</strong> {{ $this->formatarData($viagem->data_viagem)}}
                             </div>
                         </div>
                     @endif

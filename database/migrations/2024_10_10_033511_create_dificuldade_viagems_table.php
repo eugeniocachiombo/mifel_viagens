@@ -23,6 +23,11 @@ class CreateDificuldadeViagemsTable extends Migration
         });
 
         DificuldadeViagem::create([
+            "nome_dificuldadeViagem" => "Nenhuma",
+            "desc_dificuldadeViagem" => "Nenhuma informação",
+        ]);
+
+        DificuldadeViagem::create([
             "nome_dificuldadeViagem" => "Dificuldade 1",
             "desc_dificuldadeViagem" => "Dificuldade 2",
         ]);
