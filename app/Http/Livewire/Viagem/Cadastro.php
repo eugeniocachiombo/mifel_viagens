@@ -16,8 +16,8 @@ use Livewire\Component;
 class Cadastro extends Component
 {
 
-    public $dificuldades, $titulo_viagens, $desc_viagens, $cod_dificuldade;
-    public $EmDestaque_viagens, $duracao_viagem, $vagas_viagens;
+    public $dificuldades, $titulo_viagem, $desc_viagem, $cod_dificuldade;
+    public $EmDestaque_viagens, $duracao_viagem, $vagas_viagem;
     public $preco_viagem, $data_viagem;
 
     public $tipoviagens, $destinos, $cod_destino, $cod_tipoviagem;
@@ -31,22 +31,23 @@ class Cadastro extends Component
     public $numMaxVaga;
 
     protected $rules = [
-        'titulo_viagens' => 'required|string|max:255',
-        'desc_viagens' => 'nullable|string|max:1000',
+        'titulo_viagem' => 'required|string|max:255',
+        'desc_viagem' => 'required|string|max:1000',
         'cod_dificuldade' => 'required',
         'duracao_viagem' => 'required|integer|min:1',
-        'vagas_viagens' => 'required|integer|min:1',
+        'vagas_viagem' => 'required|integer|min:1',
         'preco_viagem' => 'required|numeric|min:0',
         'data_viagem' => 'required|date|after:today',
     ];
 
     protected $messages = [
-        'titulo_viagens.required' => 'O título da viagem é obrigatório.',
-        'titulo_viagens.string' => 'O título da viagem deve ser um texto.',
-        'titulo_viagens.max' => 'O título da viagem não pode ter mais de 255 caracteres.',
+        'titulo_viagem.required' => 'O título da viagem é obrigatório.',
+        'titulo_viagem.string' => 'O título da viagem deve ser um texto.',
+        'titulo_viagem.max' => 'O título da viagem não pode ter mais de 255 caracteres.',
 
-        'desc_viagens.string' => 'A descrição da viagem deve ser um texto.',
-        'desc_viagens.max' => 'A descrição da viagem não pode ter mais de 1000 caracteres.',
+        'desc_viagem.string' => 'O descrição é obrigatório.',
+        'desc_viagem.required' => 'A descrição da viagem deve ser um texto.',
+        'desc_viagem.max' => 'A descrição da viagem não pode ter mais de 1000 caracteres.',
 
         'cod_dificuldade.required' => 'Você deve selecionar uma dificuldade.',
 
@@ -54,9 +55,9 @@ class Cadastro extends Component
         'duracao_viagem.integer' => 'A duração da viagem deve ser um número inteiro.',
         'duracao_viagem.min' => 'A duração da viagem deve ser de pelo menos 1 dia.',
 
-        'vagas_viagens.required' => 'O número de vagas é obrigatório.',
-        'vagas_viagens.integer' => 'O número de vagas deve ser um número inteiro.',
-        'vagas_viagens.min' => 'O número de vagas deve ser pelo menos 1.',
+        'vagas_viagem.required' => 'O número de vagas é obrigatório.',
+        'vagas_viagem.integer' => 'O número de vagas deve ser um número inteiro.',
+        'vagas_viagem.min' => 'O número de vagas deve ser pelo menos 1.',
 
         'preco_viagem.required' => 'O preço da viagem é obrigatório.',
         'preco_viagem.numeric' => 'O preço da viagem deve ser um número.',
@@ -90,7 +91,7 @@ class Cadastro extends Component
         if ($this->pacoteHospId != null) {
             $this->pacoteHospArrayEscolha = Pacotehospedagem::find($this->pacoteHospId);
             array_push($this->precoFinalHosp, ["hospedagem" => $this->pacoteHospArrayEscolha->preco_pacoteHospedagem]);
-            $this->vagas_viagens = $this->pacoteHospArrayEscolha->max_qtd_pessoas;
+            $this->vagas_viagem = $this->pacoteHospArrayEscolha->max_qtd_pessoas;
             $this->numMaxVaga = $this->pacoteHospArrayEscolha->max_qtd_pessoas;
         } else {
             array_push($this->precoFinalHosp, ["hospedagem" => 0]);
@@ -150,14 +151,15 @@ class Cadastro extends Component
         $this->validate();
 
         $viagem = Viagem::create([
-            'titulo_viagem' => $this->titulo_viagens,
-            'desc_viagem' => $this->desc_viagens,
+            'titulo_viagem' => $this->titulo_viagem,
+            'desc_viagem' => $this->desc_viagem,
             'cod_dificuldade' => $this->cod_dificuldade,
             'duracao_viagem' => $this->duracao_viagem,
-            'vagas_viagem' => $this->vagas_viagens,
+            'vagas_viagem' => $this->vagas_viagem,
             'preco_viagem' => $this->preco_viagem,
             'data_viagem' => $this->data_viagem,
-            "status_viagem" => 0
+            "status_viagem" => 0,
+            "id_usuario" => Auth::user()->id,
         ]);
 
         Carrinho::create([
@@ -179,8 +181,8 @@ class Cadastro extends Component
 
     public function limparCampos()
     {
-        $this->titulo_viagens = $this->desc_viagens = $this->cod_dificuldade = null;
-        $this->EmDestaque_viagens = $this->duracao_viagem = $this->vagas_viagens = null;
+        $this->titulo_viagem = $this->desc_viagem = $this->cod_dificuldade = null;
+        $this->EmDestaque_viagens = $this->duracao_viagem = $this->vagas_viagem = null;
         $this->preco_viagem = $this->data_viagem = null;
 
         $this->cod_destino = $this->cod_tipoviagem = null;

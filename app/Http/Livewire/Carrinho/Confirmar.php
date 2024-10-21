@@ -54,7 +54,11 @@ class Confirmar extends Component
 
     public function cancelar($id_carrinho)
     {
-        dd("Confirmado");
+        $carrinho = Carrinho::find($id_carrinho);
+        $viagem = $this->buscarViagem($carrinho->id_viagem);
+        $viagem->delete();
+        $carrinho->delete();
+        $this->emit('alerta', ['mensagem' => 'Viagem cancelada', 'icon' => 'warning', 'tempo' => 4000]);
     }
 
     public function buscarPacoteViagem($id)

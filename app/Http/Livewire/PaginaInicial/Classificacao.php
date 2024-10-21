@@ -6,6 +6,7 @@ use App\Models\Cliente;
 use App\Models\Destino;
 use App\Models\Reservas;
 use App\Models\Viagem;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Classificacao extends Component
@@ -15,9 +16,16 @@ class Classificacao extends Component
     public function render()
     {
         $this->destinos = Destino::all();
-         $this->clientes = Cliente::all();
-         $this->viagens = Viagem::where("status_viagem", 1)->get();
-         $this->reservas = Reservas::all();
+             $this->clientes = Cliente::all();
+             $this->reservas = Reservas::all();
+
+        if(Auth::user()->id_acesso == 2){
+            $this->viagens = Viagem::where("status_viagem", 1)
+            ->where("id_usuario", Auth::user()->id)
+            ->get();
+        }else{
+             $this->viagens = Viagem::where("status_viagem", 1)->get();
+        }
         return view('livewire.pagina-inicial.classificacao');
     }
 }

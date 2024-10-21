@@ -20,5 +20,6 @@ class Viagem extends Model
         "status_viagem",
         "estrelas_viagem",
         "data_viagem",
+        "id_usuario",
     ];
 }

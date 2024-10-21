@@ -5,12 +5,12 @@
 
     <div class="col-12 col-md-6">
         <div class="form-group">
-            <label for="titulo_viagens"><i class="fas fa-heading pe-2"></i> Título da
+            <label for="titulo_viagem"><i class="fas fa-heading pe-2"></i> Título da
                 Viagem</label>
             <input type="text" class="form-control"
-                id="titulo_viagens" wire:model="titulo_viagens"
+                id="titulo_viagem" wire:model="titulo_viagem"
                 placeholder="Título da Viagem">
-            @error('titulo_viagens')
+            @error('titulo_viagem')
                 <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
@@ -18,11 +18,11 @@
 
     <div class="col-12 col-md-6">
         <div class="form-group">
-            <label for="desc_viagens"><i class="fas fa-info-circle pe-2"></i> Descrição
+            <label for="desc_viagem"><i class="fas fa-info-circle pe-2"></i> Descrição
                 da Viagem</label>
-            <textarea class="form-control" id="desc_viagens" wire:model="desc_viagens" placeholder="Descrição da Viagem"
+            <textarea class="form-control" id="desc_viagem" wire:model="desc_viagem" placeholder="Descrição da Viagem"
                 rows="4"></textarea>
-            @error('desc_viagens')
+            @error('desc_viagem')
                 <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
@@ -63,12 +63,12 @@
 
     <div class="col-12 col-md-6">
         <div class="form-group">
-            <label for="vagas_viagens"><i class="fas fa-users pe-2"></i> Vagas</label>
+            <label for="vagas_viagem"><i class="fas fa-users pe-2"></i> Vagas</label>
             <input type="number" class="form-control"
-                id="vagas_viagens" wire:model="vagas_viagens"
+                id="vagas_viagem" wire:model="vagas_viagem"
                 placeholder="Número de Vagas" min="1" max="{{$numMaxVaga}}"
                 oninput="validateInput(this, {{$numMaxVaga}})">
-            @error('vagas_viagens')
+            @error('vagas_viagem')
                 <span class="text-danger">{{ $message }}</span>
             @enderror
 
