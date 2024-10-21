@@ -17,7 +17,7 @@ class CreateTipoviagemsTable extends Migration
         Schema::create('tipoviagems', function (Blueprint $table) {
             $table->id('id'); 
             $table->string('nome_tipoViagem', 150)->default('0');
-            $table->string('desc_tipoViagem', 150)->default('0');
+            $table->text('desc_tipoViagem')->default("nenhuma");
             $table->integer('status_tipoViagem')->default(1);
             $table->timestamps();
         });

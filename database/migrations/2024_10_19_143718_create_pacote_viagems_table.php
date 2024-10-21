@@ -17,7 +17,7 @@ class CreatePacoteViagemsTable extends Migration
         Schema::create('pacote_viagems', function (Blueprint $table) {
             $table->id(); 
             $table->string('titulo_pacote', 50);
-            $table->string('desc_pacote', 200);
+            $table->text('desc_pacote')->default("nenhuma");
             $table->float('preco_pacote')->default(1);
             $table->unsignedBigInteger('id_destino');
             $table->unsignedBigInteger('id_tipoviagem');

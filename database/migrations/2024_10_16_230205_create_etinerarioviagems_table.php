@@ -17,7 +17,7 @@ class CreateEtinerarioviagemsTable extends Migration
             $table->id('id'); 
             $table->unsignedBigInteger('cod_viagens_ev')->nullable();
             $table->integer('dia_etinerarioViagem')->default(0);
-            $table->string('desc_etinerarioViagem', 1500)->default('0');
+            $table->text('desc_etinerarioViagem')->default("nenhuma");
             $table->integer('status_etinerario')->default(1);
             $table->timestamps(); 
 

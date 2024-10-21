@@ -17,7 +17,7 @@ class CreateDificuldadeViagemsTable extends Migration
         Schema::create('dificuldade_viagems', function (Blueprint $table) {
             $table->id();
             $table->string("nome_dificuldadeViagem");
-            $table->string("desc_dificuldadeViagem");
+            $table->text("desc_dificuldadeViagem")->default("nenhuma");
             $table->integer("status_dificuldadeViagem")->default(1);
             $table->timestamps();
         });

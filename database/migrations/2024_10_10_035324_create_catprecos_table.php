@@ -16,7 +16,7 @@ class CreateCatprecosTable extends Migration
         Schema::create('catprecos', function (Blueprint $table) {
             $table->id(); 
             $table->string('nome_catPreco', 50)->default('0');
-            $table->string('desc_catPreco', 255)->default('0');
+            $table->text('desc_catPreco')->default("nenhuma");
             $table->string('faixa_idade', 255)->default('0');
             $table->decimal('preco_catPreco', 10, 2)->nullable(); // Usando decimal para valores monetários
             $table->integer('status_catPreco')->default(1);

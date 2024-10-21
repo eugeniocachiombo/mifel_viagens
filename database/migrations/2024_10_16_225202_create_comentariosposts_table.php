@@ -18,7 +18,7 @@ class CreateComentariospostsTable extends Migration
             $table->id(); 
             $table->unsignedBigInteger('cod_viagem_comentarios');
             $table->unsignedBigInteger('cod_cliente_comentarios');
-            $table->text('desc_comentario');
+            $table->text('desc_comentario')->default("nenhuma");
             $table->timestamp('data_comentario')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->enum('status_comentario', ['Pendente', 'Aprovado', 'Rejeitado'])->default('Pendente');
 

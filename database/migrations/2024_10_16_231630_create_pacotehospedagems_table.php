@@ -17,7 +17,7 @@ class CreatePacotehospedagemsTable extends Migration
         Schema::create('pacotehospedagems', function (Blueprint $table) {
             $table->id();
             $table->string('titulo_pacoteHospedagem', 50)->default('0');
-            $table->string('desc_pacoteHospedagem', 200)->default('0');
+            $table->text('desc_pacoteHospedagem')->default("nenhuma");
             $table->float('preco_pacoteHospedagem')->default(1);
             $table->integer('status_pacoteHospedagem')->default(1);
             $table->integer('max_qtd_pessoas')->nullable();

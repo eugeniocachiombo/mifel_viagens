@@ -17,7 +17,7 @@ class CreatePacoterefeicaosTable extends Migration
         Schema::create('pacoterefeicaos', function (Blueprint $table) {
             $table->id('id'); 
             $table->string('titulo_pacoteRefeicao');
-            $table->string('desc_pacoteRefeicao');
+            $table->text('desc_pacoteRefeicao')->default("nenhuma");
             $table->float('preco_pacoteRefeicao')->nullable(); 
             $table->integer('status_pacoteRefeicao')->default(1);
             $table->timestamps();

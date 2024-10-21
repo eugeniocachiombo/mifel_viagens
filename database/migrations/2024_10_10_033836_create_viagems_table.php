@@ -16,7 +16,7 @@ class CreateViagemsTable extends Migration
         Schema::create('viagems', function (Blueprint $table) {
             $table->id();
             $table->string('titulo_viagem')->default('0');
-            $table->string('desc_viagem', 1500)->default('0');
+            $table->text('desc_viagem')->default("nenhuma");
             $table->unsignedBigInteger('cod_dificuldade')->nullable();
             $table->integer('EmDestaque_viagem')->default(0);
             $table->integer('duracao_viagem')->default(1);
