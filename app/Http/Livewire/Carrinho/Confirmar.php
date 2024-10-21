@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Carrinho;
 use App\Models\Carrinho;
 use App\Models\Destino;
 use App\Models\Pacotehospedagem;
+use App\Models\Pacoterefeicao;
 use App\Models\PacoteViagem;
 use App\Models\Tipoviagem;
 use Illuminate\Support\Facades\Auth;
@@ -33,5 +34,9 @@ class Confirmar extends Component
 
     public function buscarPacoteHospedagem($id){
         return Pacotehospedagem::find($id);
+    }
+
+    public function buscarPacoteRefeicao($id){
+        return Pacoterefeicao::find($id);
     }
 }

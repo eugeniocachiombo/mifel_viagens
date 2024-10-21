@@ -103,29 +103,34 @@
                         @endif
 
                         {{-- Pacote refeição --}}
+                        @if ($this->buscarPacoteRefeicao($carrinho->id_pacoterefeicaos))
                         <div class="row bg-dark text-light mb-4 p-3">
-                            <div class="col text-center">
-                                <span class="h4">
-                                    <i class="fas fa-utensils pe-2"></i> Pacote Refeição
-                                </span>
-                            </div>
+                            @php
+                                    $pacoteRefeicao = $this->buscarPacoteRefeicao($carrinho->id_pacoterefeicaos);
+                                @endphp
+                                <div class="col text-center">
+                                    <span class="h4">
+                                        <i class="fas fa-bed pe-2"></i> {{ $pacoteRefeicao->titulo_pacoteRefeicao }}
+                                    </span>
+                                </div>
                             <div class="container border p-4">
                                 <div class="row">
                                     <div class="col-12 col-md-6 border pt-3 pb-3">
                                         <strong>Descrição:</strong>
                                         <div class="col bg-light text-dark p-2">
-                                            ...
+                                            {{$pacoteRefeicao->desc_pacoteRefeicao}}
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6 border pt-3 pb-3">
                                         <strong>Preço:</strong>
                                         <div class="col bg-light text-dark p-2">
-                                            ...
+                                            {{ number_format($pacoteRefeicao->preco_pacoteRefeicao, 2, ',', '.') }} kz
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        @endif
                     </div>
 
 
