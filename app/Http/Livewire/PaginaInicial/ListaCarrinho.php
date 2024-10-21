@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\PaginaInicial;
 
 use App\Models\Carrinho;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class ListaCarrinho extends Component
@@ -11,7 +12,7 @@ class ListaCarrinho extends Component
 
     public function render()
     {
-        $this->carrinho = Carrinho::all();
+        $this->carrinho = Carrinho::where("id_usuario", Auth::user()->id)->get();
         return view('livewire.pagina-inicial.lista-carrinho');
     }
 
