@@ -150,11 +150,11 @@ class Cadastro extends Component
         $this->validate();
 
         $viagem = Viagem::create([
-            'titulo_viagens' => $this->titulo_viagens,
-            'desc_viagens' => $this->desc_viagens,
+            'titulo_viagem' => $this->titulo_viagens,
+            'desc_viagem' => $this->desc_viagens,
             'cod_dificuldade' => $this->cod_dificuldade,
             'duracao_viagem' => $this->duracao_viagem,
-            'vagas_viagens' => $this->vagas_viagens,
+            'vagas_viagem' => $this->vagas_viagens,
             'preco_viagem' => $this->preco_viagem,
             'data_viagem' => $this->data_viagem,
         ]);

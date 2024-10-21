@@ -74,7 +74,7 @@ Route::prefix("pacote/refeicao")->name("pacote.refeicao.")->group(function () {
     Route::get("/actualizar/{id}", [PacoteRefeicaocontroller::class, "actualizar"])->name("actualizar")->middleware("usuario.logado");
 });
 
-Route::prefix("carrinho")->name("carrinho")->group(function () {
+Route::prefix("carrinho")->name("carrinho.")->group(function () {
     Route::get("/confirmar", [CarrinhoController::class, "confirmar"])->name("confirmar")->middleware("usuario.logado");
 });
 

@@ -8,6 +8,7 @@ use App\Models\Pacotehospedagem;
 use App\Models\Pacoterefeicao;
 use App\Models\PacoteViagem;
 use App\Models\Tipoviagem;
+use App\Models\Viagem;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -38,5 +39,9 @@ class Confirmar extends Component
 
     public function buscarPacoteRefeicao($id){
         return Pacoterefeicao::find($id);
+    }
+
+    public function buscarViagem($id){
+        return Viagem::find($id);
     }
 }
