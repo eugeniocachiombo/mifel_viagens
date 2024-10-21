@@ -4,7 +4,7 @@
             <i class="fas fa-shopping-cart pe-2"></i> <span class="fw-bold">Dados do Carrinho</span>
         </h4>
 
-        @foreach ($carrinhos as $carrinho)
+        @forelse ($carrinhos as $carrinho)
             <hr>
             <div class="card-body">
                 <div class="row">
@@ -141,43 +141,51 @@
                                 $viagem = $this->buscarViagem($carrinho->id_viagem);
                             @endphp
                             <div class="h3 text-primary text-center">
-                                <b>{{$viagem->titulo_viagem}}</b>
+                                <b>{{ $viagem->titulo_viagem }}</b>
                             </div>
                             <div class="bg-light text-dark p-3 mb-2">
-                                <strong>Descrição da Viagem:</strong> {{$viagem->desc_viagem}}
+                                <strong>Descrição da Viagem:</strong> {{ $viagem->desc_viagem }}
                             </div>
                             <div class="bg-light text-dark p-3 mb-2">
                                 @php
                                     $dificuldade = $this->buscarDificuldade($viagem->cod_dificuldade);
                                 @endphp
-                                <strong>Nível de Dificuldade:</strong> {{$dificuldade->nome_dificuldadeViagem}}
+                                <strong>Nível de Dificuldade:</strong> {{ $dificuldade->nome_dificuldadeViagem }}
                             </div>
                             <div class="bg-light text-dark p-3 mb-2">
-                                <strong>Duração:</strong> {{$viagem->duracao_viagem}} dia(s)
+                                <strong>Duração:</strong> {{ $viagem->duracao_viagem }} dia(s)
                             </div>
                             <div class="bg-light text-dark p-3 mb-2">
-                                <strong>Vagas Ocupadas:</strong> {{$viagem->vagas_viagem}}
+                                <strong>Vagas Ocupadas:</strong> {{ $viagem->vagas_viagem }}
                             </div>
                             <div class="bg-light text-dark p-3 mb-2">
-                                <strong>Preço:</strong> {{number_format($viagem->preco_viagem, 2, ",", ".")}} Kz
+                                <strong>Preço:</strong> {{ number_format($viagem->preco_viagem, 2, ',', '.') }} Kz
                             </div>
                             <div class="bg-light text-dark p-3 mb-2">
-                                <strong>Data da Viagem:</strong> {{ $this->formatarData($viagem->data_viagem)}}
+                                <strong>Data da Viagem:</strong> {{ $this->formatarData($viagem->data_viagem) }}
                             </div>
                         </div>
                     @endif
 
                     <div class="col-12 pt-4 ">
-                        <button style="min-height: 40px" class="btn btn-success btn-sm me-2" {{--  wire:click.prevent='confirmar({{ $carrinho->id }})' --}}>
+                        <button style="min-height: 40px" class="btn btn-success btn-sm me-2"
+                            wire:click.prevent='confirmar({{ $carrinho->id }})'>
                             Confirmar <i class="fas fa-check"></i>
                         </button>
-                        <button style="min-height: 40px" class="btn btn-danger btn-sm" {{--  wire:click.prevent='cancelar({{ $carrinho->id }})' --}}>
+                        <button style="min-height: 40px" class="btn btn-danger btn-sm"
+                            wire:click.prevent='cancelar({{ $carrinho->id }})'>
                             Cancelar <i class="fas fa-times"></i>
                         </button>
                     </div>
                 </div>
             </div>
             <hr>
-        @endforeach
+        @empty
+            <hr>
+            <div class="card-body text-center">
+                <span class="alert alert-info text-dark " ><b class="h3">Nenhuma informação adicionada ao carrinho</b></span>
+            </div>
+            <hr>
+        @endforelse
     </div>
 </div>
