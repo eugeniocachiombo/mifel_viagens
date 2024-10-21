@@ -16,7 +16,7 @@ class Cadastro extends Component
 
     public $dificuldades, $titulo_viagens, $desc_viagens, $cod_dificuldade;
     public $EmDestaque_viagens, $duracao_viagem, $vagas_viagens;
-    public $preco_viagem, $status_viagens, $data_viagem;
+    public $preco_viagem, $data_viagem;
 
     public $tipoviagens, $destinos, $cod_destino, $cod_tipoviagem;
     public $dia_itinerario, $desc_itinerario;
@@ -31,7 +31,7 @@ class Cadastro extends Component
     protected $rules = [
         'titulo_viagens' => 'required|string|max:255',
         'desc_viagens' => 'nullable|string|max:1000',
-        'cod_dificuldade' => 'required|exists:dificuldades,id',
+        'cod_dificuldade' => 'required',
         'duracao_viagem' => 'required|integer|min:1',
         'vagas_viagens' => 'required|integer|min:1',
         'preco_viagem' => 'required|numeric|min:0',
@@ -47,7 +47,6 @@ class Cadastro extends Component
         'desc_viagens.max' => 'A descrição da viagem não pode ter mais de 1000 caracteres.',
 
         'cod_dificuldade.required' => 'Você deve selecionar uma dificuldade.',
-        'cod_dificuldade.exists' => 'A dificuldade selecionada é inválida.',
 
         'duracao_viagem.required' => 'A duração da viagem é obrigatória.',
         'duracao_viagem.integer' => 'A duração da viagem deve ser um número inteiro.',
@@ -162,17 +161,27 @@ class Cadastro extends Component
             'mensagem' => 'Adicionado ao carrinho com sucesso',
             'icon' => 'success',
         ]);
+
+        $this->limparCampos();
     }
 
     public function limparCampos()
     {
-        $this->dificuldades = $this->titulo_viagens = $this->desc_viagens = $this->cod_dificuldade = null;
+        $this->titulo_viagens = $this->desc_viagens = $this->cod_dificuldade = null;
         $this->EmDestaque_viagens = $this->duracao_viagem = $this->vagas_viagens = null;
-        $this->preco_viagem = $this->status_viagens = $this->data_viagem = null;
+        $this->preco_viagem = $this->data_viagem = null;
 
-        $this->tipoviagens = $this->destinos = $this->cod_destino = $this->cod_tipoviagem = null;
+        $this->cod_destino = $this->cod_tipoviagem = null;
         $this->dia_itinerario = $this->desc_itinerario = null;
-        $this->pacotesViagem = $this->pacoteEscolhido = $this->infoPacoteV = null;
+        $this->pacoteEscolhido = $this->infoPacoteV = null;
+
+        $this->pacoteHospId = $this->pacoteHospedagemEscolhido = $this->temPacHosp = false;
+        $this->pacoteRefId = $this->pacoteRefeicaoEscolhido = $this->temPacRef = false;
+        $this->precoFinalHosp = [];
+        $this->precoFinal = 0;
+        $this->precoFinalRef = [];
+
+        $this->numMaxVaga = null;
     }
 
 }
