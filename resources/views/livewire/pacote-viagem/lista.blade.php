@@ -11,7 +11,9 @@
                         <th>Destino</th>
                         <th>Tipo de Viagem</th>
                         <th>Status</th>
-                        <th>Ações</th>
+                        @if (Auth::user()->id_acesso == 1)
+                            <th>Ações</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -21,7 +23,8 @@
                             <td class="border">{{ $pacote->desc_pacote }}</td>
                             <td class="border">{{ number_format($pacote->preco_pacote, 2, ',', '.') }} Kz</td>
                             <td class="border">{{ $this->getDestino($pacote->id_destino)->nome_destino ?? 'N/A' }}</td>
-                            <td class="border">{{ $this->getTipoViagem($pacote->id_tipoviagem)->nome_tipoViagem ?? 'N/A' }}</td>
+                            <td class="border">
+                                {{ $this->getTipoViagem($pacote->id_tipoviagem)->nome_tipoViagem ?? 'N/A' }}</td>
                             <td class="text-center border">
                                 @if ($pacote->status_pacote)
                                     <span class="badge bg-success">Ativo</span>
@@ -29,17 +32,20 @@
                                     <span class="badge bg-danger">Inativo</span>
                                 @endif
                             </td>
-                            <td class="text-center border">
-                                <a href="{{ route('pacote.viagem.actualizar', $pacote->id) }}">
-                                    <button class="btn btn-warning btn-sm">
-                                        <i class="fas fa-pen"></i> Editar
+                            @if (Auth::user()->id_acesso == 1)
+                                <td class="text-center border">
+                                    <a href="{{ route('pacote.viagem.actualizar', $pacote->id) }}">
+                                        <button class="btn btn-warning btn-sm">
+                                            <i class="fas fa-pen"></i> Editar
+                                        </button>
+                                    </a>
+                                    &nbsp;
+                                    <button class="btn btn-danger btn-sm"
+                                        wire:click.prevent='eliminar({{ $pacote->id }})'>
+                                        <i class="fas fa-trash"></i> Excluir
                                     </button>
-                                </a>
-                                &nbsp;
-                                <button class="btn btn-danger btn-sm" wire:click.prevent='eliminar({{ $pacote->id }})'>
-                                    <i class="fas fa-trash"></i> Excluir
-                                </button>
-                            </td>
+                                </td>
+                            @endif
                         </tr>
                     @endforeach
                 </tbody>

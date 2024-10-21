@@ -9,7 +9,9 @@
                         <th>Descrição</th>
                         <th>Preço</th>
                         <th>Status</th>
-                        <th>Ações</th>
+                        @if (Auth::user()->id_acesso == 1)
+                            <th>Ações</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -17,7 +19,9 @@
                         <tr class="border">
                             <td class="border">{{ $pacoteRefeicao->titulo_pacoteRefeicao }}</td>
                             <td class="border">{{ $pacoteRefeicao->desc_pacoteRefeicao }}</td>
-                            <td class="border">{{ $pacoteRefeicao->preco_pacoteRefeicao ?  number_format($pacoteRefeicao->preco_pacoteRefeicao, 2, ',', '.') . ' Kz' : 'Gratuito' }}</td>
+                            <td class="border">
+                                {{ $pacoteRefeicao->preco_pacoteRefeicao ? number_format($pacoteRefeicao->preco_pacoteRefeicao, 2, ',', '.') . ' Kz' : 'Gratuito' }}
+                            </td>
                             <td class="text-center border">
                                 @if ($pacoteRefeicao->status_pacoteRefeicao)
                                     <span class="badge bg-success">Ativo</span>
@@ -25,17 +29,20 @@
                                     <span class="badge bg-danger">Inativo</span>
                                 @endif
                             </td>
-                            <td class="text-center border">
-                                <a href="{{ route('pacote.refeicao.actualizar', $pacoteRefeicao->id) }}">
-                                    <button style="min-height: 40px" class="btn btn-warning btn-sm">
-                                        <i class="fas fa-pen"></i> Editar
+                            @if (Auth::user()->id_acesso == 1)
+                                <td class="text-center border">
+                                    <a href="{{ route('pacote.refeicao.actualizar', $pacoteRefeicao->id) }}">
+                                        <button style="min-height: 40px" class="btn btn-warning btn-sm">
+                                            <i class="fas fa-pen"></i> Editar
+                                        </button>
+                                    </a>
+                                    &nbsp;
+                                    <button style="min-height: 40px" class="btn btn-danger btn-sm"
+                                        wire:click.prevent='eliminar({{ $pacoteRefeicao->id }})'>
+                                        <i class="fas fa-trash"></i> Excluir
                                     </button>
-                                </a>
-                                &nbsp;
-                                <button style="min-height: 40px" class="btn btn-danger btn-sm" wire:click.prevent='eliminar({{ $pacoteRefeicao->id }})'>
-                                    <i class="fas fa-trash"></i> Excluir
-                                </button>
-                            </td>
+                                </td>
+                            @endif
                         </tr>
                     @endforeach
                 </tbody>

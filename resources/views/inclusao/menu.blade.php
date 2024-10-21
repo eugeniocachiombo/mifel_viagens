@@ -33,19 +33,23 @@
 
     <li class="nav-item nav-category">Pacotes</li>
     <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#pacoteviagem" aria-expanded="false" aria-controls="pacoteviagem">
-            <i class="menu-icon mdi mdi-earth"></i> 
+        <a class="nav-link" data-bs-toggle="collapse" href="#pacoteviagem" aria-expanded="false"
+            aria-controls="pacoteviagem">
+            <i class="menu-icon mdi mdi-earth"></i>
             <span class="menu-title">Pacote de Viagem</span>
             <i class="menu-arrow"></i>
         </a>
         <div class="collapse" id="pacoteviagem">
             <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="{{ route('pacote.viagem.cadastrar') }}">Cadastrar</a></li>
+                @if (Auth::user()->id_acesso == 1)
+                    <li class="nav-item"><a class="nav-link" href="{{ route('pacote.viagem.cadastrar') }}">Cadastrar</a>
+                    </li>
+                @endif
                 <li class="nav-item"><a class="nav-link" href="{{ route('pacote.viagem.lista') }}">Listar</a></li>
             </ul>
         </div>
     </li>
-    
+
 
     <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#pacotehospedagem" aria-expanded="false"
@@ -56,8 +60,10 @@
         </a>
         <div class="collapse" id="pacotehospedagem">
             <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link"
-                        href="{{ route('pacote.hospedagem.cadastrar') }}">Cadastrar</a></li>
+                @if (Auth::user()->id_acesso == 1)
+                <li class="nav-item"><a class="nav-link" href="{{ route('pacote.hospedagem.cadastrar') }}">Cadastrar</a>
+                </li>
+                @endif
                 <li class="nav-item"><a class="nav-link" href="{{ route('pacote.hospedagem.lista') }}">Listar</a>
                 </li>
             </ul>
@@ -73,8 +79,10 @@
         </a>
         <div class="collapse" id="pacoterefeicao">
             <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link"
-                        href="{{ route('pacote.refeicao.cadastrar') }}">Cadastrar</a></li>
+                @if (Auth::user()->id_acesso == 1)
+                <li class="nav-item"><a class="nav-link" href="{{ route('pacote.refeicao.cadastrar') }}">Cadastrar</a>
+                </li>
+                @endif
                 <li class="nav-item"><a class="nav-link" href="{{ route('pacote.refeicao.lista') }}">Listar</a>
                 </li>
             </ul>
@@ -101,7 +109,8 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#viagens" aria-expanded="false" aria-controls="viagens">
+        <a class="nav-link" data-bs-toggle="collapse" href="#viagens" aria-expanded="false"
+            aria-controls="viagens">
             <i class="menu-icon mdi mdi-airplane"></i>
             <span class="menu-title">Viagens</span>
             <i class="menu-arrow"></i>
