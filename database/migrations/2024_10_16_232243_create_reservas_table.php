@@ -25,13 +25,13 @@ class CreateReservasTable extends Migration
             $table->integer('status_pgt_reserva');
             $table->unsignedBigInteger('cod_refeicao_reserva')->nullable(); 
             $table->unsignedBigInteger('cod_hospedagem_reserva')->nullable(); 
+            $table->unsignedBigInteger('id_usuario')->nullable(); 
             $table->timestamp('Data_Criacao')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('Data_Atualizacao')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
             
             $table->index('cod_viagem');
             $table->index('cod_refeicao_reserva', 'idrefeicao_reserva');
             $table->index('cod_hospedagem_reserva');
-
             
             $table->foreign('cod_refeicao_reserva')
                   ->references('id')
@@ -46,6 +46,11 @@ class CreateReservasTable extends Migration
             $table->foreign('cod_hospedagem_reserva')
                   ->references('id')
                   ->on('pacotehospedagems')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
+            $table->foreign('id_usuario')
+                  ->references('id')
+                  ->on('users')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
             $table->timestamps();

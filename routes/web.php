@@ -7,6 +7,7 @@ use App\Http\Controllers\DificuldadeViagem\DificuldadeViagemController;
 use App\Http\Controllers\PacoteHospedagem\PacoteHospedagemcontroller;
 use App\Http\Controllers\PacoteRefeicao\PacoteRefeicaocontroller;
 use App\Http\Controllers\PacoteViagem\PacoteViagemController;
+use App\Http\Controllers\Reserva\ReservaController;
 use App\Http\Controllers\TipoViagem\TipoViagemController;
 use App\Http\Controllers\Usuario\UsuarioController;
 use App\Http\Controllers\Viagem\ViagemController;
@@ -74,11 +75,15 @@ Route::prefix("pacote/refeicao")->name("pacote.refeicao.")->group(function () {
     Route::get("/actualizar/{id}", [PacoteRefeicaocontroller::class, "actualizar"])->name("actualizar")->middleware("usuario.logado");
 });
 
+Route::prefix("reserva")->name("reserva.")->group(function () {
+    Route::get("/reservar", [ReservaController::class, "reservar"])->name("reservar")->middleware("usuario.logado");
+    Route::get("/lista", [ReservaController::class, "listar"])->name("lista")->middleware("usuario.logado");
+    Route::get("/actualizar/{id}", [ReservaController::class, "actualizar"])->name("actualizar")->middleware("usuario.logado");
+});
+
 Route::prefix("carrinho")->name("carrinho.")->group(function () {
     Route::get("/confirmar", [CarrinhoController::class, "confirmar"])->name("confirmar")->middleware("usuario.logado");
 });
-
-
 
 
 Route::get("/migrate", function(){
