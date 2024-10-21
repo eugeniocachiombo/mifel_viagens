@@ -61,8 +61,9 @@
         <div class="collapse" id="pacotehospedagem">
             <ul class="nav flex-column sub-menu">
                 @if (Auth::user()->id_acesso == 1)
-                <li class="nav-item"><a class="nav-link" href="{{ route('pacote.hospedagem.cadastrar') }}">Cadastrar</a>
-                </li>
+                    <li class="nav-item"><a class="nav-link"
+                            href="{{ route('pacote.hospedagem.cadastrar') }}">Cadastrar</a>
+                    </li>
                 @endif
                 <li class="nav-item"><a class="nav-link" href="{{ route('pacote.hospedagem.lista') }}">Listar</a>
                 </li>
@@ -80,8 +81,9 @@
         <div class="collapse" id="pacoterefeicao">
             <ul class="nav flex-column sub-menu">
                 @if (Auth::user()->id_acesso == 1)
-                <li class="nav-item"><a class="nav-link" href="{{ route('pacote.refeicao.cadastrar') }}">Cadastrar</a>
-                </li>
+                    <li class="nav-item"><a class="nav-link"
+                            href="{{ route('pacote.refeicao.cadastrar') }}">Cadastrar</a>
+                    </li>
                 @endif
                 <li class="nav-item"><a class="nav-link" href="{{ route('pacote.refeicao.lista') }}">Listar</a>
                 </li>
@@ -124,18 +126,55 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#dificuldadeviagem" aria-expanded="false"
-            aria-controls="dificuldadeviagem">
-            <i class="menu-icon mdi mdi-map"></i>
-            <span class="menu-title">Dificuldade da Viagem</span>
+        <a class="nav-link" data-bs-toggle="collapse" href="#reservas" aria-expanded="false"
+            aria-controls="reservas">
+            <i class="menu-icon mdi mdi-calendar-check"></i>
+            <span class="menu-title">Reservas</span>
             <i class="menu-arrow"></i>
         </a>
-        <div class="collapse" id="dificuldadeviagem">
+        <div class="collapse" id="reservas">
             <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link"
-                        href="{{ route('dificuldade.viagem.cadastrar') }}">Cadastrar</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('dificuldade.viagem.lista') }}">Listar</a>
-                </li>
+                <li class="nav-item"><a class="nav-link" href="reservas/criar.html">Criar</a></li>
+                <li class="nav-item"><a class="nav-link" href="reservas/listar.html">Listar</a></li>
+                <li class="nav-item"><a class="nav-link" href="reservas/editar.html">Editar</a></li>
+                <li class="nav-item"><a class="nav-link" href="reservas/deletar.html">Deletar</a></li>
+            </ul>
+        </div>
+    </li>
+
+    @if (Auth::user()->id_acesso == 1)
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#dificuldadeviagem" aria-expanded="false"
+                aria-controls="dificuldadeviagem">
+                <i class="menu-icon mdi mdi-map"></i>
+                <span class="menu-title">Dificuldade da Viagem</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="dificuldadeviagem">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"><a class="nav-link"
+                            href="{{ route('dificuldade.viagem.cadastrar') }}">Cadastrar</a></li>
+                    <li class="nav-item"><a class="nav-link"
+                            href="{{ route('dificuldade.viagem.lista') }}">Listar</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    @endif
+
+    <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#galeriaviagens" aria-expanded="false"
+            aria-controls="galeriaviagens">
+            <i class="menu-icon mdi mdi-image"></i>
+            <span class="menu-title">Galeria de Viagens</span>
+            <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="galeriaviagens">
+            <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="galeriaviagens/criar.html">Criar</a></li>
+                <li class="nav-item"><a class="nav-link" href="galeriaviagens/listar.html">Listar</a></li>
+                <li class="nav-item"><a class="nav-link" href="galeriaviagens/editar.html">Editar</a></li>
+                <li class="nav-item"><a class="nav-link" href="galeriaviagens/deletar.html">Deletar</a></li>
             </ul>
         </div>
     </li>
@@ -157,36 +196,21 @@
         </div>
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#clientes" aria-expanded="false"
-            aria-controls="clientes">
-            <i class="menu-icon mdi mdi-account-group"></i>
-            <span class="menu-title">Clientes</span>
-            <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="clientes">
-            <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="{{ route('cliente.lista') }}">Listar</a></li>
-            </ul>
-        </div>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#reservas" aria-expanded="false"
-            aria-controls="reservas">
-            <i class="menu-icon mdi mdi-calendar-check"></i>
-            <span class="menu-title">Reservas</span>
-            <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="reservas">
-            <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="reservas/criar.html">Criar</a></li>
-                <li class="nav-item"><a class="nav-link" href="reservas/listar.html">Listar</a></li>
-                <li class="nav-item"><a class="nav-link" href="reservas/editar.html">Editar</a></li>
-                <li class="nav-item"><a class="nav-link" href="reservas/deletar.html">Deletar</a></li>
-            </ul>
-        </div>
-    </li>
+    @if (Auth::user()->id_acesso == 1)
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#clientes" aria-expanded="false"
+                aria-controls="clientes">
+                <i class="menu-icon mdi mdi-account-group"></i>
+                <span class="menu-title">Clientes</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="clientes">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"><a class="nav-link" href="{{ route('cliente.lista') }}">Listar</a></li>
+                </ul>
+            </div>
+        </li>
+    @endif
 
     <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#catpreco" aria-expanded="false"
@@ -222,22 +246,6 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#galeriaviagens" aria-expanded="false"
-            aria-controls="galeriaviagens">
-            <i class="menu-icon mdi mdi-image"></i>
-            <span class="menu-title">Galeria de Viagens</span>
-            <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="galeriaviagens">
-            <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="galeriaviagens/criar.html">Criar</a></li>
-                <li class="nav-item"><a class="nav-link" href="galeriaviagens/listar.html">Listar</a></li>
-                <li class="nav-item"><a class="nav-link" href="galeriaviagens/editar.html">Editar</a></li>
-                <li class="nav-item"><a class="nav-link" href="galeriaviagens/deletar.html">Deletar</a></li>
-            </ul>
-        </div>
-    </li>
-    <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#inclusoes" aria-expanded="false"
             aria-controls="inclusoes">
             <i class="menu-icon mdi mdi-check-circle"></i>
@@ -250,23 +258,6 @@
                 <li class="nav-item"><a class="nav-link" href="inclusoes/listar.html">Listar</a></li>
                 <li class="nav-item"><a class="nav-link" href="inclusoes/editar.html">Editar</a></li>
                 <li class="nav-item"><a class="nav-link" href="inclusoes/deletar.html">Deletar</a></li>
-            </ul>
-        </div>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#mapaviagem" aria-expanded="false"
-            aria-controls="mapaviagem">
-            <i class="menu-icon mdi mdi-map"></i>
-            <span class="menu-title">Mapa da Viagem</span>
-            <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="mapaviagem">
-            <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="mapaviagem/criar.html">Criar</a></li>
-                <li class="nav-item"><a class="nav-link" href="mapaviagem/listar.html">Listar</a></li>
-                <li class="nav-item"><a class="nav-link" href="mapaviagem/editar.html">Editar</a></li>
-                <li class="nav-item"><a class="nav-link" href="mapaviagem/deletar.html">Deletar</a></li>
             </ul>
         </div>
     </li>
