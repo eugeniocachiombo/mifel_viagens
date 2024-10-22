@@ -14,6 +14,6 @@ class Carrinho extends Model
         "id_pacote_viagems",
         "id_pacotehospedagems",
         "id_pacoterefeicaos",
-        "id_viagem"
+        "id_reserva"
     ];
 }
