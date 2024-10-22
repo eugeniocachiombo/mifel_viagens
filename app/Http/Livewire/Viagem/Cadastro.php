@@ -123,6 +123,7 @@ class Cadastro extends Component
     public function autoPreencher()
     {
         if ($this->pacoteEscolhido != null) {
+            
             $this->infoPacoteV = PacoteViagem::where("id", $this->pacoteEscolhido)->first();
             $this->cod_destino = $this->infoPacoteV->id_destino;
             $this->cod_tipoviagem = $this->infoPacoteV->id_tipoviagem;
@@ -131,7 +132,10 @@ class Cadastro extends Component
             $this->desc_itinerario = $this->infoPacoteV->desc_itinerario;
             $this->duracao_viagem = $this->infoPacoteV->duracao_viagem;
             $this->preco_viagem = $this->infoPacoteV->preco_pacote;
+
+          //  dd($this->precoFinalHosp);
             $this->precoFinal = $this->infoPacoteV->preco_pacote + end($this->precoFinalHosp)["hospedagem"] + end($this->precoFinalRef)["refeicao"];
+        
         }
     }
 
@@ -158,10 +162,9 @@ class Cadastro extends Component
             'vagas_viagem' => $this->vagas_viagem,
             'preco_viagem' => $this->preco_viagem,
             'data_viagem' => $this->data_viagem,
-            "status_viagem" => 0,
-            "id_usuario" => Auth::user()->id,
+            "status_viagem" => 0
         ]);
-
+        /*
         Carrinho::create([
             "id_usuario" => Auth::user()->id,
             "id_pacote_viagems" => $this->pacoteEscolhido,
@@ -169,9 +172,10 @@ class Cadastro extends Component
             "id_pacoterefeicaos" =>$this->pacoteRefId,
             "id_viagem" => $viagem->id
         ]);
+        */
 
         $this->emit('alerta', [
-            'mensagem' => 'Adicionado ao carrinho com sucesso',
+            'mensagem' => 'Viagem cadastrada com sucesso',
             'icon' => 'success',
             'tempo' => 4000,
         ]);
@@ -191,10 +195,10 @@ class Cadastro extends Component
 
         $this->pacoteHospId = $this->pacoteHospArrayEscolha = $this->temPacHosp = false;
         $this->pacoteRefId = $this->pacoteRefArrayEscolha = $this->temPacRef = false;
-        $this->precoFinalHosp = [];
+        
         $this->precoFinal = 0;
-        $this->precoFinalRef = [];
-
+        array_push($this->precoFinalHosp, ["hospedagem" => 0]);
+        array_push($this->precoFinalRef, ["refeicao" => 0]);
         $this->numMaxVaga = null;
     }
 

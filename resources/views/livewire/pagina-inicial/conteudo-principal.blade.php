@@ -24,7 +24,7 @@
                         <i class="fas fa-tag me-2"></i>Pacotes de viagem
                     </button>
                 </a>
-                <a href="">
+                <a href="{{ route('reserva.reservar') }}">
                     <button class="btn btn-success text-white animated-button">
                         <i class="fas fa-bookmark me-2"></i> Pacote de Reserva
                     </button>

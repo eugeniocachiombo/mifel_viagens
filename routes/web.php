@@ -75,7 +75,7 @@ Route::prefix("pacote/refeicao")->name("pacote.refeicao.")->group(function () {
 });
 
 Route::prefix("reserva")->name("reserva.")->group(function () {
-    Route::get("/reservar", [ReservaController::class, "reservar"])->name("reservar")->middleware("usuario.logado");
+    Route::get("/reservar", [ReservaController::class, "reservar"])->name("reservar");
     Route::get("/lista", [ReservaController::class, "listar"])->name("lista")->middleware("usuario.logado");
     Route::get("/actualizar/{id}", [ReservaController::class, "actualizar"])->name("actualizar")->middleware("usuario.logado");
 });

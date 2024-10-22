@@ -10,14 +10,14 @@ use Livewire\Component;
 
 class Lista extends Component
 {
-    public $viagens;
+    public $viagens = [];
 
     public function render()
     {
         if(Auth::user()->id_acesso == 2){
-            $this->viagens = Viagem::where("status_viagem", 1)
+           /* $this->viagens = Viagem::where("status_viagem", 1)
             ->where("id_usuario", Auth::user()->id)
-            ->get();
+            ->get();*/
         }else{
              $this->viagens = Viagem::where("status_viagem", 1)->get();
         }
