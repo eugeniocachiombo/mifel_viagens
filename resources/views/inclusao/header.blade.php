@@ -50,7 +50,13 @@
                     </h1>
                     <p class="d-lg-none"> <span class="text-black fw-bold">{{ $logado['nome'] }}
                             {{ $logado['sobrenome'] }}</span></p>
-                    <h3 class="welcome-sub-text"></h3>
+                @else
+                    <h1 class="welcome-text d-none d-lg-block"> 
+                        <span class="text-black fw-bold">@include('inclusao.nome_empresa')</span>
+                    </h1>
+                    <p class="d-lg-none"> 
+                        <span class="text-black fw-bold">@include('inclusao.nome_empresa')</span>
+                        </p>
                 @endif
             </li>
         </ul>

@@ -31,7 +31,7 @@ class UsuarioController extends Controller
 
     public function sair() {
         Auth::logout();
-        return redirect()->route("usuario.pagina_inicial");
+        return redirect()->route("anonimo");
     }
 
     public function alterarSenha(){

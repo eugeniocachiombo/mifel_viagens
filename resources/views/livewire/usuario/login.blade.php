@@ -21,7 +21,7 @@
 
                   <div class="form-check form-check-flat form-check-primary">
                     <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input" wire:model="lembreMe">
+                      <input type="checkbox" class="form-check-input border" wire:model="lembreMe">
                       Lembrar-me
                     </label>
                   </div>

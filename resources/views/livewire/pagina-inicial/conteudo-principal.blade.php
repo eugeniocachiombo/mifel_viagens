@@ -4,12 +4,18 @@
 
         <div class="cd-flex justify-content-center flex-column bg-dark text-light p-5 shadow-lg">
             <div class="col-12">
-                <h4 style="font-family: 'Arial', sans-serif;">Mifel Viagens</h4>
+                <h4 style="font-family: 'Arial', sans-serif;"></h4>
             </div>
             <div class="col d-flex justify-content-center mb-4">
-                <h1 class="font-weight-bold" style="font-family: 'Arial', sans-serif;">
-                    <i class="fas fa-plane me-2"></i> Conheça o Destino...
+                <h1 class="font-weight-bold d-none d-md-flex" style="font-family: 'Arial', sans-serif;">
+                        <i class="fas fa-plane me-2"></i> 
+                    Conheça o Destino...
                 </h1>
+
+                <h2 class="font-weight-bold d-flex d-md-none" style="font-family: 'Arial', sans-serif;">
+                        <i class="fas fa-plane me-2"></i> 
+                    Conheça o Destino...
+                </h2>
             </div>
 
             <div class="col d-flex justify-content-center button-container">
