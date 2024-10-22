@@ -2,15 +2,16 @@
 
 namespace App\Http\Livewire\Viagem;
 
-use App\Models\Carrinho;
 use App\Models\Destino;
+use App\Models\Destinosviagem;
 use App\Models\DificuldadeViagem;
+use App\Models\Etinerarioviagem;
 use App\Models\Pacotehospedagem;
 use App\Models\Pacoterefeicao;
 use App\Models\PacoteViagem;
 use App\Models\Tipoviagem;
+use App\Models\Tipoviagem_viagens;
 use App\Models\Viagem;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Cadastro extends Component
@@ -22,13 +23,6 @@ class Cadastro extends Component
 
     public $tipoviagens, $destinos, $cod_destino, $cod_tipoviagem;
     public $dia_itinerario, $desc_itinerario;
-    public $pacotesViagem, $pacoteEscolhido, $infoPacoteV;
-
-    public $pacotesHospedagem, $pacoteHospId, $pacoteHospArrayEscolha, $temPacHosp = false;
-    public $pacotesRefeicao, $pacoteRefId, $pacoteRefArrayEscolha, $temPacRef = false;
-    public $precoFinalHosp = [], $precoFinal = 0, $precoFinalRef = [];
-
-    public $numMaxVaga;
 
     protected $rules = [
         'titulo_viagem' => 'required|string|max:255',
@@ -36,8 +30,12 @@ class Cadastro extends Component
         'cod_dificuldade' => 'required',
         'duracao_viagem' => 'required|integer|min:1',
         'vagas_viagem' => 'required|integer|min:1',
-        'preco_viagem' => 'required|numeric|min:0',
+        'preco_viagem' => 'required|string|max:255',
         'data_viagem' => 'required|date|after:today',
+        'cod_destino' => 'required',
+        'cod_tipoviagem' => 'required',
+        'dia_itinerario' => 'required|integer|min:1',
+        'desc_itinerario' => 'required|string|max:1000',
     ];
 
     protected $messages = [
@@ -60,21 +58,27 @@ class Cadastro extends Component
         'vagas_viagem.min' => 'O número de vagas deve ser pelo menos 1.',
 
         'preco_viagem.required' => 'O preço da viagem é obrigatório.',
-        'preco_viagem.numeric' => 'O preço da viagem deve ser um número.',
-        'preco_viagem.min' => 'O preço da viagem não pode ser negativo.',
+        'preco_viagem.string' => 'O preço da viagem deve ser um texto.',
+        'preco_viagem.max' => 'O preço da viagem não pode ter mais de 255 caracteres.',
 
         'data_viagem.required' => 'A data da viagem é obrigatória.',
         'data_viagem.date' => 'A data da viagem deve ser uma data válida.',
         'data_viagem.after' => 'A data da viagem deve ser uma data futura.',
+
+        'cod_destino.required' => 'O destino é obrigatório.',
+        'cod_tipoviagem.required' => 'O Tipo de viagem é obrigatório.',
+
+        'dia_itinerario.required' => 'O dia do itinerário é obrigatório.',
+        'dia_itinerario.numeric' => 'O dia do itinerário deve ser um número.',
+        'dia_itinerario.min' => 'O dia do itinerário não pode ser negativo.',
+
+        'desc_itinerario.required' => 'A descrição do itinerário deve ser um texto.',
+        'desc_itinerario.string' => 'A descrição é obrigatória.',
+        'desc_itinerario.max' => 'A descrição do itinerário não pode ter mais de 1000 caracteres.',
     ];
 
     public function mount()
     {
-        array_push($this->precoFinalHosp, ["hospedagem" => 0]);
-        array_push($this->precoFinalRef, ["refeicao" => 0]);
-        $this->pacotesHospedagem = Pacotehospedagem::all();
-        $this->pacotesRefeicao = Pacoterefeicao::all();
-        $this->pacotesViagem = PacoteViagem::all();
         $this->tipoviagens = Tipoviagem::all();
         $this->destinos = Destino::all();
         $this->dificuldades = DificuldadeViagem::all();
@@ -82,77 +86,14 @@ class Cadastro extends Component
 
     public function render()
     {
-        $this->preco_viagem = $this->precoFinal;
         return view('livewire.viagem.cadastro');
     }
 
-    public function pacoteHospListar()
-    {
-        if ($this->pacoteHospId != null) {
-            $this->pacoteHospArrayEscolha = Pacotehospedagem::find($this->pacoteHospId);
-            array_push($this->precoFinalHosp, ["hospedagem" => $this->pacoteHospArrayEscolha->preco_pacoteHospedagem]);
-            $this->vagas_viagem = $this->pacoteHospArrayEscolha->max_qtd_pessoas;
-            $this->numMaxVaga = $this->pacoteHospArrayEscolha->max_qtd_pessoas;
-        } else {
-            array_push($this->precoFinalHosp, ["hospedagem" => 0]);
-            $this->pacoteHospArrayEscolha = null;
-        }
-        $this->precoAdicionalPacotes();
-    }
-
-    public function pacoteRefListar()
-    {
-        if ($this->pacoteRefId != null) {
-            $this->pacoteRefArrayEscolha = Pacoterefeicao::find($this->pacoteRefId);
-            array_push($this->precoFinalRef, ["refeicao" => $this->pacoteRefArrayEscolha->preco_pacoteRefeicao]);
-        } else {
-            array_push($this->precoFinalRef, ["refeicao" => 0]);
-            $this->pacoteRefArrayEscolha = null;
-        }
-        $this->precoAdicionalPacotes();
-    }
-
-    public function precoAdicionalPacotes()
-    {
-        if ($this->pacoteEscolhido != null) {
-            $this->infoPacoteV = PacoteViagem::where("id", $this->pacoteEscolhido)->first();
-            $this->precoFinal = $this->infoPacoteV->preco_pacote + end($this->precoFinalHosp)["hospedagem"] + end($this->precoFinalRef)["refeicao"];
-        }
-    }
-
-    public function autoPreencher()
-    {
-        if ($this->pacoteEscolhido != null) {
-            
-            $this->infoPacoteV = PacoteViagem::where("id", $this->pacoteEscolhido)->first();
-            $this->cod_destino = $this->infoPacoteV->id_destino;
-            $this->cod_tipoviagem = $this->infoPacoteV->id_tipoviagem;
-            $this->precoFinal = $this->infoPacoteV->preco_pacote;
-            $this->dia_itinerario = $this->infoPacoteV->dia_itinerario;
-            $this->desc_itinerario = $this->infoPacoteV->desc_itinerario;
-            $this->duracao_viagem = $this->infoPacoteV->duracao_viagem;
-            $this->preco_viagem = $this->infoPacoteV->preco_pacote;
-
-          //  dd($this->precoFinalHosp);
-            $this->precoFinal = $this->infoPacoteV->preco_pacote + end($this->precoFinalHosp)["hospedagem"] + end($this->precoFinalRef)["refeicao"];
-        
-        }
-    }
-
-    public function mudarPrecario()
-    {
-        if ($this->cod_tipoviagem != null && $this->cod_destino != null && $this->pacoteEscolhido != null) {
-            $novoInfoPacote = PacoteViagem::where("id_destino", $this->cod_destino)
-                ->where("id_tipoviagem", $this->cod_tipoviagem)
-                ->first();
-            $this->pacoteEscolhido = $novoInfoPacote->id;
-            $this->precoFinal = $novoInfoPacote->preco_pacote + end($this->precoFinalHosp)["hospedagem"] + end($this->precoFinalRef)["refeicao"];
-        }
-    }
-
-    public function adicionarAoCarrinho()
+    public function cadastrar()
     {
         $this->validate();
+        $preco1 = str_replace(".", "", $this->preco_viagem);
+        $preco2 = str_replace(",", ".", $preco1);
 
         $viagem = Viagem::create([
             'titulo_viagem' => $this->titulo_viagem,
@@ -160,19 +101,26 @@ class Cadastro extends Component
             'cod_dificuldade' => $this->cod_dificuldade,
             'duracao_viagem' => $this->duracao_viagem,
             'vagas_viagem' => $this->vagas_viagem,
-            'preco_viagem' => $this->preco_viagem,
+            'preco_viagem' => $preco2,
             'data_viagem' => $this->data_viagem,
-            "status_viagem" => 0
+            "status_viagem" => 1,
         ]);
-        /*
-        Carrinho::create([
-            "id_usuario" => Auth::user()->id,
-            "id_pacote_viagems" => $this->pacoteEscolhido,
-            "id_pacotehospedagems" => $this->pacoteHospId,
-            "id_pacoterefeicaos" =>$this->pacoteRefId,
-            "id_viagem" => $viagem->id
+
+        Destinosviagem::create([
+            "cod_viagens_dv" => $viagem->id,
+            "cod_destinos_dv" => $this->cod_destino,
         ]);
-        */
+
+        Tipoviagem_viagens::create([
+            "cod_viagens" => $viagem->id,
+            "cod_tipoviagem" => $this->cod_tipoviagem,
+        ]);
+
+        Etinerarioviagem::create([
+            "cod_viagens_ev" => $viagem->id,
+            "dia_etinerarioViagem" => $this->dia_itinerario,
+            "desc_etinerarioViagem" => $this->desc_itinerario,
+        ]);
 
         $this->emit('alerta', [
             'mensagem' => 'Viagem cadastrada com sucesso',
@@ -191,15 +139,6 @@ class Cadastro extends Component
 
         $this->cod_destino = $this->cod_tipoviagem = null;
         $this->dia_itinerario = $this->desc_itinerario = null;
-        $this->pacoteEscolhido = $this->infoPacoteV = null;
-
-        $this->pacoteHospId = $this->pacoteHospArrayEscolha = $this->temPacHosp = false;
-        $this->pacoteRefId = $this->pacoteRefArrayEscolha = $this->temPacRef = false;
-        
-        $this->precoFinal = 0;
-        array_push($this->precoFinalHosp, ["hospedagem" => 0]);
-        array_push($this->precoFinalRef, ["refeicao" => 0]);
-        $this->numMaxVaga = null;
     }
 
 }

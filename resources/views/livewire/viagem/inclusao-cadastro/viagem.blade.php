@@ -20,8 +20,8 @@
         <div class="form-group">
             <label for="desc_viagem"><i class="fas fa-info-circle pe-2"></i> Descrição
                 da Viagem</label>
-            <textarea class="form-control" id="desc_viagem" wire:model="desc_viagem" placeholder="Descrição da Viagem"
-                rows="4"></textarea>
+            <textarea class="form-control pt-2" id="desc_viagem" wire:model="desc_viagem"
+             placeholder="Descrição da Viagem"></textarea>
             @error('desc_viagem')
                 <span class="text-danger">{{ $message }}</span>
             @enderror
@@ -88,10 +88,21 @@
                 Preço</label>
             <input type="text" class="form-control"
                 id="preco_viagem" wire:model="preco_viagem"
-                placeholder="Preço da Viagem" step="0.01" disabled>
+                placeholder="Preço da Viagem" 
+                onkeydown="formatarCampoPreco(this.value)">
             @error('preco_viagem')
                 <span class="text-danger">{{ $message }}</span>
             @enderror
+
+            <script>
+                function formatarCampoPreco(valor) {
+                    $(document).ready(function() {
+                        $('#preco_viagem').mask('000.000.000.000.000,00', {
+                            reverse: true
+                        });
+                    });
+                }
+            </script>
         </div>
     </div>
 </div>

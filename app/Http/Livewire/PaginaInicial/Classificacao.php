@@ -16,16 +16,17 @@ class Classificacao extends Component
     public function render()
     {
         $this->destinos = Destino::all();
-             $this->clientes = Cliente::all();
-             $this->reservas = Reservas::all();
+        $this->clientes = Cliente::all();
+        $this->reservas = Reservas::all();
+        $this->viagens = Viagem::all();
 
-        if(Auth::user() && Auth::user()->id_acesso == 2){
+        /*if(Auth::user() && Auth::user()->id_acesso == 2){
             $this->viagens = Viagem::where("status_viagem", 1)
             ->where("id_usuario", Auth::user()->id)
             ->get();
-        }else{
-             $this->viagens = Viagem::where("status_viagem", 1)->get();
-        }
+        }else{*/
+            
+       // }
         return view('livewire.pagina-inicial.classificacao');
     }
 }

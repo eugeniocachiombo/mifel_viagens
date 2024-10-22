@@ -18,14 +18,14 @@
                 </h2>
             </div>
 
-            <div class="col d-flex justify-content-center button-container">
+            <div class="col d-flex justify-content-between button-container">
                 <a href="{{ route('viagem.cadastrar') }}">
-                    <button class="btn btn-primary text-white animated-button">
-                        <i class="fas fa-tag me-2"></i>Pacotes de viagem
+                    <button class="btn btn-primary text-white  ">
+                        <i class="fas fa-tag me-2"></i>Pacotes de Viagem
                     </button>
                 </a>
                 <a href="{{ route('reserva.reservar') }}">
-                    <button class="btn btn-success text-white animated-button">
+                    <button class="btn btn-success text-white  ">
                         <i class="fas fa-bookmark me-2"></i> Pacote de Reserva
                     </button>
                 </a>
@@ -37,10 +37,10 @@
             <p style="font-size: 1.2rem;">Explore as melhores opções para sua viagem!</p>
         </div>
 
-        <div class="container">
-            <div class="row p-2">
+        <div class="container mb-4">
+            <div class="row p-2 ">
                 @foreach ($destinos as $destino)
-                    <div class="col-6 col-md-3 p-2">
+                    <div class="col-6 col-md-3 p-2 d-flex justify-content-center">
                         <div class="card" style="width: 12rem;">
                             <a href="{{ asset('storage/' . $destino->img_destino) }}">
                                 <img src="{{ asset('storage/' . $destino->img_destino) }}"
@@ -64,7 +64,7 @@
     </div>
 
     <div class="row ">
-        <div class="col-6 col-md-3 p-2">
+        <div class="col-6 col-md-3 p-2 d-flex justify-content-center">
             <div class="card text-center">
                 <i class="fas fa-plane-departure fa-3x p-3"></i>
                 <div class="card-body">
@@ -74,7 +74,7 @@
             </div>
         </div>
 
-        <div class="col-6 col-md-3 p-2">
+        <div class="col-6 col-md-3 p-2 d-flex justify-content-center">
             <div class="card text-center">
                 <i class="fas fa-hotel fa-3x p-3"></i>
                 <div class="card-body">
@@ -84,7 +84,7 @@
             </div>
         </div>
 
-        <div class="col-6 col-md-3 p-2">
+        <div class="col-6 col-md-3 p-2 d-flex justify-content-center">
             <div class="card text-center">
                 <i class="fas fa-map fa-3x p-3"></i>
                 <div class="card-body">
@@ -94,7 +94,7 @@
             </div>
         </div>
 
-        <div class="col-6 col-md-3 p-2">
+        <div class="col-6 col-md-3 p-2 d-flex justify-content-center">
             <div class="card text-center">
                 <i class="fas fa-suitcase fa-3x p-3"></i>
                 <div class="card-body">
@@ -111,7 +111,7 @@
         <p>Encontre opções para todos os orçamentos.</p>
     </div>
 
-    <div class="row mb-4 bg-primary p-4">
+    <div class="row mb-4 bg-primary p-4 ">
         <div class="col-4 col-md-4 p-2">
             <div class="card text-center">
                 <i class="fas fa-dollar-sign fa-3x p-3 text-danger"></i>
@@ -121,7 +121,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-4 col-md-4 p-2">
+        <div class="col-4 col-md-4 p-2 ">
             <div class="card text-center">
                 <i class="fas fa-star fa-3x p-3 text-danger"></i>
                 <div class="card-body">
@@ -130,7 +130,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-4 col-md-4 p-2">
+        <div class="col-4 col-md-4 p-2 ">
             <div class="card text-center">
                 <i class="fas fa-crown fa-3x p-3 text-danger"></i>
                 <div class="card-body">

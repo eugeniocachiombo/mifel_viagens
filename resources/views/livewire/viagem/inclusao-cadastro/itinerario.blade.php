@@ -20,7 +20,7 @@
         <div class="form-group">
             <label for="desc_itinerario"><i class="fas fa-pencil-alt pe-2"></i> Descrição
                 do Itinerário</label>
-            <textarea class="form-control" id="desc_itinerario" wire:model="desc_itinerario" placeholder="Descrição do Itinerário"
+            <textarea class="form-control pt-2" id="desc_itinerario" wire:model="desc_itinerario" placeholder="Descrição do Itinerário"
                 rows="4"></textarea>
             @error('desc_itinerario')
                 <span class="text-danger">{{ $message }}</span>
