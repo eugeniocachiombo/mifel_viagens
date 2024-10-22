@@ -66,8 +66,7 @@
             <label for="vagas_viagem"><i class="fas fa-users pe-2"></i> Vagas</label>
             <input type="number" class="form-control"
                 id="vagas_viagem" wire:model="vagas_viagem"
-                placeholder="Número de Vagas" min="1" max="{{$numMaxVaga}}"
-                oninput="validateInput(this, {{$numMaxVaga}})">
+                placeholder="Número de Vagas" >
             @error('vagas_viagem')
                 <span class="text-danger">{{ $message }}</span>
             @enderror

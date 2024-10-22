@@ -44,7 +44,7 @@
 
                                                     <div class="col-12 col-md-6 d-flex justify-content-center align-items-center"
                                                         style="font-size: 30px">
-                                                        Preço: {{-- number_format($precoFinal, 2, ',', '.') --}} kz
+                                                        Preço: {{ number_format($precoFinal, 2, ',', '.') }} kz
                                                     </div>
                                                 </div>
                                             </div>
@@ -55,6 +55,8 @@
                                             <div class="card-body">
                                                 <form class="forms-sample" wire:submit.prevent="adicionarAoCarrinho">
 
+                                                    @include('livewire/reserva/inclusao-cadastro/destinos-tipoviagem')
+                                                    <hr>
                                                     @include('livewire/reserva/inclusao-cadastro/hospedagem')
                                                     <hr>
                                                     @include('livewire/reserva/inclusao-cadastro/refeicao')

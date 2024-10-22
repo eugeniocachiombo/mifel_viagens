@@ -27,11 +27,20 @@
                 <div class="form-group">
                     <label for="num_viajantes"><i class="fas fa-users pe-2"></i> Número de Viajantes</label>
                     <input type="number" class="form-control" id="num_viajantes" wire:model="num_viajantes"
-                        min="1" value="1">
+                    min="1" max="{{$numMaxVaga}}"
+                    oninput="validateInput(this, {{$numMaxVaga}})">
                     @error('num_viajantes')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
+
+                <script>
+                    function validateInput(input, max) {
+                        if (input.value > max) {
+                            input.value = max; 
+                        }
+                    }
+                </script>
             </div>
 
             <div class="col-12 col-md-6">
