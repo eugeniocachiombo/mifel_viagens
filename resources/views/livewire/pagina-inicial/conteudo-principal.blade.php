@@ -15,12 +15,12 @@
             <div class="col d-flex justify-content-center button-container">
                 <a href="{{ route('viagem.cadastrar') }}">
                     <button class="btn btn-primary text-white animated-button">
-                        <i class="fas fa-tag"></i>Pacotes de viagem
+                        <i class="fas fa-tag me-2"></i>Pacotes de viagem
                     </button>
                 </a>
                 <a href="">
                     <button class="btn btn-success text-white animated-button">
-                        <i class="fas fa-bookmark"></i> Pacote de Reserva
+                        <i class="fas fa-bookmark me-2"></i> Pacote de Reserva
                     </button>
                 </a>
             </div>

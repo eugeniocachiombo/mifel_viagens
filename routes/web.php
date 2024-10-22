@@ -7,6 +7,7 @@ use App\Http\Controllers\DificuldadeViagem\DificuldadeViagemController;
 use App\Http\Controllers\PacoteHospedagem\PacoteHospedagemcontroller;
 use App\Http\Controllers\PacoteRefeicao\PacoteRefeicaocontroller;
 use App\Http\Controllers\PacoteViagem\PacoteViagemController;
+use App\Http\Controllers\PaginaInicial\AnonimoController;
 use App\Http\Controllers\Reserva\ReservaController;
 use App\Http\Controllers\TipoViagem\TipoViagemController;
 use App\Http\Controllers\Usuario\UsuarioController;
@@ -15,9 +16,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return redirect()->route("usuario.logar");
-});
+Route::get("/", [AnonimoController::class, "irEmInicio"])->name("anonimo")->middleware("usuario.terminado");
 
 Route::prefix("usuario")->name("usuario.")->group(function () {
     Route::get("/cadastrar", [UsuarioController::class, "cadastrar"])->name("cadastrar")->middleware("usuario.terminado");

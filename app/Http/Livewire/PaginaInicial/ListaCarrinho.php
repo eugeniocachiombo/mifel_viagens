@@ -12,7 +12,7 @@ class ListaCarrinho extends Component
 
     public function render()
     {
-        $this->carrinho = Carrinho::where("id_usuario", Auth::user()->id)->get();
+        $this->carrinho = Carrinho::where("id_usuario", Auth::user() ? Auth::user()->id : 0)->get();
         return view('livewire.pagina-inicial.lista-carrinho');
     }
 

@@ -19,7 +19,7 @@ class Classificacao extends Component
              $this->clientes = Cliente::all();
              $this->reservas = Reservas::all();
 
-        if(Auth::user()->id_acesso == 2){
+        if(Auth::user() && Auth::user()->id_acesso == 2){
             $this->viagens = Viagem::where("status_viagem", 1)
             ->where("id_usuario", Auth::user()->id)
             ->get();
