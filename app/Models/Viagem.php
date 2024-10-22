@@ -18,7 +18,6 @@ class Viagem extends Model
         "vagas_viagem",
         "preco_viagem",
         "status_viagem",
-        "estrelas_viagem",
-        "data_viagem"
+        "estrelas_viagem"
     ];
 }

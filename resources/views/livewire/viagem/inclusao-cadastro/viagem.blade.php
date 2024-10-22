@@ -105,21 +105,3 @@
         </div>
     </div>
 </div>
-
-<div class="row g-3">
-    <div class="col-12 bg-dark text-white">
-        <label><i class="fas fa-calendar-alt pe-2"></i> Data da Viagem</label>
-    </div>
-
-    <div class="col-12 col-md-6">
-        <div class="form-group">
-            <label for="data_viagem"><i class="fas fa-calendar-alt pe-2"></i> Data da viagem</label>
-            <input type="date" class="form-control"
-                id="data_viagem" wire:model="data_viagem"
-                placeholder="Data da Viagem" min="1">
-            @error('data_viagem')
-                <span class="text-danger">{{ $message }}</span>
-            @enderror
-        </div>
-    </div>
-</div>

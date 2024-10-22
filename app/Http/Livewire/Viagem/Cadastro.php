@@ -19,7 +19,7 @@ class Cadastro extends Component
 
     public $dificuldades, $titulo_viagem, $desc_viagem, $cod_dificuldade;
     public $EmDestaque_viagens, $duracao_viagem, $vagas_viagem;
-    public $preco_viagem, $data_viagem;
+    public $preco_viagem;
 
     public $tipoviagens, $destinos, $cod_destino, $cod_tipoviagem;
     public $dia_itinerario, $desc_itinerario;
@@ -31,7 +31,6 @@ class Cadastro extends Component
         'duracao_viagem' => 'required|integer|min:1',
         'vagas_viagem' => 'required|integer|min:1',
         'preco_viagem' => 'required|string|max:255',
-        'data_viagem' => 'required|date|after:today',
         'cod_destino' => 'required',
         'cod_tipoviagem' => 'required',
         'dia_itinerario' => 'required|integer|min:1',
@@ -60,10 +59,6 @@ class Cadastro extends Component
         'preco_viagem.required' => 'O preço da viagem é obrigatório.',
         'preco_viagem.string' => 'O preço da viagem deve ser um texto.',
         'preco_viagem.max' => 'O preço da viagem não pode ter mais de 255 caracteres.',
-
-        'data_viagem.required' => 'A data da viagem é obrigatória.',
-        'data_viagem.date' => 'A data da viagem deve ser uma data válida.',
-        'data_viagem.after' => 'A data da viagem deve ser uma data futura.',
 
         'cod_destino.required' => 'O destino é obrigatório.',
         'cod_tipoviagem.required' => 'O Tipo de viagem é obrigatório.',
@@ -102,7 +97,6 @@ class Cadastro extends Component
             'duracao_viagem' => $this->duracao_viagem,
             'vagas_viagem' => $this->vagas_viagem,
             'preco_viagem' => $preco2,
-            'data_viagem' => $this->data_viagem,
             "status_viagem" => 1,
         ]);
 
@@ -135,7 +129,7 @@ class Cadastro extends Component
     {
         $this->titulo_viagem = $this->desc_viagem = $this->cod_dificuldade = null;
         $this->EmDestaque_viagens = $this->duracao_viagem = $this->vagas_viagem = null;
-        $this->preco_viagem = $this->data_viagem = null;
+        $this->preco_viagem  = null;
 
         $this->cod_destino = $this->cod_tipoviagem = null;
         $this->dia_itinerario = $this->desc_itinerario = null;
