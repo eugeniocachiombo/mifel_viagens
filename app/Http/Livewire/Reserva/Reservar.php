@@ -12,7 +12,6 @@ use App\Models\Tipoviagem;
 use App\Models\Tipoviagem_viagens;
 use App\Models\Viagem;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 use Livewire\Component;
 
 class Reservar extends Component
@@ -25,11 +24,10 @@ class Reservar extends Component
     public $pacotesRefeicao, $pacoteRefId, $pacoteRefArrayEscolha, $temPacRef = false;
     public $precoFinalHosp = [], $precoFinal = 0, $precoFinalRef = [];
 
-    public $data_resevada;
+    public $data_resevada, $dataExiste;
     public $num_viajantes;
     public $total_reserva;
     public $numMaxVaga;
-    public $modal = false;
 
     protected $rules = [
         'cod_destino' => 'required',
@@ -138,37 +136,53 @@ class Reservar extends Component
     public function adicionarAoCarrinho()
     {
         $this->validate();
-        
+
         if (Auth::user()) {
-            $reserva = Reservas::create([
-                "cod_viagem" => $this->viagemEscolhida,
-                "data_resevada" => $this->data_resevada,
-                "num_viajantes" => $this->num_viajantes,
-                "total_reserva" => $this->precoFinal,
-                "cod_refeicao_reserva" => $this->pacoteRefId,
-                "cod_hospedagem_reserva" => $this->pacoteHospId,
-                "status_reservas" => 'Pendente',
-                "status_pgt_reserva" => 0,
-                'id_usuario' => Auth::user()->id,
-            ]);
+            $dataBD = $this->verificarData($this->data_resevada);
+            if (!$dataBD) {
+                $reserva = Reservas::create([
+                    "cod_viagem" => $this->viagemEscolhida,
+                    "data_resevada" => $this->data_resevada,
+                    "num_viajantes" => $this->num_viajantes,
+                    "total_reserva" => $this->precoFinal,
+                    "cod_refeicao_reserva" => $this->pacoteRefId,
+                    "cod_hospedagem_reserva" => $this->pacoteHospId,
+                    "status_reservas" => 'Pendente',
+                    "status_pgt_reserva" => 0,
+                    'id_usuario' => Auth::user()->id,
+                ]);
 
-            Carrinho::create([
-                "id_usuario" => Auth::user()->id,
-                "id_pacotehospedagems" => $this->pacoteHospId,
-                "id_pacoterefeicaos" => $this->pacoteRefId,
-                "id_reserva" => $reserva->id,
-            ]);
+                Carrinho::create([
+                    "id_usuario" => Auth::user()->id,
+                    "id_pacotehospedagems" => $this->pacoteHospId,
+                    "id_pacoterefeicaos" => $this->pacoteRefId,
+                    "id_reserva" => $reserva->id,
+                ]);
 
-            $this->emit('alerta', ['mensagem' => 'Adicionado ao carrinho com sucesso', 'icon' => 'success', 'tempo' => 4000]);
-            $this->limparCampos();
+                $this->emit('alerta', ['mensagem' => 'Adicionado ao carrinho com sucesso', 'icon' => 'success', 'tempo' => 4000]);
+                $this->limparCampos();
+            }
         } else {
-            $this->emit('loginTab'); 
+            $this->emit('loginTab');
         }
+    }
+
+    public function verificarData($data)
+    {
+        $data = Reservas::where("data_resevada", $data)
+            ->where("id_usuario", Auth::user()->id)
+            ->first();
+        if ($data) {
+            $this->dataExiste = "Você já possui uma reserva com esta data!";
+        } else {
+            $this->dataExiste = null;
+        }
+        return $data;
     }
 
     public function limparCampos()
     {
-        $this->cod_destino = $this->cod_tipoviagem = null;
+        $this->cod_destino = $this->cod_tipoviagem = $this->dataExiste = null;
         $this->data_resevada = $this->num_viajantes = $this->total_reserva = $this->numMaxVaga;
 
         $this->viagemEscolhida = $this->infoViagem = null;
@@ -180,7 +194,6 @@ class Reservar extends Component
         array_push($this->precoFinalHosp, ["hospedagem" => 0]);
         array_push($this->precoFinalRef, ["refeicao" => 0]);
         $this->numMaxVaga = null;
-        $this->modal = false;
     }
 
 }

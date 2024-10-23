@@ -10,9 +10,13 @@
             <div class="form-group">
                 <label for="data_resevada"><i class="fas fa-calendar pe-2"></i> Data Reservada</label>
                 <input type="date" class="form-control" id="data_resevada" wire:model="data_resevada">
-                @error('data_resevada')
-                    <span class="text-danger">{{ $message }}</span>
-                @enderror
+                @if ($dataExiste != null)
+                    <span class="error text-danger">{{ $dataExiste }}</span>
+                @else
+                    @error('data_resevada')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                @endif
             </div>
         </div>
 
