@@ -21,8 +21,9 @@ class CreateReservasTable extends Migration
             $table->integer('num_viajantes')->default(1);
             $table->float('total_reserva')->nullable(); 
             $table->enum('status_reservas', ['Pendente', 'Reservado', 'Finalizada'])
-                  ->default('Pendente');
+            ->default('Pendente');
             $table->integer('status_pgt_reserva');
+            $table->string('cod_reserva')->nullable(); 
             $table->unsignedBigInteger('cod_refeicao_reserva')->nullable(); 
             $table->unsignedBigInteger('cod_hospedagem_reserva')->nullable(); 
             $table->unsignedBigInteger('id_usuario')->nullable(); 

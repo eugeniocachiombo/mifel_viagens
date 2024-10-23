@@ -136,11 +136,6 @@ class Reservar extends Component
     public function adicionarAoCarrinho()
     {
         $this->validate();
-        /* $ultimoRegistro = Reservas::select("id")->orderBy("id", "desc")->first();
-        $ultimoId = $ultimoRegistro ? $ultimoRegistro : 1;
-        $char = chr(rand(65, 90));
-        $num = rand(00,99);
-        $codAleatorio = $num . $char . $char . $ultimoId;*/
 
         $reserva = Reservas::create([
             "cod_viagem" => $this->viagemEscolhida,
@@ -149,6 +144,7 @@ class Reservar extends Component
             "total_reserva" => $this->precoFinal,
             "cod_refeicao_reserva" => $this->pacoteRefId,
             "cod_hospedagem_reserva" => $this->pacoteHospId,
+            "status_reservas" => 'Pendente',
             "status_pgt_reserva" => 0,
             'id_usuario' => Auth::user()->id,
         ]);

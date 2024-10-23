@@ -20,6 +20,7 @@ class Reservas extends Model
         "cod_hospedagem_reserva",
         "Data_Criacao",
         "Data_Atualizacao",
+        "cod_reserva",
         "id_usuario",
     ];
 }
