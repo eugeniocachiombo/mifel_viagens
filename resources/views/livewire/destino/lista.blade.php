@@ -5,9 +5,9 @@
             <table id="minhaTabela" class="table table-bordered datatablePT table-hover">
                 <thead class="bg-dark text-light">
                     <tr class="text-center">
+                        <th>Imagem</th>
                         <th>Nome do Destino</th>
                         <th>Descrição</th>
-                        <th>Imagem</th>
                         <th>Status</th>
                         <th>Ações</th>
                     </tr>
@@ -15,8 +15,6 @@
                 <tbody>
                     @foreach ($destinos as $destino)
                         <tr class="border">
-                            <td class="border">{{ $destino->nome_destino }}</td>
-                            <td class="border">{{ $destino->desc_destino }}</td>
                             <td class="text-center border">
                                 <a href="{{ asset('storage/' . $destino->img_destino) }}"> 
                                     <img
@@ -24,6 +22,8 @@
                                         alt="{{ $destino->nome_destino }}" style="width: 100px; height: 100px">
                                 </a>
                             </td>
+                            <td class="border text-center">{{ $destino->nome_destino }}</td>
+                            <td class="border" style="white-space: pre-wrap">{{ $destino->desc_destino }}</td>
                             <td class="text-center border">
                                 @if ($destino->status_destino)
                                     <span class="badge bg-success">Ativo</span>
