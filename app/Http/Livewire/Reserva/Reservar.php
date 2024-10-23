@@ -2,18 +2,20 @@
 
 namespace App\Http\Livewire\Reserva;
 
+use App\Models\Carrinho;
 use App\Models\Destino;
 use App\Models\Destinosviagem;
 use App\Models\Pacotehospedagem;
 use App\Models\Pacoterefeicao;
+use App\Models\Reservas;
 use App\Models\Tipoviagem;
 use App\Models\Tipoviagem_viagens;
 use App\Models\Viagem;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Reservar extends Component
 {
-    public $num_viajantes;
     public $pacotesViagem, $viagemEscolhida, $infoViagem;
 
     public $tipoviagens, $destinos, $cod_destino, $cod_tipoviagem;
@@ -22,7 +24,31 @@ class Reservar extends Component
     public $pacotesRefeicao, $pacoteRefId, $pacoteRefArrayEscolha, $temPacRef = false;
     public $precoFinalHosp = [], $precoFinal = 0, $precoFinalRef = [];
 
+    public $data_resevada;
+    public $num_viajantes;
+    public $total_reserva;
     public $numMaxVaga;
+
+    protected $rules = [
+        'cod_destino' => 'required',
+        'cod_tipoviagem' => 'required',
+        'pacoteHospId' => 'required',
+        'pacoteRefId' => 'required',
+        'data_resevada' => 'required|date|after:today',
+        'num_viajantes' => 'required|integer|min:1|max:{$this->numMaxVaga}',
+    ];
+
+    protected $messages = [
+        'cod_destino.required' => 'Por favor, selecione um destino.',
+        'cod_tipoviagem.required' => 'Por favor, selecione um tipo de viagem.',
+        'pacoteHospId.required' => 'Por favor, selecione um pacote de hospedagem.',
+        'pacoteRefId.required' => 'Por favor, selecione um pacote de refeição.',
+        'data_resevada.required' => 'Por favor, selecione uma data para a reserva.',
+        'data_resevada.after' => 'A data deve ser futura.',
+        'num_viajantes.required' => 'Por favor, informe o número de viajantes.',
+        'num_viajantes.min' => 'O número mínimo de viajantes é 1.',
+        'num_viajantes.max' => 'O número máximo de viajantes é {$this->numMaxVaga}.',
+    ];
 
     public function mount()
     {
@@ -77,18 +103,13 @@ class Reservar extends Component
     public function autoPreencher()
     {
         if ($this->viagemEscolhida != null) {
-
             $this->infoViagem = Viagem::where("id", $this->viagemEscolhida)->first();
             $destinoViagem = Destinosviagem::where("cod_viagens_dv", $this->infoViagem->id)->first();
             $tipoViagem_v = Tipoviagem_viagens::where("cod_viagens", $this->infoViagem->id)->first();
+
             $this->cod_destino = $destinoViagem->cod_destinos_dv;
             $this->cod_tipoviagem = $tipoViagem_v->cod_tipoviagem;
-
             $this->precoFinal = $this->infoViagem->preco_viagem;
-            /*$this->dia_itinerario = $this->infoViagem->dia_itinerario;
-            $this->desc_itinerario = $this->infoViagem->desc_itinerario;
-            $this->duracao_viagem = $this->infoViagem->duracao_viagem;
-            $this->preco_viagem = $this->infoViagem->preco_viagem;*/
             $this->precoFinal = $this->infoViagem->preco_viagem + end($this->precoFinalHosp)["hospedagem"] + end($this->precoFinalRef)["refeicao"];
         }
     }
@@ -96,42 +117,58 @@ class Reservar extends Component
     public function mudarPrecario()
     {
         if ($this->cod_tipoviagem != null && $this->cod_destino != null && $this->viagemEscolhida != null) {
-            $novoInfoPacote = Viagem::where("id_destino", $this->cod_destino)
-                ->where("id_tipoviagem", $this->cod_tipoviagem)
+            $novoInfoPacote = Viagem::select("viagems.*")
+                ->join("destinosviagems", "viagems.id", "=", "destinosviagems.cod_viagens_dv")
+                ->join("tipoviagem_viagens", "viagems.id", "=", "tipoviagem_viagens.cod_viagens")
+                ->where("cod_destinos_dv", $this->cod_destino)
+                ->where("cod_tipoviagem", $this->cod_tipoviagem)
                 ->first();
-            $this->viagemEscolhida = $novoInfoPacote->id;
-            $this->precoFinal = $novoInfoPacote->preco_viagem + end($this->precoFinalHosp)["hospedagem"] + end($this->precoFinalRef)["refeicao"];
+
+            if ($novoInfoPacote) {
+                $this->viagemEscolhida = $novoInfoPacote->id;
+                $this->precoFinal = $novoInfoPacote->preco_viagem + end($this->precoFinalHosp)["hospedagem"] + end($this->precoFinalRef)["refeicao"];
+            } else {
+                $this->emit('alerta', ['mensagem' => 'Pacote não disponível', 'icon' => 'warning', 'tempo' => 4000]);
+            }
         }
     }
 
-    public function reservar()
+    public function adicionarAoCarrinho()
     {
-        /* Reservas::create([
-        'cod_viagem' => $this->cod_viagem,
-        'data_resevada' => $this->data_resevada,
-        'num_viajantes' => $this->num_viajantes,
-        'total_reserva' => $this->total_reserva,
-        'status_reservas' => $this->status_reservas,
-        'id_usuario' => Auth::user()->id,
-        ]);*/
+        $this->validate();
+        /* $ultimoRegistro = Reservas::select("id")->orderBy("id", "desc")->first();
+        $ultimoId = $ultimoRegistro ? $ultimoRegistro : 1;
+        $char = chr(rand(65, 90));
+        $num = rand(00,99);
+        $codAleatorio = $num . $char . $char . $ultimoId;*/
 
-         /*
-        Carrinho::create([
-        "id_usuario" => Auth::user()->id,
-        "id_pacote_viagems" => $this->viagemEscolhida,
-        "id_pacotehospedagems" => $this->pacoteHospId,
-        "id_pacoterefeicaos" =>$this->pacoteRefId,
-        "id_viagem" => $viagem->id
+        $reserva = Reservas::create([
+            "cod_viagem" => $this->viagemEscolhida,
+            "data_resevada" => $this->data_resevada,
+            "num_viajantes" => $this->num_viajantes,
+            "total_reserva" => $this->precoFinal,
+            "cod_refeicao_reserva" => $this->pacoteRefId,
+            "cod_hospedagem_reserva" => $this->pacoteHospId,
+            "status_pgt_reserva" => 0,
+            'id_usuario' => Auth::user()->id,
         ]);
-         */
 
-        $this->emit('alerta', ['mensagem' => 'Reserva realizada com sucesso', 'icon' => 'success']);
-        $this->reset();
+        Carrinho::create([
+            "id_usuario" => Auth::user()->id,
+            "id_pacotehospedagems" => $this->pacoteHospId,
+            "id_pacoterefeicaos" => $this->pacoteRefId,
+            "id_reserva" => $reserva->id,
+        ]);
 
+        $this->emit('alerta', ['mensagem' => 'Adicionado ao carrinho com sucesso', 'icon' => 'success', 'tempo' => 4000]);
         $this->limparCampos();
     }
 
-    public function limparCampos(){
+    public function limparCampos()
+    {
+        $this->cod_destino = $this->cod_tipoviagem;
+        $this->data_resevada = $this->num_viajantes = $this->total_reserva = $this->numMaxVaga;
+
         $this->viagemEscolhida = $this->infoViagem = null;
 
         $this->pacoteHospId = $this->pacoteHospArrayEscolha = $this->temPacHosp = false;

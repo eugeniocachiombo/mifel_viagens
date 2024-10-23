@@ -11,7 +11,7 @@
             <div class="form-group">
                 <label for="cod_destino"><i class="fas fa-map-marker-alt pe-2"></i>
                     Selecionar Destino</label>
-                <select class="form-select" id="cod_destino" wire:model="cod_destino" wire:change="mudarPrecario">
+                <select class="form-select" id="cod_destino" wire:model="cod_destino">
                     <option class="d-none">Selecione um Destino
                     </option>
                     @foreach ($destinos as $destino)
@@ -37,7 +37,7 @@
             <div class="form-group">
                 <label for="cod_tipoviagem"><i class="fas fa-plane-departure pe-2"></i> Selecionar
                     Tipo de Viagem</label>
-                <select class="form-select" id="cod_tipoviagem" wire:model="cod_tipoviagem" wire:change="mudarPrecario">
+                <select class="form-select" id="cod_tipoviagem" wire:model="cod_tipoviagem" >
                     <option class="d-none">Selecione um Tipo de
                         Viagem</option>
                     @foreach ($tipoviagens as $tipoviagem)

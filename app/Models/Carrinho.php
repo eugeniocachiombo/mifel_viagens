@@ -11,7 +11,6 @@ class Carrinho extends Model
 
     protected $fillable = [
         "id_usuario",
-        "id_pacote_viagems",
         "id_pacotehospedagems",
         "id_pacoterefeicaos",
         "id_reserva"

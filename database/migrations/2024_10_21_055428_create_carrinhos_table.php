@@ -20,18 +20,12 @@ class CreateCarrinhosTable extends Migration
         Schema::create('carrinhos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_usuario');
-            $table->unsignedBigInteger('id_pacote_viagems');
             $table->unsignedBigInteger('id_pacotehospedagems');
             $table->unsignedBigInteger('id_pacoterefeicaos');
             $table->unsignedBigInteger('id_reserva');
 
             $table->foreign('id_usuario')
                 ->references('id')->on('users')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-
-            $table->foreign('id_pacote_viagems')
-                ->references('id')->on('pacote_viagems')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
