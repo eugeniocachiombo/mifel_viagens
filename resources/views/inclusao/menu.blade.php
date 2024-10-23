@@ -112,6 +112,23 @@
 
         <!-- Novos itens com submenus CRUD -->
         <li class="nav-item nav-category">Actividades e Viagens</li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#actividades" aria-expanded="false"
+                aria-controls="actividades">
+                <i class="menu-icon mdi mdi-format-list-bulleted"></i>
+                <span class="menu-title">Actividades</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="actividades">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"><a class="nav-link" href="{{ route('actividades.cadastrar') }}">Actividades</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('actividades.lista') }}">Listar</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        
         @if (Auth::user()->id_acesso == 1)
             <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#clientes" aria-expanded="false"
@@ -141,23 +158,6 @@
                     </li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('reserva.lista') }}">Listar</a>
                     </li>
-                </ul>
-            </div>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#actividades" aria-expanded="false"
-                aria-controls="actividades">
-                <i class="menu-icon mdi mdi-format-list-bulleted"></i>
-                <span class="menu-title">Actividades</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="actividades">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="actividades/criar.html">Criar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="actividades/listar.html">Listar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="actividades/editar.html">Editar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="actividades/deletar.html">Deletar</a></li>
                 </ul>
             </div>
         </li>
