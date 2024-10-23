@@ -5,9 +5,9 @@
             <table id="minhaTabela" class="table table-bordered datatablePT table-hover">
                 <thead class="bg-dark text-light">
                     <tr class="text-center">
-                        <th>Cliente</th>
                         <th>Título da Viagem</th>
                         <th>Descrição</th>
+                        <th>Preço</th>
                         <th>Dificuldade</th>
                         <th>Status</th>
                         <th>Ações</th>
@@ -16,9 +16,9 @@
                 <tbody>
                     @foreach ($viagens as $viagem)
                         <tr class="border">
-                            <td class="border">{{ $this->buscarUsuario($viagem->id_usuario)->name }}</td>
                             <td class="border">{{ $viagem->titulo_viagem }}</td>
                             <td class="border">{{ $viagem->desc_viagem }}</td>
+                            <td class="border">{{ number_format($viagem->preco_viagem, 2, ",", ".") }} Kz</td>
                             <td class="border">{{ $this->buscarDificuldade($viagem->cod_dificuldade)->nome_dificuldadeViagem }}</td>
                             <td class="text-center border">
                                 @if ($viagem->status_viagem)
