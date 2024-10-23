@@ -8,11 +8,11 @@ use App\Models\Destinosviagem;
 use App\Models\DificuldadeViagem;
 use App\Models\Pacotehospedagem;
 use App\Models\Pacoterefeicao;
-use App\Models\PacoteViagem;
 use App\Models\Reservas;
 use App\Models\Tipoviagem;
 use App\Models\Tipoviagem_viagens;
 use App\Models\Viagem;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use DateTime;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -32,19 +32,37 @@ class Confirmar extends Component
         $carrinho = Carrinho::find($id_carrinho);
         $reserva = Reservas::find($carrinho->id_reserva);
         $codReserva = $this->gerarCodReserva();
+
         $reserva->update([
             "cod_reserva" => $codReserva,
             "status_reservas" => 'Reservado',
         ]);
+
+        // Gerar PDF
+        $pdf = FacadePdf::loadView('pdf.comprovativo', ['reserva' => $reserva, 'carrinho' => $carrinho]);
+        $pdfDirectory = public_path('pdfs');
+
+// Verificar se o diretório existe e, se não, criá-lo
+        if (!file_exists($pdfDirectory)) {
+            mkdir($pdfDirectory, 0755, true); // 0755 é a permissão padrão
+        }
+
+        $pdfPath = "$pdfDirectory/reserva_$codReserva.pdf";
+        $pdf->save($pdfPath);
+
         $this->emit('alerta', ['mensagem' => 'Reserva feita com sucesso', 'icon' => 'success', 'tempo' => 4000]);
         $carrinho->delete();
+
+        // Retornar ou redirecionar, se necessário
+        return response()->download($pdfPath);
     }
 
-    public function gerarCodReserva(){
+    public function gerarCodReserva()
+    {
         $ultimoRegistro = Reservas::select("id")->orderBy("id", "desc")->first();
         $ultimoId = $ultimoRegistro ? $ultimoRegistro->id + 1 : 1;
         $char = chr(rand(65, 90));
-        return  Auth::user()->id . $char . $char . $ultimoId;
+        return Auth::user()->id . $char . $char . $ultimoId;
     }
 
     public function cancelar($id_carrinho)
