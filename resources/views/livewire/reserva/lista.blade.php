@@ -11,9 +11,7 @@
                         <th>Pacote de Viagem</th>
                         <th>Data da Reserva</th>
                         <th>Valor Total</th>
-                        @if (Auth::user()->id_acesso == 1)
-                            <th>Ações</th>
-                        @endif
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,19 +32,20 @@
                                     <b>{{ number_format($reserva->total_reserva, 2, ',', '.') }} kz</b>
                                 </h6>
                             </td>
-                            @if (Auth::user()->id_acesso == 1)
-                                <td class="text-center border">
-                                    <button class="btn btn-success btn-sm"
-                                        wire:click.prevent='confirmar({{ $reserva->id }})'>
-                                        <i class="fas fa-check"></i> Confirmar
-                                    </button>
-                                    &nbsp;
+                            <td class="text-center border">
+                                @if (Auth::user()->id_acesso == 1)
                                     <button class="btn btn-danger btn-sm"
                                         wire:click.prevent='cancelar({{ $reserva->id }})'>
                                         <i class="fas fa-times"></i> Cancelar
                                     </button>
-                                </td>
-                            @endif
+                                @endif
+                                
+                                @if (Auth::user()->id_acesso == 2)
+                                    <a href="{{ url("/download/{$reserva->cod_reserva}") }}">
+                                        Aceder PDF
+                                    </a>
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
