@@ -19,12 +19,12 @@
 
         <div class="statistics-card">
             <i class="mdi mdi-airplane icon"></i>
-            <p class="statistics-title">Viagens</p>
+            <p class="statistics-title">Pacotes Disponíveis</p>
             <h3 class="rate-percentage">{{ count($this->viagens) }}</h3>
             <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>-0.5%</span></p>
         </div>
 
-        <div class="statistics-card d-none d-md-block">
+        <div class="statistics-card ">
             <i class="mdi mdi-bookmark icon"></i>
             <p class="statistics-title">Reservas</p>
             <h3 class="rate-percentage">{{ count($this->reservas) }}</h3>

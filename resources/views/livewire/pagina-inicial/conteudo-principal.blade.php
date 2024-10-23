@@ -8,28 +8,39 @@
             </div>
             <div class="col d-flex justify-content-center mb-4">
                 <h1 class="font-weight-bold d-none d-md-flex" style="font-family: 'Arial', sans-serif;">
-                        <i class="fas fa-plane me-2"></i> 
+                    <i class="fas fa-plane me-2"></i>
                     Conheça o Destino...
                 </h1>
 
                 <h2 class="font-weight-bold d-flex d-md-none" style="font-family: 'Arial', sans-serif;">
-                        <i class="fas fa-plane me-2"></i> 
+                    <i class="fas fa-plane me-2"></i>
                     Conheça o Destino...
                 </h2>
             </div>
 
-            <div class="col d-flex justify-content-between button-container">
-                <a href="{{ route('viagem.cadastrar') }}">
-                    <button class="btn btn-primary text-white  ">
-                        <i class="fas fa-tag me-2"></i>Criar Pacote
-                    </button>
-                </a>
-                <a href="{{ route('reserva.reservar') }}">
-                    <button class="btn btn-success text-white  ">
-                        <i class="fas fa-bookmark me-2"></i> Reservar Pacote
-                    </button>
-                </a>
-            </div>
+            @if (Auth::user() && Auth::user()->id_acesso == 1)
+                <div class="col d-flex justify-content-between button-container">
+                    <a href="{{ route('viagem.cadastrar') }}">
+                        <button class="btn btn-primary text-white  ">
+                            <i class="fas fa-tag me-2"></i>Criar Pacote
+                        </button>
+                    </a>
+
+                    <a href="{{ route('reserva.reservar') }}">
+                        <button class="btn btn-success text-white  ">
+                            <i class="fas fa-bookmark me-2"></i> Reservar Pacote
+                        </button>
+                    </a>
+                </div>
+            @else
+                <div class="col d-flex justify-content-end button-container">
+                    <a href="{{ route('reserva.reservar') }}">
+                        <button class="btn btn-success text-white  ">
+                            <i class="fas fa-bookmark me-2"></i> Reservar Pacote
+                        </button>
+                    </a>
+                </div>
+            @endif
         </div>
 
         <div class="col-12 bg-primary text-white text-center p-4 mb-4">
@@ -112,7 +123,7 @@
     </div>
 
     <div class="row mb-4 bg-primary p-4 ">
-        <div class="col-4 col-md-4 p-2">
+        <div class="col-12 col-md-4 p-2">
             <div class="card text-center">
                 <i class="fas fa-dollar-sign fa-3x p-3 text-danger"></i>
                 <div class="card-body">
@@ -121,7 +132,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-4 col-md-4 p-2 ">
+        <div class="col-12 col-md-4 p-2 ">
             <div class="card text-center">
                 <i class="fas fa-star fa-3x p-3 text-danger"></i>
                 <div class="card-body">
@@ -130,7 +141,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-4 col-md-4 p-2 ">
+        <div class="col-12 col-md-4 p-2 ">
             <div class="card text-center">
                 <i class="fas fa-crown fa-3x p-3 text-danger"></i>
                 <div class="card-body">
