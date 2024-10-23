@@ -9,17 +9,18 @@
             <div class="card-body">
                 <div class="row">
                     {{-- Pacotes --}}
+                    @php
+                        $reserva = $this->buscarReserva($carrinho->id_reserva);
+                        $pacoteViagem = $this->buscarViagem($reserva->id);
+                    @endphp
                     <div class="border col-12 col-md-8">
                         {{-- Pacote viagem --}}
-                        @if ($this->buscarPacoteViagem($carrinho->id_pacote_viagems))
+                        @if ($this->buscarReserva($carrinho->id_reserva))
                             <div class="row bg-dark text-light mb-4 p-3">
-                                @php
-                                    $pacoteViagem = $this->buscarPacoteViagem($carrinho->id_pacote_viagems);
-                                @endphp
                                 <div class="col text-center">
                                     <span class="h4">
                                         <i class="fas fa-plane-departure pe-2"></i>
-                                        {{ $pacoteViagem->titulo_pacote }}
+                                        {{ $pacoteViagem->titulo_viagem }}
                                     </span>
                                 </div>
                                 <div class="container border p-4">
@@ -27,13 +28,13 @@
                                         <div class="col-12 col-md-6 border pt-3 pb-3">
                                             <strong>Descrição:</strong>
                                             <div class="col bg-light text-dark p-2">
-                                                {{ $pacoteViagem->desc_pacote }}
+                                                {{ $pacoteViagem->desc_viagem }}
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-6 border pt-3 pb-3">
                                             <strong>Preço:</strong>
                                             <div class="col bg-light text-dark p-2">
-                                                {{ number_format($pacoteViagem->preco_pacote, 2, ',', '.') }} kz
+                                                {{ number_format($pacoteViagem->preco_viagem, 2, ',', '.') }} kz
                                             </div>
                                         </div>
                                     </div>
@@ -44,8 +45,8 @@
                                             <strong>Destino:</strong>
                                             <div class="col bg-light text-dark p-2">
                                                 @php
-                                                    $id_destino = $pacoteViagem->id_destino;
-                                                    $destino = $this->buscarDestino($id_destino);
+                                                    $destinoViagem = $this->buscarDestinoViagem($pacoteViagem->id);
+                                                    $destino = $this->buscarDestino($destinoViagem->cod_destinos_dv);
                                                 @endphp
                                                 {{ $destino->nome_destino }}
                                             </div>
@@ -54,8 +55,10 @@
                                             <strong>Tipo de Viagem:</strong>
                                             <div class="col bg-light text-dark p-2">
                                                 @php
-                                                    $id_tipoViagem = $pacoteViagem->id_tipoviagem;
-                                                    $tipoViagem = $this->buscarTipoViagem($id_tipoViagem);
+                                                    $tipoViagem_v = $this->buscarTipoViagemViagens($pacoteViagem->id);
+                                                    $tipoViagem = $this->buscarTipoViagem(
+                                                        $tipoViagem_v->cod_tipoviagem,
+                                                    );
                                                 @endphp
                                                 {{ $tipoViagem->nome_tipoViagem }}
                                             </div>
@@ -135,10 +138,10 @@
                     </div>
 
                     {{-- Viagem --}}
-                    @if ($this->buscarViagem($carrinho->id_viagem))
+                    @if ($this->buscarViagem($pacoteViagem->id))
                         <div class="col-12 col-md-4">
                             @php
-                                $viagem = $this->buscarViagem($carrinho->id_viagem);
+                                $viagem = $this->buscarViagem($pacoteViagem->id);
                             @endphp
                             <div class="h3 text-primary text-center">
                                 <b>{{ $viagem->titulo_viagem }}</b>
@@ -183,7 +186,8 @@
         @empty
             <hr>
             <div class="card-body text-center">
-                <span class="alert alert-info text-dark " ><b class="h3">Nenhuma informação adicionada ao carrinho</b></span>
+                <span class="alert alert-info text-dark "><b class="h3">Nenhuma informação adicionada ao
+                        carrinho</b></span>
             </div>
             <hr>
         @endforelse

@@ -9,6 +9,7 @@ use App\Models\DificuldadeViagem;
 use App\Models\Pacotehospedagem;
 use App\Models\Pacoterefeicao;
 use App\Models\PacoteViagem;
+use App\Models\Reservas;
 use App\Models\Tipoviagem;
 use App\Models\Tipoviagem_viagens;
 use App\Models\Viagem;
@@ -61,18 +62,29 @@ class Confirmar extends Component
         $this->emit('alerta', ['mensagem' => 'Viagem cancelada', 'icon' => 'warning', 'tempo' => 4000]);
     }
 
-    public function buscarPacoteViagem($id)
+    public function buscarReserva($id)
     {
-        return PacoteViagem::find($id);
+        return Reservas::find($id);
     }
 
     public function buscarDestino($id)
     {
         return Destino::find($id);
     }
+
+    public function buscarDestinoViagem($idViagem)
+    {
+        return Destinosviagem::where("cod_viagens_dv", $idViagem)->first();
+    }
+
     public function buscarTipoViagem($id)
     {
         return Tipoviagem::find($id);
+    }
+
+    public function buscarTipoViagemViagens($idViagem)
+    {
+        return Tipoviagem_viagens::where("cod_viagens", $idViagem)->first();
     }
 
     public function buscarPacoteHospedagem($id)
