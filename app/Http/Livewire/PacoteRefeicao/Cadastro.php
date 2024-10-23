@@ -27,11 +27,13 @@ class Cadastro extends Component
     public function cadastrar()
     {
         $this->validate();
+        $preco1 = str_replace(".", "", $this->preco_pacoteRefeicao);
+        $preco2 = str_replace(",", ".", $preco1);
 
         Pacoterefeicao::create([
             'titulo_pacoteRefeicao' => $this->titulo_pacoteRefeicao,
             'desc_pacoteRefeicao' => $this->desc_pacoteRefeicao,
-            'preco_pacoteRefeicao' => $this->preco_pacoteRefeicao
+            'preco_pacoteRefeicao' => $preco2
         ]);
 
         $this->emit('alerta', ['mensagem' => 'Pacote de Refeição cadastrado com sucesso', 'icon' => 'success']);

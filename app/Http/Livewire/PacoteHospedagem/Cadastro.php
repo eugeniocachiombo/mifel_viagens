@@ -17,7 +17,7 @@ class Cadastro extends Component
         'titulo_pacoteHospedagem' => 'required|string|max:50',
         'desc_pacoteHospedagem' => 'required|string|max:200',
         'preco_pacoteHospedagem' => 'required|numeric|min:0.01',
-        'max_qtd_pessoas' => 'nullable|integer|min:1',
+        'max_qtd_pessoas' => 'required|integer|min:1',
     ];
 
     protected $messages = [
@@ -33,6 +33,7 @@ class Cadastro extends Component
         'preco_pacoteHospedagem.numeric' => 'O preço do pacote de hospedagem deve ser um número.',
         'preco_pacoteHospedagem.min' => 'O preço do pacote de hospedagem deve ser pelo menos 0,01.',
     
+        'max_qtd_pessoas.required' => 'A máxima quantidade de pessoas é obrigatório.',
         'max_qtd_pessoas.integer' => 'A máxima quantidade de pessoas deve ser um número inteiro.',
         'max_qtd_pessoas.min' => 'A máxima quantidade de pessoas deve ser pelo menos 1.',
     ];
@@ -41,11 +42,13 @@ class Cadastro extends Component
     public function cadastrar()
     {
         $this->validate();
+        $preco1 = str_replace(".", "", $this->preco_pacoteHospedagem);
+        $preco2 = str_replace(",", ".", $preco1);
 
         Pacotehospedagem::create([
             'titulo_pacoteHospedagem' => $this->titulo_pacoteHospedagem,
             'desc_pacoteHospedagem' => $this->desc_pacoteHospedagem,
-            'preco_pacoteHospedagem' => $this->preco_pacoteHospedagem,
+            'preco_pacoteHospedagem' => $preco2,
             'max_qtd_pessoas' => $this->max_qtd_pessoas
         ]);
 

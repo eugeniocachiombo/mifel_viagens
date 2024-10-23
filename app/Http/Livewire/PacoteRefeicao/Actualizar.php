@@ -41,11 +41,13 @@ class Actualizar extends Component
     public function actualizar()
     {
         $this->validate();
+        $preco1 = str_replace(".", "", $this->preco_pacoteRefeicao);
+        $preco2 = str_replace(",", ".", $preco1);
 
         Pacoterefeicao::where('id', $this->id_pacoteRefeicao)->update([
             'titulo_pacoteRefeicao' => $this->titulo_pacoteRefeicao,
             'desc_pacoteRefeicao' => $this->desc_pacoteRefeicao,
-            'preco_pacoteRefeicao' => $this->preco_pacoteRefeicao,
+            'preco_pacoteRefeicao' => $preco2,
             'status_pacoteRefeicao' => $this->status_pacoteRefeicao,
         ]);
 
