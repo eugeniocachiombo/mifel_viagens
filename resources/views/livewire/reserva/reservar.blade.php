@@ -79,15 +79,8 @@
                                                         });
                                                     </script>
                                                 </form>
-
-
                                             </div>
                                         </div>
-
-                                        {{-- Modal Login --}}
-                                        @if ($modal)
-                                            @include('livewire/reserva/inclusao-cadastro/modal-login')
-                                        @endif
                                     </div>
                                 </div>
                             </div>

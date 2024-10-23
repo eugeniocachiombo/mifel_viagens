@@ -38,6 +38,7 @@ class Confirmar extends Component
         ]);
         $this->emit('alerta', ['mensagem' => 'Reserva feita com sucesso', 'icon' => 'success', 'tempo' => 4000]);
         
+        
         $hospedagem = $this->buscarPacoteHospedagem($reserva->cod_hospedagem_reserva);
         $refeicao = $this->buscarPacoteRefeicao($reserva->cod_refeicao_reserva);
         $viagem = $this->buscarViagem($reserva->cod_viagem);
@@ -46,6 +47,8 @@ class Confirmar extends Component
         $tipoViagem_v = Tipoviagem_viagens::where("cod_viagens", $viagem->id)->first();
         $tipoViagem = Tipoviagem::find($tipoViagem_v->cod_tipoviagem);
         $data = $this->formatarData($reserva->data_resevada);
+        
+        
         // PDF
         $pdf = FacadePdf::loadView('pdf.comprovativo', [
             'reserva' => $reserva, 
