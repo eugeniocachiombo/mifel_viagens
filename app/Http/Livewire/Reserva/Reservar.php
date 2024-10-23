@@ -12,6 +12,7 @@ use App\Models\Tipoviagem;
 use App\Models\Tipoviagem_viagens;
 use App\Models\Viagem;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Livewire\Component;
 
 class Reservar extends Component
@@ -28,6 +29,7 @@ class Reservar extends Component
     public $num_viajantes;
     public $total_reserva;
     public $numMaxVaga;
+    public $modal = false;
 
     protected $rules = [
         'cod_destino' => 'required',
@@ -136,28 +138,32 @@ class Reservar extends Component
     public function adicionarAoCarrinho()
     {
         $this->validate();
+        
+        if (Auth::user()) {
+            $reserva = Reservas::create([
+                "cod_viagem" => $this->viagemEscolhida,
+                "data_resevada" => $this->data_resevada,
+                "num_viajantes" => $this->num_viajantes,
+                "total_reserva" => $this->precoFinal,
+                "cod_refeicao_reserva" => $this->pacoteRefId,
+                "cod_hospedagem_reserva" => $this->pacoteHospId,
+                "status_reservas" => 'Pendente',
+                "status_pgt_reserva" => 0,
+                'id_usuario' => Auth::user()->id,
+            ]);
 
-        $reserva = Reservas::create([
-            "cod_viagem" => $this->viagemEscolhida,
-            "data_resevada" => $this->data_resevada,
-            "num_viajantes" => $this->num_viajantes,
-            "total_reserva" => $this->precoFinal,
-            "cod_refeicao_reserva" => $this->pacoteRefId,
-            "cod_hospedagem_reserva" => $this->pacoteHospId,
-            "status_reservas" => 'Pendente',
-            "status_pgt_reserva" => 0,
-            'id_usuario' => Auth::user()->id,
-        ]);
+            Carrinho::create([
+                "id_usuario" => Auth::user()->id,
+                "id_pacotehospedagems" => $this->pacoteHospId,
+                "id_pacoterefeicaos" => $this->pacoteRefId,
+                "id_reserva" => $reserva->id,
+            ]);
 
-        Carrinho::create([
-            "id_usuario" => Auth::user()->id,
-            "id_pacotehospedagems" => $this->pacoteHospId,
-            "id_pacoterefeicaos" => $this->pacoteRefId,
-            "id_reserva" => $reserva->id,
-        ]);
-
-        $this->emit('alerta', ['mensagem' => 'Adicionado ao carrinho com sucesso', 'icon' => 'success', 'tempo' => 4000]);
-        $this->limparCampos();
+            $this->emit('alerta', ['mensagem' => 'Adicionado ao carrinho com sucesso', 'icon' => 'success', 'tempo' => 4000]);
+            $this->limparCampos();
+        } else {
+            $this->emit('loginTab'); 
+        }
     }
 
     public function limparCampos()
@@ -174,6 +180,7 @@ class Reservar extends Component
         array_push($this->precoFinalHosp, ["hospedagem" => 0]);
         array_push($this->precoFinalRef, ["refeicao" => 0]);
         $this->numMaxVaga = null;
+        $this->modal = false;
     }
 
 }

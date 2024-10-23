@@ -65,14 +65,29 @@
 
                                                     <div class="col-6 col-md-3 mt-2">
                                                         <button type="submit"
-                                                        
                                                             class="btn btn-primary text-light p-3 animated-button"
-                                                            style="width: 100%; font-size: 16px"> <i
-                                                                class="mdi mdi-cart"></i> Adicionar ao Carrinho</button>
+                                                            style="width: 100%; font-size: 16px">
+                                                            <i class="mdi mdi-cart"></i> Adicionar ao Carrinho
+                                                        </button>
                                                     </div>
+
+                                                    <script>
+                                                        document.addEventListener('livewire:load', function() {
+                                                            Livewire.on('loginTab', function(data) {
+                                                            window.open('/usuario/logar', '_blank');
+                                                            });
+                                                        });
+                                                    </script>
                                                 </form>
+
+
                                             </div>
                                         </div>
+
+                                        {{-- Modal Login --}}
+                                        @if ($modal)
+                                            @include('livewire/reserva/inclusao-cadastro/modal-login')
+                                        @endif
                                     </div>
                                 </div>
                             </div>
