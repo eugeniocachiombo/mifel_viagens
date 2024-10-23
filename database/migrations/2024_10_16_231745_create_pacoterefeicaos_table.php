@@ -17,12 +17,13 @@ class CreatePacoterefeicaosTable extends Migration
         Schema::create('pacoterefeicaos', function (Blueprint $table) {
             $table->id('id'); 
             $table->string('titulo_pacoteRefeicao');
-            $table->text('desc_pacoteRefeicao')->default("nenhuma");
+            $table->text('desc_pacoteRefeicao')->nullable();
             $table->float('preco_pacoteRefeicao')->nullable(); 
             $table->integer('status_pacoteRefeicao')->default(1);
             $table->timestamps();
         });
 
+        $this->autoCadastrar("Nenhum", "", 0, 0);
         $this->autoCadastrar("Refeição A", "...", rand(1000.00,10000.00));
         $this->autoCadastrar("Refeição B", "...", rand(1000.00,10000.00));
         $this->autoCadastrar("Refeição C", "...", rand(1000.00,10000.00));

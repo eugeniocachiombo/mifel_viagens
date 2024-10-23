@@ -162,7 +162,7 @@ class Reservar extends Component
 
     public function limparCampos()
     {
-        $this->cod_destino = $this->cod_tipoviagem;
+        $this->cod_destino = $this->cod_tipoviagem = null;
         $this->data_resevada = $this->num_viajantes = $this->total_reserva = $this->numMaxVaga;
 
         $this->viagemEscolhida = $this->infoViagem = null;

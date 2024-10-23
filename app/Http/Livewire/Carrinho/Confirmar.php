@@ -32,28 +32,41 @@ class Confirmar extends Component
         $carrinho = Carrinho::find($id_carrinho);
         $reserva = Reservas::find($carrinho->id_reserva);
         $codReserva = $this->gerarCodReserva();
-
         $reserva->update([
             "cod_reserva" => $codReserva,
             "status_reservas" => 'Reservado',
         ]);
-
-        // Gerar PDF
-        $pdf = FacadePdf::loadView('pdf.comprovativo', ['reserva' => $reserva, 'carrinho' => $carrinho]);
+        $this->emit('alerta', ['mensagem' => 'Reserva feita com sucesso', 'icon' => 'success', 'tempo' => 4000]);
+        
+        $hospedagem = $this->buscarPacoteHospedagem($reserva->cod_hospedagem_reserva);
+        $refeicao = $this->buscarPacoteRefeicao($reserva->cod_refeicao_reserva);
+        $viagem = $this->buscarViagem($reserva->cod_viagem);
+        $destino_v = Destinosviagem::where("cod_viagens_dv", $viagem->id)->first();
+        $destino = Destino::find($destino_v->cod_destinos_dv);
+        $tipoViagem_v = Tipoviagem_viagens::where("cod_viagens", $viagem->id)->first();
+        $tipoViagem = Tipoviagem::find($tipoViagem_v->cod_tipoviagem);
+        $data = $this->formatarData($reserva->data_resevada);
+        // PDF
+        $pdf = FacadePdf::loadView('pdf.comprovativo', [
+            'reserva' => $reserva, 
+            'carrinho' => $carrinho,
+            'hospedagem' => $hospedagem,
+            'refeicao' => $refeicao,
+            'viagem' => $viagem,
+            'destino' => $destino,
+            'tipoViagem' => $tipoViagem,
+            'usuario' => Auth::user(),
+            'data' => $data,
+        ]);
         $pdfDirectory = public_path('pdfs');
 
-// Verificar se o diretório existe e, se não, criá-lo
         if (!file_exists($pdfDirectory)) {
-            mkdir($pdfDirectory, 0755, true); // 0755 é a permissão padrão
+            mkdir($pdfDirectory, 0755, true);
         }
 
-        $pdfPath = "$pdfDirectory/reserva_$codReserva.pdf";
+        $pdfPath = "$pdfDirectory/comprovativo_reserva_$codReserva.pdf";
         $pdf->save($pdfPath);
-
-        $this->emit('alerta', ['mensagem' => 'Reserva feita com sucesso', 'icon' => 'success', 'tempo' => 4000]);
         $carrinho->delete();
-
-        // Retornar ou redirecionar, se necessário
         return response()->download($pdfPath);
     }
 

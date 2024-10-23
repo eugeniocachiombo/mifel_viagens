@@ -9,7 +9,7 @@
             <select class="form-select" id="pacoteRefId" 
             wire:model="pacoteRefId" wire:change="pacoteRefListar">
                 <option class="d-none">Selecione um Pacote</option>
-                <option value="">Nenhum</option>
+                
                 @foreach ($pacotesRefeicao as $pacote)
                     <option value="{{ $pacote->id }}">{{ $pacote->titulo_pacoteRefeicao }}</option>
                 @endforeach

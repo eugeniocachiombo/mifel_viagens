@@ -17,12 +17,13 @@ class CreatePacotehospedagemsTable extends Migration
         Schema::create('pacotehospedagems', function (Blueprint $table) {
             $table->id();
             $table->string('titulo_pacoteHospedagem', 50)->default('0');
-            $table->text('desc_pacoteHospedagem')->default("nenhuma");
+            $table->text('desc_pacoteHospedagem')->nullable();
             $table->float('preco_pacoteHospedagem')->default(1);
             $table->integer('status_pacoteHospedagem')->default(1);
             $table->integer('max_qtd_pessoas')->nullable();
             $table->timestamps();
         });
+        $this->autoCadastrar("Nenhum", "", 0, 0);
         $this->autoCadastrar("Hospedagem Hotel A", "...", rand(10000.00,100000.00), rand(1,3));
         $this->autoCadastrar("Hospedagem Hotel B", "...", rand(10000.00,100000.00), rand(1,3));
         $this->autoCadastrar("Hospedagem Hotel C", "...", rand(10000.00,100000.00), rand(1,3));

@@ -84,7 +84,6 @@ Route::prefix("carrinho")->name("carrinho.")->group(function () {
     Route::get("/confirmar", [CarrinhoController::class, "confirmar"])->name("confirmar")->middleware("usuario.logado");
 });
 
-
 Route::get("/migrate", function(){
     Artisan::call("migrate");
     return "Informações migradas";

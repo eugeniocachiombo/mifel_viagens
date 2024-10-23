@@ -8,7 +8,7 @@
             <label for="pacoteHospId"><i class="fas fa-tags pe-2"></i> Selecionar Pacote</label>
             <select class="form-select" id="pacoteHospId" wire:model="pacoteHospId" wire:change="pacoteHospListar">
                 <option class="d-none">Selecione um Pacote</option>
-                <option value="">Nenhum</option>
+                
                 @foreach ($pacotesHospedagem as $pacote)
                     <option value="{{ $pacote->id }}">{{ $pacote->titulo_pacoteHospedagem }}</option>
                 @endforeach
