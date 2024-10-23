@@ -127,7 +127,7 @@ class Confirmar extends Component
 
     public function buscarViagem($id)
     {
-        return Viagem::where($id);
+        return Viagem::find($id);
     }
 
     public function buscarDificuldade($id)
