@@ -2,18 +2,14 @@
     {{-- Destinos --}}
     <div class="col-12 col-md-6">
         <div class="col bg-dark text-white mb-3">
-            <label class="ps-2 "><i class="fas fa-plane"></i> Destino
-                da
-                Viagem</label>
+            <label class="ps-2"><i class="fas fa-plane"></i> Destino da Viagem</label>
         </div>
 
         <div class="col-12">
             <div class="form-group">
-                <label for="cod_destino"><i class="fas fa-map-marker-alt pe-2"></i>
-                    Selecionar Destino</label>
+                <label for="cod_destino"><i class="fas fa-map-marker-alt pe-2"></i> Selecionar Destino</label>
                 <select class="form-select" id="cod_destino" wire:model="cod_destino">
-                    <option class="d-none">Selecione um Destino
-                    </option>
+                    <option class="d-none">Selecione um Destino</option>
                     @foreach ($destinos as $destino)
                         <option value="{{ $destino->id }}">
                             {{ $destino->nome_destino }}</option>
@@ -29,17 +25,14 @@
     {{-- Tipo de viagem --}}
     <div class="col-12 col-md-6">
         <div class="col bg-dark text-white mb-3">
-            <label class="ps-2"><i class="fas fa-suitcase"></i> Tipo de
-                Viagem</label>
+            <label class="ps-2"><i class="fas fa-suitcase"></i> Tipo de Viagem</label>
         </div>
 
         <div class="col-12">
             <div class="form-group">
-                <label for="cod_tipoviagem"><i class="fas fa-plane-departure pe-2"></i> Selecionar
-                    Tipo de Viagem</label>
-                <select class="form-select" id="cod_tipoviagem" wire:model="cod_tipoviagem" >
-                    <option class="d-none">Selecione um Tipo de
-                        Viagem</option>
+                <label for="cod_tipoviagem"><i class="fas fa-plane-departure pe-2"></i> Selecionar Tipo de Viagem</label>
+                <select class="form-select" id="cod_tipoviagem" wire:model="cod_tipoviagem">
+                    <option class="d-none">Selecione um Tipo de Viagem</option>
                     @foreach ($tipoviagens as $tipoviagem)
                         <option value="{{ $tipoviagem->id }}">
                             {{ $tipoviagem->nome_tipoViagem }}
@@ -53,3 +46,4 @@
         </div>
     </div>
 </div>
+

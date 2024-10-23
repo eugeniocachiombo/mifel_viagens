@@ -29,7 +29,7 @@
     {{-- Tipo de viagem --}}
     <div class="col-12 col-md-6">
         <div class="col bg-dark text-white mb-3">
-            <label class="ps-2"><i class="fas fa-suitcase"></i> Tipo de
+            <label class="ps-2"><i class="fas fa-plane-departure"></i> Tipo de
                 Viagem</label>
         </div>
 

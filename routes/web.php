@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Actividade\ActividadeController;
 use App\Http\Controllers\Carrinho\CarrinhoController;
 use App\Http\Controllers\Cliente\ClienteController;
 use App\Http\Controllers\Destino\DestinoController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\Reserva\ReservaController;
 use App\Http\Controllers\TipoViagem\TipoViagemController;
 use App\Http\Controllers\Usuario\UsuarioController;
 use App\Http\Controllers\Viagem\ViagemController;
+use App\Models\Actividade;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -78,6 +80,12 @@ Route::prefix("reserva")->name("reserva.")->group(function () {
     Route::get("/reservar", [ReservaController::class, "reservar"])->name("reservar");
     Route::get("/lista", [ReservaController::class, "listar"])->name("lista")->middleware("usuario.logado");
     Route::get("/actualizar/{id}", [ReservaController::class, "actualizar"])->name("actualizar")->middleware("usuario.logado");
+});
+
+Route::prefix("actividades")->name("actividades.")->group(function () {
+    Route::get("/cadastrar", [ActividadeController::class, "cadastrar"])->name("cadastrar")->middleware("usuario.logado");
+    Route::get("/lista", [ActividadeController::class, "listar"])->name("lista")->middleware("usuario.logado");
+    Route::get("/actualizar/{id}", [ActividadeController::class, "actualizar"])->name("actualizar")->middleware("usuario.logado");
 });
 
 Route::prefix("carrinho")->name("carrinho.")->group(function () {

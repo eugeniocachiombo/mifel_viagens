@@ -17,7 +17,7 @@
                                                     <div class="row g-3">
                                                         <div class="col-12 col-md-6">
                                                             <div class="form-group">
-                                                                <label for="titulo_pacoteRefeicao"><i class="fas fa-tag pe-2"></i> Título do Pacote de Refeição</label>
+                                                                <label for="titulo_pacoteRefeicao"><i class="fas fa-heading pe-2"></i> Título do Pacote de Refeição</label>
                                                                 <input type="text" class="form-control" id="titulo_pacoteRefeicao" wire:model="titulo_pacoteRefeicao"
                                                                     placeholder="Título do Pacote de Refeição">
                                                                 @error('titulo_pacoteRefeicao')

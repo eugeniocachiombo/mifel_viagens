@@ -51,6 +51,7 @@
 
     @if (Auth::user())
         <li class="nav-item nav-category">Pacotes</li>
+
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#viagens" aria-expanded="false" aria-controls="viagens">
                 <i class="menu-icon mdi mdi-earth"></i>
@@ -59,12 +60,15 @@
             </a>
             <div class="collapse" id="viagens">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="{{ route('viagem.cadastrar') }}">Cadastrar</a>
-                    </li>
+                    @if (Auth::user()->id_acesso == 1)
+                        <li class="nav-item"><a class="nav-link" href="{{ route('viagem.cadastrar') }}">Criar Pacote</a>
+                        </li>
+                    @endif
                     <li class="nav-item"><a class="nav-link" href="{{ route('viagem.lista') }}">Listar</a></li>
                 </ul>
             </div>
         </li>
+
 
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#pacotehospedagem" aria-expanded="false"
@@ -77,7 +81,7 @@
                 <ul class="nav flex-column sub-menu">
                     @if (Auth::user()->id_acesso == 1)
                         <li class="nav-item"><a class="nav-link"
-                                href="{{ route('pacote.hospedagem.cadastrar') }}">Cadastrar</a>
+                                href="{{ route('pacote.hospedagem.cadastrar') }}">Criar Pacote</a>
                         </li>
                     @endif
                     <li class="nav-item"><a class="nav-link" href="{{ route('pacote.hospedagem.lista') }}">Listar</a>
@@ -97,7 +101,7 @@
                 <ul class="nav flex-column sub-menu">
                     @if (Auth::user()->id_acesso == 1)
                         <li class="nav-item"><a class="nav-link"
-                                href="{{ route('pacote.refeicao.cadastrar') }}">Cadastrar</a>
+                                href="{{ route('pacote.refeicao.cadastrar') }}">Criar Pacote</a>
                         </li>
                     @endif
                     <li class="nav-item"><a class="nav-link" href="{{ route('pacote.refeicao.lista') }}">Listar</a>
@@ -133,7 +137,7 @@
             </a>
             <div class="collapse" id="reservas">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="{{ route('reserva.reservar') }}">Cadastrar</a>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('reserva.reservar') }}">Reservar</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('reserva.lista') }}">Listar</a>
                     </li>

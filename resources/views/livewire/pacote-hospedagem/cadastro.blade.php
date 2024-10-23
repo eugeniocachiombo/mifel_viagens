@@ -20,7 +20,7 @@
                                                         <div class="col-12 col-md-6">
                                                             <div class="form-group">
                                                                 <label for="titulo_pacoteHospedagem"><i
-                                                                        class="fas fa-tag pe-2"></i> Título do Pacote de
+                                                                        class="fas fa-heading pe-2"></i> Título do Pacote de
                                                                     Hospedagem</label>
                                                                 <input type="text" class="form-control"
                                                                     id="titulo_pacoteHospedagem"

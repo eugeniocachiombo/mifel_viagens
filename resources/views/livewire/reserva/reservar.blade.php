@@ -63,7 +63,7 @@
                                                     <hr>
                                                     @include('livewire/reserva/inclusao-cadastro/reserva')
 
-                                                    <div class="col-6 col-md-3 mt-2">
+                                                    <div class="col-12 col-md-3 mt-2">
                                                         <button type="submit"
                                                             class="btn btn-primary text-light p-3 animated-button"
                                                             style="width: 100%; font-size: 16px">

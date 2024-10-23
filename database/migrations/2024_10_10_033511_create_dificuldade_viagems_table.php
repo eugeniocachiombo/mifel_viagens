@@ -23,14 +23,20 @@ class CreateDificuldadeViagemsTable extends Migration
         });
 
         DificuldadeViagem::create([
-            "nome_dificuldadeViagem" => "Nenhuma",
-            "desc_dificuldadeViagem" => "Nenhuma informação",
+            "nome_dificuldadeViagem" => 'Fácil',
+            "desc_dificuldadeViagem" => 'Adequado para todas as idades',
         ]);
 
         DificuldadeViagem::create([
-            "nome_dificuldadeViagem" => "Dificuldade 1",
-            "desc_dificuldadeViagem" => "Dificuldade 2",
+            "nome_dificuldadeViagem" => 'Moderado',
+            "desc_dificuldadeViagem" => 'Requer preparo físico moderado',
         ]);
+
+        DificuldadeViagem::create([
+            "nome_dificuldadeViagem" => 'Difícil',
+            "desc_dificuldadeViagem" => 'Para aventureiros experientes',
+        ]);
+
     }
 
     /**

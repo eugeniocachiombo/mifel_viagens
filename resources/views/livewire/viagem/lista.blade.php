@@ -1,6 +1,6 @@
 <div class="main-panel">
     <div class="content-wrapper">
-        <h4 class="card-title"><i class="fas fa-list pe-2"></i> Listagem de Viagens</h4>
+        <h4 class="card-title"><i class="fas fa-list pe-2"></i> Listagem de Pacotes de Viagens</h4>
         <div class="table-responsive mt-4">
             <table id="minhaTabela" class="table table-bordered datatablePT table-hover">
                 <thead class="bg-dark text-light">

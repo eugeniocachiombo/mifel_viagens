@@ -51,7 +51,7 @@
                     <p class="d-lg-none"> <span class="text-black fw-bold">{{ $logado['nome'] }}
                             {{ $logado['sobrenome'] }}</span></p>
                 @else
-                    <h1 class="welcome-text d-none d-lg-block"> 
+                    <h1 class="welcome-text d-none d-lg-none"> 
                         <span class="text-black fw-bold">@include('inclusao.nome_empresa')</span>
                     </h1>
                     <p class="d-lg-none"> 
@@ -60,7 +60,7 @@
                 @endif
             </li>
         </ul>
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto ">
 
             <li class="nav-item">
                 <form class="search-form" action="#">
@@ -69,7 +69,7 @@
                 </form>
             </li>
 
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown ">
                 <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
                     <style>
                         .badgeCarrinho {

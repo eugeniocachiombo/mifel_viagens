@@ -7,7 +7,7 @@
                     <div class="row g-3">
                         <div class="col-12 col-md-6">
                             <div class="form-group">
-                                <label for="titulo_pacoteHospedagem"><i class="fas fa-tag pe-2"></i> Título do Pacote de
+                                <label for="titulo_pacoteHospedagem"><i class="fas fa-heading pe-2"></i> Título do Pacote de
                                     Hospedagem</label>
                                 <input type="text" class="form-control" id="titulo_pacoteHospedagem"
                                     wire:model="titulo_pacoteHospedagem" placeholder="Título do Pacote de Hospedagem">
