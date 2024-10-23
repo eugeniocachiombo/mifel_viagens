@@ -18,13 +18,14 @@
                     <tbody>
                         @php
                             $reserva = $this->buscarReserva($carrinho->id_reserva);
-                            $pacoteViagem = $this->buscarViagem($reserva->id);
+                            $pacoteViagem = $this->buscarViagem($reserva->cod_viagem);
                             $pacoteHospedagem = $this->buscarPacoteHospedagem($carrinho->id_pacotehospedagems);
                             $pacoteRefeicao = $this->buscarPacoteRefeicao($carrinho->id_pacoterefeicaos);
+                            
                             $totalReserva =
                                 $pacoteViagem->preco_viagem +
                                 $pacoteHospedagem->preco_pacoteHospedagem +
-                                $pacoteRefeicao->preco_pacoteRefeicao;
+                                $pacoteRefeicao->preco_pacoteRefeicao; 
                         @endphp
                         <tr class="border">
                             <td class="border">
@@ -93,8 +94,8 @@
                     </tbody>
                 @endforeach
             </table>
-            @if(count($carrinhos)==0)
-            <h1 class="alert alert-danger text-dark display-1 fw-bold">Nenhuma informação no carrinho</h1>
+            @if (count($carrinhos) == 0)
+                <h1 class="alert alert-danger text-dark display-1 fw-bold">Nenhuma informação no carrinho</h1>
             @endif
         </div>
     </div>

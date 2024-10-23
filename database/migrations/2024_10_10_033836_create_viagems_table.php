@@ -18,7 +18,6 @@ class CreateViagemsTable extends Migration
             $table->string('titulo_viagem')->default('0');
             $table->text('desc_viagem')->default("nenhuma");
             $table->unsignedBigInteger('cod_dificuldade')->nullable();
-            $table->unsignedBigInteger('id_usuario')->nullable();
             $table->integer('EmDestaque_viagem')->default(0);
             $table->integer('duracao_viagem')->default(1);
             $table->integer('vagas_viagem')->nullable();
@@ -30,12 +29,7 @@ class CreateViagemsTable extends Migration
                 ->references('id')->on('dificuldade_viagems')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-
-            $table->foreign('id_usuario')
-                ->references('id')->on('users')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-                $table->timestamps();
+            $table->timestamps();
         });
     }
 
