@@ -15,13 +15,23 @@ class Cadastro extends Component
     protected $rules = [
         'titulo_pacoteRefeicao' => 'required|string|max:50',
         'desc_pacoteRefeicao' => 'required|string|max:200',
-        'preco_pacoteRefeicao' => 'nullable|numeric|min:0.01'
+        'preco_pacoteRefeicao' => 'required'
     ];
 
     protected $messages = [
         'titulo_pacoteRefeicao.required' => 'O título do pacote de refeição é obrigatório.',
+        'titulo_pacoteRefeicao.string' => 'O título do pacote de refeição deve ser uma string.',
+        'titulo_pacoteRefeicao.max' => 'O título do pacote de refeição deve ter no máximo 50 caracteres.',
+    
         'desc_pacoteRefeicao.required' => 'A descrição do pacote de refeição é obrigatória.',
-        'preco_pacoteRefeicao.numeric' => 'O preço deve ser um número válido.'
+        'desc_pacoteRefeicao.string' => 'A descrição do pacote de refeição deve ser uma string.',
+        'desc_pacoteRefeicao.max' => 'A descrição do pacote de refeição deve ter no máximo 200 caracteres.',
+    
+        'preco_pacoteRefeicao.required' => 'O preço do pacote de refeição é obrigatório.',
+        
+        'max_qtd_pessoas.required' => 'A máxima quantidade de pessoas é obrigatório.',
+        'max_qtd_pessoas.integer' => 'A máxima quantidade de pessoas deve ser um número inteiro.',
+        'max_qtd_pessoas.min' => 'A máxima quantidade de pessoas deve ser pelo menos 1.',
     ];
 
     public function cadastrar()

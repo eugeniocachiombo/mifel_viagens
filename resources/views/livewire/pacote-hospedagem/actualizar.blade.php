@@ -33,7 +33,7 @@
                             <div class="form-group">
                                 <label for="preco_pacoteHospedagem"><i class="fas fa-money-bill pe-2"></i> Preço do
                                     Pacote de Hospedagem</label>
-                                <input onkeydown="formatarCampoPreco(this.value)" type="number" step="0.01"
+                                <input onkeydown="formatarCampoPreco(this.value)" type="text" 
                                     class="form-control" id="preco_pacoteHospedagem" wire:model="preco_pacoteHospedagem"
                                     placeholder="Preço do Pacote de Hospedagem">
                                 @error('preco_pacoteHospedagem')

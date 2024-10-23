@@ -40,7 +40,7 @@
                                                         <div class="col-12 col-md-6">
                                                             <div class="form-group">
                                                                 <label for="preco_pacoteRefeicao"><i class="fas fa-money-bill pe-2"></i> Preço do Pacote de Refeição</label>
-                                                                <input onkeydown="formatarCampoPreco(this.value)" type="number" step="0.01" class="form-control" id="preco_pacoteRefeicao" wire:model="preco_pacoteRefeicao"
+                                                                <input onkeydown="formatarCampoPreco(this.value)" type="text" class="form-control" id="preco_pacoteRefeicao" wire:model="preco_pacoteRefeicao"
                                                                     placeholder="Preço do Pacote de Refeição">
                                                                 @error('preco_pacoteRefeicao')
                                                                     <span class="text-danger">{{ $message }}</span>

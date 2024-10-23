@@ -17,7 +17,7 @@ class Actualizar extends Component
     protected $rules = [
         'titulo_pacoteHospedagem' => 'required|string|max:50',
         'desc_pacoteHospedagem' => 'required|string|max:200',
-        'preco_pacoteHospedagem' => 'required|numeric|min:0.01',
+        'preco_pacoteHospedagem' => 'required',
         'max_qtd_pessoas' => 'required|integer|min:1',
     ];
 
@@ -31,9 +31,7 @@ class Actualizar extends Component
         'desc_pacoteHospedagem.max' => 'A descrição do pacote de hospedagem deve ter no máximo 200 caracteres.',
     
         'preco_pacoteHospedagem.required' => 'O preço do pacote de hospedagem é obrigatório.',
-        'preco_pacoteHospedagem.numeric' => 'O preço do pacote de hospedagem deve ser um número.',
-        'preco_pacoteHospedagem.min' => 'O preço do pacote de hospedagem deve ser pelo menos 0,01.',
-    
+      
         'max_qtd_pessoas.required' => 'A máxima quantidade de pessoas é obrigatório.',
         'max_qtd_pessoas.integer' => 'A máxima quantidade de pessoas deve ser um número inteiro.',
         'max_qtd_pessoas.min' => 'A máxima quantidade de pessoas deve ser pelo menos 1.',

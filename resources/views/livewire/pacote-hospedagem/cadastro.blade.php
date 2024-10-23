@@ -52,7 +52,7 @@
                                                                 <label for="preco_pacoteHospedagem"><i
                                                                         class="fas fa-money-bill pe-2"></i> Preço do
                                                                     Pacote de Hospedagem</label>
-                                                                <input type="number" step="0.01"
+                                                                <input type="text" 
                                                                     class="form-control" id="preco_pacoteHospedagem"
                                                                     wire:model="preco_pacoteHospedagem"
                                                                     onkeydown="formatarCampoPreco(this.value)"
