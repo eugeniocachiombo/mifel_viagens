@@ -162,7 +162,7 @@
             <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#tipoViagem" aria-expanded="false"
                     aria-controls="tipoViagem">
-                    <i class="menu-icon mdi mdi-bus"></i>
+                    <i class="menu-icon mdi mdi-airplane-takeoff"></i>
                     <span class="menu-title">Tipo de Viagem</span>
                     <i class="menu-arrow"></i>
                 </a>
