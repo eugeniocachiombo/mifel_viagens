@@ -109,7 +109,6 @@
             </li>
         @endif
 
-
         <!-- Novos itens com submenus CRUD -->
         <li class="nav-item nav-category">Actividades e Viagens</li>
         @if (Auth::user()->id_acesso == 1)

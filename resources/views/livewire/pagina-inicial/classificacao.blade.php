@@ -1,5 +1,5 @@
 <div class="row bg-secondary">
-    @if(Auth::user())
+    @if(Auth::user() && Auth::user()->id_acesso == 1)
     <div class="col-sm-12 d-flex flex-wrap justify-content-between mt-4">
         <div class="statistics-card">
             <i class="mdi mdi-map-marker icon"></i>
@@ -8,14 +8,12 @@
             <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>-0.5%</span></p>
         </div>
 
-        @if (Auth::user()->id_acesso == 1)
         <div class="statistics-card">
             <i class="mdi mdi-account icon"></i>
             <p class="statistics-title">Clientes</p>
             <h3 class="rate-percentage">{{ count($this->clientes) }}</h3>
             <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>-0.5%</span></p>
         </div>
-        @endif
 
         <div class="statistics-card">
             <i class="mdi mdi-airplane icon"></i>
