@@ -23,11 +23,13 @@ class CreatePacotehospedagemsTable extends Migration
             $table->integer('max_qtd_pessoas')->nullable();
             $table->timestamps();
         });
-        $this->autoCadastrar("Nenhum", "", 0, 0);
-        $this->autoCadastrar("Hospedagem Hotel A", "...", rand(10000.00,100000.00), rand(1,3));
-        $this->autoCadastrar("Hospedagem Hotel B", "...", rand(10000.00,100000.00), rand(1,3));
-        $this->autoCadastrar("Hospedagem Hotel C", "...", rand(10000.00,100000.00), rand(1,3));
-        $this->autoCadastrar("Hospedagem Hotel D", "...", rand(10000.00,100000.00), rand(1,3));
+
+        $this->autoCadastrar('Básico - 1 Solteiro', 'N/A', 15000.22, 1);
+        $this->autoCadastrar('Básico - 2 Solteiro', 'N/A', 22000.72, 2);
+        $this->autoCadastrar('Básico - 3 Solteiro', 'N/A', 30000.14, 3);
+        $this->autoCadastrar('Vip - 1 King Size', 'N/A', 25000.18, 2);
+        $this->autoCadastrar('Vip - 2 King Size', 'N/A', 50000.19, 4);
+        $this->autoCadastrar('Vip - 3  King Size', 'N/A', 750000.52, 6);
     }
 
     public function autoCadastrar($titulo, $desc, $preco, $qtd)

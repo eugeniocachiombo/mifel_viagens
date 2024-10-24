@@ -23,11 +23,10 @@ class CreatePacoterefeicaosTable extends Migration
             $table->timestamps();
         });
 
-        $this->autoCadastrar("Nenhum", "", 0, 0);
-        $this->autoCadastrar("Refeição A", "...", rand(1000.00,10000.00));
-        $this->autoCadastrar("Refeição B", "...", rand(1000.00,10000.00));
-        $this->autoCadastrar("Refeição C", "...", rand(1000.00,10000.00));
-        $this->autoCadastrar("Refeição D", "...", rand(1000.00,10000.00));
+        $this->autoCadastrar("Nenhum", "", 0);
+        $this->autoCadastrar('Básico', 'Café da manhã, almoço e jantar.', rand(1000.00,10000.00));
+        $this->autoCadastrar('Composto', 'Tudo e mais alguma coisa, sem limitação de quantidade', rand(1000.00,10000.00));
+        $this->autoCadastrar('FastFood ', 'Muita fastfood, como hamburgers, Fahitas, hot-dogs..etc..', rand(1000.00,10000.00));
     }
 
     public function autoCadastrar($titulo, $desc, $preco)

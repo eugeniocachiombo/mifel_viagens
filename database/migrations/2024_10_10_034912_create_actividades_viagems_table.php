@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Actividade;
+use App\Models\ActividadesViagem;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -32,17 +32,18 @@ class CreateActividadesViagemsTable extends Migration
             $table->timestamps();
         });
 
-        $this->cadastrar('Surf', 'Aula de surf na Praia do Futuro', 'surf.jpg', 1);
-        $this->cadastrar('Trilha', 'Caminhada na Serra da Estrela', 'trilha.jpg', 1);
+        $this->cadastrar(2, 2, 1);
+        $this->cadastrar(5, 1, 1);
+        $this->cadastrar(5, 2, 1);
+        $this->cadastrar(2, 1, 1);
     }
 
-    public function cadastrar($nome_actividade, $desc_actividade, $img_actividade, $status_actividade)
+    public function cadastrar($cod_viagens, $cod_actividades, $status_actividadesViagem)
     {
-        Actividade::create([
-            "nome_actividade" => $nome_actividade,
-            "desc_actividade" => $desc_actividade,
-            "img_actividade" => $img_actividade,
-            "status_actividade" => $status_actividade,
+        ActividadesViagem::create([
+            "cod_viagens" => $cod_viagens,
+            "cod_actividades" => $cod_actividades,
+            "status_actividadesViagem" => $status_actividadesViagem,
         ]);
     }
 

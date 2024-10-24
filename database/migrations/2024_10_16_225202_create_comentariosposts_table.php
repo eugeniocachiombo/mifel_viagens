@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Comentariospost;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
@@ -15,7 +16,7 @@ class CreateComentariospostsTable extends Migration
     public function up()
     {
         Schema::create('comentariosposts', function (Blueprint $table) {
-            $table->id(); 
+            $table->id();
             $table->unsignedBigInteger('cod_viagem_comentarios');
             $table->unsignedBigInteger('cod_cliente_comentarios');
             $table->text('desc_comentario')->default("nenhuma");
@@ -35,6 +36,19 @@ class CreateComentariospostsTable extends Migration
             $table->index('cod_viagem_comentarios');
             $table->index('cod_cliente_comentarios');
         });
+
+        $this->cadastrar(2, 5, 'louco, este pacote é bom demais', '2024-07-09', 'Aprovado');
+    }
+
+    public function cadastrar($cod_viagem_comentarios, $cod_cliente_comentarios, $desc_comentario, $data_comentario, $status_comentario)
+    {
+        Comentariospost::create([
+            "cod_viagem_comentarios" => $cod_viagem_comentarios,
+            "cod_cliente_comentarios" => $cod_cliente_comentarios,
+            "desc_comentario" => $desc_comentario,
+            "data_comentario" => $data_comentario,
+            "status_comentario" => $status_comentario,
+        ]);
     }
 
     /**

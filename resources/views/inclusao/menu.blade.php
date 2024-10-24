@@ -121,7 +121,7 @@
             </a>
             <div class="collapse" id="actividades">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="{{ route('actividades.cadastrar') }}">Actividades</a>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('actividades.cadastrar') }}">Adicionar</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('actividades.lista') }}">Listar</a>
                     </li>
@@ -259,7 +259,7 @@
             </a>
             <div class="collapse" id="catpreco">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="{{ route('cat.preco.cadastrar') }}">Actividades</a>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('cat.preco.cadastrar') }}">Cadastrar</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('cat.preco.lista') }}">Listar</a>
                     </li>
