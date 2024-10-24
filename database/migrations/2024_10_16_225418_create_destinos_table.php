@@ -35,10 +35,10 @@ class CreateDestinosTable extends Migration
 
     public function createDestino($nome_destino, $desc_destino, $img_destino)
     {
-
         if (file_exists($img_destino)) {
             $file = new UploadedFile($img_destino, basename($img_destino));
             $imagePath = Storage::disk('public')->putFile('destinos', $file);
+           
             Destino::create([
                 'nome_destino' => $nome_destino,
                 'desc_destino' => $desc_destino,

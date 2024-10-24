@@ -78,7 +78,8 @@ class Confirmar extends Component
         $ultimoRegistro = Reservas::select("id")->orderBy("id", "desc")->first();
         $ultimoId = $ultimoRegistro ? $ultimoRegistro->id + 1 : 1;
         $char = chr(rand(65, 90));
-        return Auth::user()->id . $char . $char . $ultimoId;
+        $char2 = chr(rand(65, 90));
+        return Auth::user()->id . $char . $ultimoId . $char2;
     }
 
     public function cancelar($id_carrinho)

@@ -10,7 +10,9 @@
                         <th>Preço</th>
                         <th>Dificuldade</th>
                         <th>Status</th>
-                        <th>Ações</th>
+                        @if (Auth::user()->tipo_acesso == 1)
+                            <th>Ações</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -18,8 +20,9 @@
                         <tr class="border">
                             <td class="border">{{ $viagem->titulo_viagem }}</td>
                             <td class="border" style="white-space: pre-wrap">{{ $viagem->desc_viagem }}</td>
-                            <td class="border">{{ number_format($viagem->preco_viagem, 2, ",", ".") }} Kz</td>
-                            <td class="border">{{ $this->buscarDificuldade($viagem->cod_dificuldade)->nome_dificuldadeViagem }}</td>
+                            <td class="border">{{ number_format($viagem->preco_viagem, 2, ',', '.') }} Kz</td>
+                            <td class="border">
+                                {{ $this->buscarDificuldade($viagem->cod_dificuldade)->nome_dificuldadeViagem }}</td>
                             <td class="text-center border">
                                 @if ($viagem->status_viagem)
                                     <span class="badge bg-success">Ativo</span>
@@ -27,11 +30,15 @@
                                     <span class="badge bg-danger">Inativo</span>
                                 @endif
                             </td>
-                            <td class="text-center border">
-                                <button style="min-height: 40px" class="btn btn-danger btn-sm" wire:click.prevent='eliminar({{ $viagem->id }})'>
-                                    <i class="fas fa-trash"></i> Cancelar
-                                </button>
-                            </td>
+
+                            @if (Auth::user()->tipo_acesso == 1)
+                                <td class="text-center border">
+                                    <button style="min-height: 40px" class="btn btn-danger btn-sm"
+                                        wire:click.prevent='eliminar({{ $viagem->id }})'>
+                                        <i class="fas fa-trash"></i> Eliminar
+                                    </button>
+                                </td>
+                            @endif
                         </tr>
                     @endforeach
                 </tbody>
@@ -39,4 +46,3 @@
         </div>
     </div>
 </div>
-

@@ -31,6 +31,6 @@ class Lista extends Component
     {
         $viagem = Viagem::find($id);
         $viagem->delete();
-        $this->emit('alerta', ['mensagem' => 'Viagem cancelada', 'icon' => 'warning', 'tempo' => 4000]);
+        $this->emit('alerta', ['mensagem' => 'Viagem Eliminada', 'icon' => 'success', 'tempo' => 4000]);
     }
 }

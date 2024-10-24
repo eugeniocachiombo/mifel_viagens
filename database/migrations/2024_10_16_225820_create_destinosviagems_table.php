@@ -41,6 +41,8 @@ class CreateDestinosviagemsTable extends Migration
         $this->cadastrar(4, 1, 1);
         $this->cadastrar(5, 1, 1);
         $this->cadastrar(6, 1, 1);
+        $this->cadastrar(7, 1, 1);
+        $this->cadastrar(8, 1, 1);
 
         $this->cadastrar(1, 2, 1);
         $this->cadastrar(2, 2, 1);
@@ -48,6 +50,8 @@ class CreateDestinosviagemsTable extends Migration
         $this->cadastrar(4, 2, 1);
         $this->cadastrar(5, 2, 1);
         $this->cadastrar(6, 2, 1);
+        $this->cadastrar(7, 2, 1);
+        $this->cadastrar(8, 2, 1);
 
         $this->cadastrar(1, 3, 1);
         $this->cadastrar(2, 3, 1);
@@ -55,6 +59,8 @@ class CreateDestinosviagemsTable extends Migration
         $this->cadastrar(4, 3, 1);
         $this->cadastrar(5, 3, 1);
         $this->cadastrar(6, 3, 1);
+        $this->cadastrar(7, 3, 1);
+        $this->cadastrar(8, 3, 1);
 
         $this->cadastrar(1, 4, 1);
         $this->cadastrar(2, 4, 1);
@@ -62,6 +68,8 @@ class CreateDestinosviagemsTable extends Migration
         $this->cadastrar(4, 4, 1);
         $this->cadastrar(5, 4, 1);
         $this->cadastrar(6, 4, 1);
+        $this->cadastrar(7, 4, 1);
+        $this->cadastrar(8, 4, 1);
     }
 
     public function cadastrar($cod_viagens_dv, $cod_destinos_dv, $status_destinosViagem)
