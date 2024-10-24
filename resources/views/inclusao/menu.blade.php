@@ -50,66 +50,65 @@
     </li>
 
     @if (Auth::user())
-        <li class="nav-item nav-category">Pacotes</li>
+        @if (Auth::user()->id_acesso == 1)
+            <li class="nav-item nav-category">Pacotes</li>
 
-        <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#viagens" aria-expanded="false" aria-controls="viagens">
-                <i class="menu-icon mdi mdi-earth"></i>
-                <span class="menu-title">Pacote de Viagem</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="viagens">
-                <ul class="nav flex-column sub-menu">
-                    @if (Auth::user()->id_acesso == 1)
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#viagens" aria-expanded="false"
+                    aria-controls="viagens">
+                    <i class="menu-icon mdi mdi-earth"></i>
+                    <span class="menu-title">Pacote de Viagem</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="viagens">
+                    <ul class="nav flex-column sub-menu">
+
                         <li class="nav-item"><a class="nav-link" href="{{ route('viagem.cadastrar') }}">Criar Pacote</a>
                         </li>
-                    @endif
-                    <li class="nav-item"><a class="nav-link" href="{{ route('viagem.lista') }}">Listar</a></li>
-                </ul>
-            </div>
-        </li>
 
-        <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#pacoterefeicao" aria-expanded="false"
-                aria-controls="pacoterefeicao">
-                <i class="menu-icon mdi mdi-food"></i>
-                <span class="menu-title">Pacote de Refeição</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="pacoterefeicao">
-                <ul class="nav flex-column sub-menu">
-                    @if (Auth::user()->id_acesso == 1)
-                        <li class="nav-item"><a class="nav-link"
-                                href="{{ route('pacote.refeicao.cadastrar') }}">Criar Pacote</a>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('viagem.lista') }}">Listar</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#pacoterefeicao" aria-expanded="false"
+                    aria-controls="pacoterefeicao">
+                    <i class="menu-icon mdi mdi-food"></i>
+                    <span class="menu-title">Pacote de Refeição</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="pacoterefeicao">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"><a class="nav-link" href="{{ route('pacote.refeicao.cadastrar') }}">Criar
+                                Pacote</a>
                         </li>
-                    @endif
-                    <li class="nav-item"><a class="nav-link" href="{{ route('pacote.refeicao.lista') }}">Listar</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('pacote.refeicao.lista') }}">Listar</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
 
-        <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#pacotehospedagem" aria-expanded="false"
-                aria-controls="pacotehospedagem">
-                <i class="menu-icon mdi mdi-hotel"></i>
-                <span class="menu-title">Pacote de Hospedagem</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="pacotehospedagem">
-                <ul class="nav flex-column sub-menu">
-                    @if (Auth::user()->id_acesso == 1)
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#pacotehospedagem" aria-expanded="false"
+                    aria-controls="pacotehospedagem">
+                    <i class="menu-icon mdi mdi-hotel"></i>
+                    <span class="menu-title">Pacote de Hospedagem</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="pacotehospedagem">
+                    <ul class="nav flex-column sub-menu">
                         <li class="nav-item"><a class="nav-link"
                                 href="{{ route('pacote.hospedagem.cadastrar') }}">Criar Pacote</a>
                         </li>
-                    @endif
-                    <li class="nav-item"><a class="nav-link" href="{{ route('pacote.hospedagem.lista') }}">Listar</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
+                        <li class="nav-item"><a class="nav-link"
+                                href="{{ route('pacote.hospedagem.lista') }}">Listar</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        @endif
 
-        
 
         <!-- Novos itens com submenus CRUD -->
         <li class="nav-item nav-category">Actividades e Viagens</li>
@@ -155,7 +154,8 @@
             </a>
             <div class="collapse" id="actividades">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="{{ route('actividades.cadastrar') }}">Adicionar</a>
+                    <li class="nav-item"><a class="nav-link"
+                            href="{{ route('actividades.cadastrar') }}">Adicionar</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('actividades.lista') }}">Listar</a>
                     </li>
@@ -173,8 +173,9 @@
             <div class="collapse" id="catpreco">
                 <ul class="nav flex-column sub-menu">
                     @if (Auth::user()->id_acesso == 1)
-                    <li class="nav-item"><a class="nav-link" href="{{ route('cat.preco.cadastrar') }}">Cadastrar</a>
-                    </li>
+                        <li class="nav-item"><a class="nav-link"
+                                href="{{ route('cat.preco.cadastrar') }}">Cadastrar</a>
+                        </li>
                     @endif
                     <li class="nav-item"><a class="nav-link" href="{{ route('cat.preco.lista') }}">Listar</a>
                     </li>
