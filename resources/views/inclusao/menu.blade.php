@@ -2,5 +2,5 @@
 <script>
     setInterval(function() {
         Livewire.emit('inclusaoTempoReal');
-    }, 5000);
+    }, 7000);
 </script>

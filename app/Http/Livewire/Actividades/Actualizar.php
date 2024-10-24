@@ -24,12 +24,12 @@ class Actualizar extends Component
     ];
 
     protected $messages = [
-        'nome_actividade.required' => 'O nome da atividade é obrigatório.',
-        'desc_actividade.required' => 'A descrição da atividade é obrigatória.',
+        'nome_actividade.required' => 'O nome da actividade é obrigatório.',
+        'desc_actividade.required' => 'A descrição da actividade é obrigatória.',
         'img_actividade.image' => 'O arquivo deve ser uma imagem.',
         'img_actividade.mimes' => 'A imagem deve ser nos formatos: jpg, jpeg, png, gif.',
         'img_actividade.max' => 'A imagem não pode exceder 2MB.',
-        'status_actividade.required' => 'O status da atividade é obrigatório.',
+        'status_actividade.required' => 'O status da actividade é obrigatório.',
     ];
 
     public function mount($id)
@@ -46,7 +46,7 @@ class Actualizar extends Component
         return view('livewire.actividades.actualizar');
     }
 
-    public function atualizar()
+    public function actualizar()
     {
         $this->validate();
 
@@ -62,7 +62,7 @@ class Actualizar extends Component
         }
 
         Actividade::where('id', $this->id_actividade)->update($data);
-        $this->emit('alerta', ['mensagem' => 'Atualizado com sucesso', 'icon' => 'success']);
+        $this->emit('alerta', ['mensagem' => 'Actualizado com sucesso', 'icon' => 'success']);
         $this->reset();
     }
 }

@@ -1,12 +1,12 @@
-<div class="main-panel">
+<div class="main-panel pt-3">
     <div class="content-wrapper">
-        <h4 class="card-title"><i class="fas fa-list pe-2"></i> Listagem de Atividades</h4>
+        <h4 class="card-title"><i class="fas fa-list pe-2"></i> Listagem de Actividades</h4>
         <div class="table-responsive mt-4">
             <table id="minhaTabela" class="table table-bordered datatablePT table-hover">
                 <thead class="bg-dark text-light">
                     <tr class="text-center">
                         <th>Imagem</th>
-                        <th>Nome da Atividade</th>
+                        <th>Nome da Actividade</th>
                         <th>Descrição</th>
                         <th>Status</th>
                         <th>Ações</th>

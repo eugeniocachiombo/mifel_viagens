@@ -6,7 +6,7 @@
             </div>
             <div class="modal-body">
                 <div class="col-12">
-                    @livewire('usuario.login')
+                    @include('livewire/reserva/inclusao-cadastro/login')
                 </div>
             </div>
         </div>

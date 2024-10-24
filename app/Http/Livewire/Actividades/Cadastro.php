@@ -23,13 +23,13 @@ class Cadastro extends Component
     ];
 
     protected $messages = [
-        'nome_actividade.required' => 'O nome da atividade é obrigatório.',
+        'nome_actividade.required' => 'O nome da actividade é obrigatório.',
         'desc_actividade.max' => 'A descrição não pode exceder 500 caracteres.',
-        'img_actividade.required' => 'A imagem da atividade é obrigatória.',
+        'img_actividade.required' => 'A imagem da actividade é obrigatória.',
         'img_actividade.image' => 'O arquivo deve ser uma imagem.',
         'img_actividade.mimes' => 'A imagem deve ser nos formatos: jpg, jpeg, png, gif.',
         'img_actividade.max' => 'A imagem não pode exceder 2MB.',
-        'status_actividade.required' => 'O status da atividade é obrigatório.',
+        'status_actividade.required' => 'O status da actividade é obrigatório.',
     ];
 
     public function cadastrar()
