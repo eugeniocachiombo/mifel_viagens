@@ -5,6 +5,7 @@
             <table id="minhaTabela" class="table table-bordered datatablePT table-hover">
                 <thead class="bg-dark text-light">
                     <tr class="text-center">
+                        <th>Id</th>
                         <th>Título da Viagem</th>
                         <th>Descrição</th>
                         <th>Preço</th>
@@ -18,6 +19,7 @@
                 <tbody>
                     @foreach ($viagens as $viagem)
                         <tr class="border">
+                            <td class="border">{{ $viagem->id }}</td>
                             <td class="border">{{ $viagem->titulo_viagem }}</td>
                             <td class="border" style="white-space: pre-wrap">{{ $viagem->desc_viagem }}</td>
                             <td class="border">{{ number_format($viagem->preco_viagem, 2, ',', '.') }} Kz</td>

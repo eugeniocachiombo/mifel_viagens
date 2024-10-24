@@ -120,8 +120,8 @@ class Reservar extends Component
             $novoInfoPacote = Viagem::select("viagems.*")
                 ->join("destinosviagems", "viagems.id", "=", "destinosviagems.cod_viagens_dv")
                 ->join("tipoviagem_viagens", "viagems.id", "=", "tipoviagem_viagens.cod_viagens")
-                ->where("cod_destinos_dv", $this->cod_destino)
-                ->where("cod_tipoviagem", $this->cod_tipoviagem)
+                ->where("cod_destinos_dv", number_format($this->cod_destino))
+                ->where("cod_tipoviagem", number_format($this->cod_tipoviagem))
                 ->first();
 
             if ($novoInfoPacote) {
