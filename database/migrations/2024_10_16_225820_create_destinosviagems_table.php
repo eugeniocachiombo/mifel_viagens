@@ -35,14 +35,15 @@ class CreateDestinosviagemsTable extends Migration
             $table->timestamps();
         });
 
+
         $this->cadastrar(1, 1);
-        $this->cadastrar(2, 2);
-        $this->cadastrar(3, 1);
+        $this->cadastrar(2, 1);
+        $this->cadastrar(3, 2);
         $this->cadastrar(4, 2);
-        $this->cadastrar(5, 1);
-        $this->cadastrar(6, 2);
-        $this->cadastrar(7, 1);
-        $this->cadastrar(8, 2);
+        $this->cadastrar(5, 3);
+        $this->cadastrar(6, 3);
+        $this->cadastrar(7, 4);
+        $this->cadastrar(8, 4);
     }
 
     public function cadastrar($cod_viagens_dv, $cod_destinos_dv)
