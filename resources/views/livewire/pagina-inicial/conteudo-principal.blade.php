@@ -62,62 +62,64 @@
         </div>
     </div>
 
-    <div class="row bg-primary text-white text-center p-4 mb-4">
+    <div class="col-12 bg-primary text-white text-center p-4 mb-4">
         <h1 style="font-family: fantasy; font-size: 2.5rem;">Nossos Serviços</h1>
         <p style="font-size: 1.2rem;">Explore as melhores opções de serviço que temos
             disponíveis para si</p>
     </div>
 
-    <div class="row ">
-        <div class="col-6 col-md-3 p-2 d-flex justify-content-center">
-            <div class="card text-center">
-                <i class="fas fa-plane-departure fa-3x p-3"></i>
-                <div class="card-body">
-                    <h5 class="card-title">Reservas de Voos</h5>
-                    <p class="card-text">Reserve seu voo facilmente.</p>
+    <div class="container">
+        <div class="row ">
+            <div class="col-6 col-md-3 p-2 d-flex justify-content-center">
+                <div class="card text-center">
+                    <i class="fas fa-plane-departure fa-3x p-3"></i>
+                    <div class="card-body">
+                        <h5 class="card-title">Reservas de Voos</h5>
+                        <p class="card-text">Reserve seu voo facilmente.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="col-6 col-md-3 p-2 d-flex justify-content-center">
-            <div class="card text-center">
-                <i class="fas fa-hotel fa-3x p-3"></i>
-                <div class="card-body">
-                    <h5 class="card-title">Hotéis</h5>
-                    <p class="card-text">Encontre o hotel perfeito para sua estadia.</p>
+    
+            <div class="col-6 col-md-3 p-2 d-flex justify-content-center">
+                <div class="card text-center">
+                    <i class="fas fa-hotel fa-3x p-3"></i>
+                    <div class="card-body">
+                        <h5 class="card-title">Hotéis</h5>
+                        <p class="card-text">Encontre o hotel perfeito para sua estadia.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="col-6 col-md-3 p-2 d-flex justify-content-center">
-            <div class="card text-center">
-                <i class="fas fa-map fa-3x p-3"></i>
-                <div class="card-body">
-                    <h5 class="card-title">Guias de Viagem</h5>
-                    <p class="card-text">Explore as melhores dicas e roteiros.</p>
+    
+            <div class="col-6 col-md-3 p-2 d-flex justify-content-center">
+                <div class="card text-center">
+                    <i class="fas fa-map fa-3x p-3"></i>
+                    <div class="card-body">
+                        <h5 class="card-title">Guias de Viagem</h5>
+                        <p class="card-text">Explore as melhores dicas e roteiros.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="col-6 col-md-3 p-2 d-flex justify-content-center">
-            <div class="card text-center">
-                <i class="fas fa-suitcase fa-3x p-3"></i>
-                <div class="card-body">
-                    <h5 class="card-title">Pacotes de Viagem</h5>
-                    <p class="card-text">Pacotes exclusivos para você.</p>
+    
+            <div class="col-6 col-md-3 p-2 d-flex justify-content-center">
+                <div class="card text-center">
+                    <i class="fas fa-suitcase fa-3x p-3"></i>
+                    <div class="card-body">
+                        <h5 class="card-title">Pacotes de Viagem</h5>
+                        <p class="card-text">Pacotes exclusivos para você.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Seção Categoria de Preços -->
-    <div class="row bg-danger text-light text-center p-4 mt-4 mb-4">
+    <div class="bg-danger text-light text-center p-4 mt-4 mb-4">
         <h2 style="font-family: fantasy;">Categoria de Preços</h2>
         <p>Encontre opções para todos os orçamentos.</p>
     </div>
 
-    <div class="row mb-4 bg-primary p-4 ">
-        <div class="col-12 col-md-4 p-2">
+    <div class="mb-4 d-table d-md-flex col-12 bg-primary p-4 ">
+        <div class=" col-md-4 p-2">
             <div class="card text-center">
                 <i class="fas fa-dollar-sign fa-3x p-3 text-danger"></i>
                 <div class="card-body">
@@ -126,7 +128,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-4 p-2 ">
+
+        <div class=" col-md-4 p-2">
             <div class="card text-center">
                 <i class="fas fa-star fa-3x p-3 text-danger"></i>
                 <div class="card-body">
@@ -135,7 +138,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-4 p-2 ">
+
+        <div class=" col-md-4 p-2">
             <div class="card text-center">
                 <i class="fas fa-crown fa-3x p-3 text-danger"></i>
                 <div class="card-body">

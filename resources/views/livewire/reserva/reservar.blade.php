@@ -53,7 +53,7 @@
                                         {{-- Formulario --}}
                                         <div class="card mt-5">
                                             <div class="card-body">
-                                                <form class="forms-sample" >
+                                                <form class="forms-sample" wire:submit.prevent="adicionarAoCarrinho">
 
                                                     @include('livewire/reserva/inclusao-cadastro/destinos-tipoviagem')
                                                     <hr>
@@ -65,7 +65,7 @@
 
                                                     <div class="col-12 col-md-3 mt-2">
                                                         @if (Auth::user())
-                                                            <button type="submit" wire:submit.prevent="adicionarAoCarrinho"
+                                                            <button type="submit" 
                                                                 class="btn btn-primary text-light p-3 animated-button"
                                                                 style="width: 100%; font-size: 16px">
                                                                 <i class="mdi mdi-cart"></i> Adicionar ao Carrinho

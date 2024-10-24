@@ -1,6 +1,6 @@
-<div>
-    <nav class="sidebar sidebar-offcanvas pt-4" id="sidebar">
-        <ul class="nav">
+<div style="background: #f4f5f7" class="border">
+    <nav style="background: #f4f5f7" class="sidebar sidebar-offcanvas pt-4" id="sidebar" >
+        <ul class="nav" >
             <li class="nav-item">
                 <a class="nav-link" href="/">
                     <i class="mdi mdi-grid-large menu-icon"></i>

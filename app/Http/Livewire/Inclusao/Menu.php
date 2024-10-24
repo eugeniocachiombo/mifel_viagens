@@ -7,6 +7,7 @@ use Livewire\Component;
 class Menu extends Component
 {
     public $listeners = ["inclusaoTempoReal"];
+    
     public function render()
     {
         return view('livewire.inclusao.menu');
