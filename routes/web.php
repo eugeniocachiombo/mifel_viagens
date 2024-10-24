@@ -100,11 +100,9 @@ Route::prefix("carrinho")->name("carrinho.")->group(function () {
 });
 
 Route::get('/download/{cod_reserva}',  function ($cod_reserva) {
-    $path = public_path("assets/pdfs/comprovativo_reserva_$cod_reserva.pdf");
+    $path = public_path("pdfs/comprovativo_reserva_$cod_reserva.pdf");
     return response()->download($path);
 });
-
-
 
 
 Route::get("/migrate", function(){
