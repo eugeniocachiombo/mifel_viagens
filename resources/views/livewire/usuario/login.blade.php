@@ -28,5 +28,13 @@
 </div>
 
 <div class="card-footer text-center">
-    <i class="fas fa-user-plus"></i> <a href="{{ route('usuario.cadastrar') }}" style="text-decoration: none">Criar uma
+    <i class="fas fa-user-plus"></i>
+    @if (Auth::user())
+        <a href="{{ route('usuario.cadastrar') }}" style="text-decoration: none">Criar uma
         conta</a>
+    @else
+        <a href="{{ route('usuario.cadastrar') }}" target="_blank" style="text-decoration: none">Criar uma
+        conta</a>
+    @endif
+    
+</div>

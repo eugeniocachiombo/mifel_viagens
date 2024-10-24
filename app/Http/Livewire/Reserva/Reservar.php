@@ -170,15 +170,17 @@ class Reservar extends Component
 
     public function verificarData($data)
     {
-        $data = Reservas::where("data_resevada", $data)
-            ->where("id_usuario", Auth::user()->id)
-            ->first();
-        if ($data) {
-            $this->dataExiste = "Você já possui uma reserva com esta data!";
-        } else {
-            $this->dataExiste = null;
+        if (Auth::user()) {
+            $data = Reservas::where("data_resevada", $data)
+                ->where("id_usuario", Auth::user()->id)
+                ->first();
+            if ($data) {
+                $this->dataExiste = "Você já possui uma reserva com esta data!";
+            } else {
+                $this->dataExiste = null;
+            }
+            return $data;
         }
-        return $data;
     }
 
     public function limparCampos()
@@ -211,7 +213,7 @@ class Reservar extends Component
                     cookie("milfe_sessao_iniciada", "milfe_sessao_iniciada", 60);
                 }
 
-                $this->emit('alerta', ['mensagem' => 'Sucesso', 'icon' => 'success', 'tempo' => 3000]);
+                $this->emit('alerta', ['mensagem' => 'Logado com sucesso', 'icon' => 'success', 'tempo' => 3000]);
                 $this->emit('fecharModal');
             } else {
                 $this->emit('alerta', ['mensagem' => 'Verifique os seus dados', 'icon' => 'error', 'tempo' => 3000]);
