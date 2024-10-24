@@ -27,7 +27,7 @@
                     </a>
                 </div>
             @else
-                <div class="col d-flex justify-content-end button-container">
+                <div class="col d-flex justify-content-center button-container">
                     <a href="{{ route('reserva.reservar') }}">
                         <button class="btn btn-success text-white  ">
                             <i class="fas fa-bookmark me-2"></i> Reservar Pacote

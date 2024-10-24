@@ -1,10 +1,20 @@
 @include('inclusao.head')
 <style>
-    body{
+    body {
         background: #cbcbcc;
     }
 </style>
 
-@livewire('usuario.login')
+<div class="container-scroller">
+    <div class="container d-flex justify-content-center align-items-center page-body-wrapper">
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    @livewire('usuario.login')
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 @include('inclusao.foot')

@@ -10,12 +10,17 @@ use App\Models\Pacoterefeicao;
 use App\Models\Reservas;
 use App\Models\Tipoviagem;
 use App\Models\Tipoviagem_viagens;
+use App\Models\User;
 use App\Models\Viagem;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
 class Reservar extends Component
 {
+    public $telEmail, $senha, $lembreMe;
+
     public $pacotesViagem, $viagemEscolhida, $infoViagem;
 
     public $tipoviagens, $destinos, $cod_destino, $cod_tipoviagem;
@@ -196,4 +201,28 @@ class Reservar extends Component
         $this->numMaxVaga = null;
     }
 
+    public function logar()
+    {
+        try {
+            $usuario = User::where('email', $this->telEmail)
+                ->orWhere('telefone', $this->telEmail)
+                ->first();
+
+            if ($usuario && Hash::check($this->senha, $usuario->password)) {
+                Auth::login($usuario);
+
+                if ($this->lembreMe == true) {
+                    cookie("milfe_sessao_iniciada", "milfe_sessao_iniciada", 60);
+                }
+
+                $this->emit('alerta', ['mensagem' => 'Sucesso', 'icon' => 'success', 'tempo' => 3000]);
+                $this->emit('fecharModal');
+            } else {
+                $this->emit('alerta', ['mensagem' => 'Verifique os seus dados', 'icon' => 'error', 'tempo' => 3000]);
+            }
+
+        } catch (QueryException $th) {
+            $this->emit('alerta', ['mensagem' => 'Nenhuma conexão com a Base de dados', 'icon' => 'error', 'tempo' => 3000]);
+        }
+    }
 }

@@ -22,6 +22,16 @@
                     </div>
                 </div>
 
+                @if ($novaFoto)
+                    <div class="col-4">
+                        <div class="image-container">
+                            <img src="{{ $novaFoto->temporaryUrl() }}" alt="Nova Foto" class="img-fluid">
+                            <div class="loader" style="font-size: 16px; color: #888;">Imagem Selecionada,
+                                clique em enviar.</div>
+                        </div>
+                    </div>
+                @endif
+
                 <!-- Modal para Carregar Foto -->
                 <div class="modal fade" id="uploadPhotoModal" tabindex="-1" aria-labelledby="uploadPhotoModalLabel"
                     aria-hidden="true" wire:ignore>
@@ -33,9 +43,6 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                @if (session()->has('message'))
-                                    <div class="alert alert-success">{{ session('message') }}</div>
-                                @endif
                                 <form wire:submit.prevent="uploadPhoto">
                                     <div class="mb-3">
                                         <input type="file" class="form-control" wire:model="novaFoto"
@@ -50,6 +57,24 @@
                         </div>
                     </div>
                 </div>
+
+                <style>
+                    .image-container {
+                        text-align: center;
+                    }
+
+                    .img-fluid {
+                        max-width: 100%;
+                        /* Responsivo */
+                        height: auto;
+                        /* Mantém a proporção */
+                    }
+
+                    .loader {
+                        margin-top: 8px;
+                        /* Espaço entre a imagem e o texto */
+                    }
+                </style>
 
 
 

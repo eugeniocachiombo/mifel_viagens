@@ -64,21 +64,34 @@
                                                     @include('livewire/reserva/inclusao-cadastro/reserva')
 
                                                     <div class="col-12 col-md-3 mt-2">
-                                                        <button type="submit"
-                                                            class="btn btn-primary text-light p-3 animated-button"
-                                                            style="width: 100%; font-size: 16px">
-                                                            <i class="mdi mdi-cart"></i> Adicionar ao Carrinho
-                                                        </button>
+                                                        @if (Auth::user())
+                                                            <button type="submit"
+                                                                class="btn btn-primary text-light p-3 animated-button"
+                                                                style="width: 100%; font-size: 16px">
+                                                                <i class="mdi mdi-cart"></i> Adicionar ao Carrinho
+                                                            </button>
+                                                        @else
+                                                            <button
+                                                                class="btn btn-primary text-light p-3 animated-button"
+                                                                style="width: 100%; font-size: 16px"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#loginModal">
+                                                                <i class="mdi mdi-cart"></i> Adicionar ao Carrinho
+                                                            </button>
+                                                        @endif
                                                     </div>
 
                                                     <script>
                                                         document.addEventListener('livewire:load', function() {
                                                             Livewire.on('loginTab', function(data) {
-                                                            window.open('/usuario/logar', '_blank');
+                                                                window.open('/usuario/logar', '_blank');
                                                             });
                                                         });
                                                     </script>
                                                 </form>
+
+                                                <!-- Modal para Login -->
+                                                @include('livewire/reserva/inclusao-cadastro/modal-login')
                                             </div>
                                         </div>
                                     </div>
