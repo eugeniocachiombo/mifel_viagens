@@ -19,7 +19,7 @@
                             <td class="border text-center">{{ $catPreco->nome_catPreco }}</td>
                             <td class="border" style="white-space: pre-wrap">{{ $catPreco->desc_catPreco }}</td>
                             <td class="border text-center">{{ $catPreco->faixa_idade }}</td>
-                            <td class="border text-center">{{ $catPreco->preco_catPreco ? 'R$ ' . number_format($catPreco->preco_catPreco, 2, ',', '.') : 'N/A' }}</td>
+                            <td class="border text-center">{{ $catPreco->preco_catPreco ? number_format($catPreco->preco_catPreco, 2, ',', '.') . ' Kz ': 'N/A' }}</td>
                             <td class="text-center border">
                                 @if ($catPreco->status_catPreco)
                                     <span class="badge bg-success">Ativo</span>

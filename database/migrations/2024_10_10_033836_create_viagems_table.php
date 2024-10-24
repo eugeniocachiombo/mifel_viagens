@@ -32,93 +32,14 @@ class CreateViagemsTable extends Migration
                 ->onUpdate('cascade');
             $table->timestamps();
         });
-        $this->cadastrarViagens();
-    }
-
-    public function cadastrarViagens()
-    {
-        $viagens = [
-            [
-                'titulo_viagem' => 'Aventura na Praia do Futuro',
-                'desc_viagem' => 'Descubra o icônico Vale do Loire nesta viagem de dia inteiro saindo de Tours. Visite 2 vinícolas, prove vinhos locais e pare na pitoresca Chinon, conhecida por seus vinhos tintos e arquitetura renascentista.',
-                'cod_dificuldade' => 1,
-                'EmDestaque_viagem' => 1,
-                'duracao_viagem' => 7,
-                'vagas_viagem' => 20,
-                'preco_viagem' => rand(10000.00,100000.00),
-                'status_viagem' => 1,
-                'estrelas_viagem' => 1,
-            ],
-            [
-                'titulo_viagem' => 'Exploração na Serra da Estrela',
-                'desc_viagem' => 'Descubra o icônico Vale do Loire nesta viagem de dia inteiro saindo de Tours. Visite 2 vinícolas, prove vinhos locais e pare na pitoresca Chinon, conhecida por seus vinhos tintos e arquitetura renascentista.',
-                'cod_dificuldade' => 2,
-                'EmDestaque_viagem' => 0,
-                'duracao_viagem' => 10,
-                'vagas_viagem' => 15,
-                'preco_viagem' => rand(10000.00,100000.00),
-                'status_viagem' => 1,
-                'estrelas_viagem' => 1,
-            ],
-            [
-                'titulo_viagem' => 'Exploração na Serra da Estrela',
-                'desc_viagem' => 'Descubra o icônico Vale do Loire nesta viagem de dia inteiro saindo de Tours. Visite 2 vinícolas, prove vinhos locais e pare na pitoresca Chinon, conhecida por seus vinhos tintos e arquitetura renascentista.',
-                'cod_dificuldade' => 2,
-                'EmDestaque_viagem' => 0,
-                'duracao_viagem' => 10,
-                'vagas_viagem' => 15,
-                'preco_viagem' => rand(10000.00,100000.00),
-                'status_viagem' => 1,
-                'estrelas_viagem' => 1,
-            ],
-            [
-                'titulo_viagem' => 'Exploração na Serra da Estrela',
-                'desc_viagem' => 'Descubra o icônico Vale do Loire nesta viagem de dia inteiro saindo de Tours. Visite 2 vinícolas, prove vinhos locais e pare na pitoresca Chinon, conhecida por seus vinhos tintos e arquitetura renascentista.',
-                'cod_dificuldade' => 2,
-                'EmDestaque_viagem' => 0,
-                'duracao_viagem' => 10,
-                'vagas_viagem' => 15,
-                'preco_viagem' => rand(10000.00,100000.00),
-                'status_viagem' => 1,
-                'estrelas_viagem' => 1,
-            ],
-            [
-                'titulo_viagem' => 'Escalada ao monte Everest',
-                'desc_viagem' => 'Descubra o icônico Vale do Loire nesta viagem de dia inteiro saindo de Tours. Visite 2 vinícolas, prove vinhos locais e pare na pitoresca Chinon, conhecida por seus vinhos tintos e arquitetura renascentista.',
-                'cod_dificuldade' => 2,
-                'EmDestaque_viagem' => 0,
-                'duracao_viagem' => 10,
-                'vagas_viagem' => 15,
-                'preco_viagem' => rand(10000.00,100000.00),
-                'status_viagem' => 1,
-                'estrelas_viagem' => 1,
-            ],
-            [
-                'titulo_viagem' => 'Exploração na Serra da Estrela',
-                'desc_viagem' => 'Descubra o icônico Vale do Loire nesta viagem de dia inteiro saindo de Tours. Visite 2 vinícolas, prove vinhos locais e pare na pitoresca Chinon, conhecida por seus vinhos tintos e arquitetura renascentista.',
-                'cod_dificuldade' => 2,
-                'EmDestaque_viagem' => 0,
-                'duracao_viagem' => 10,
-                'vagas_viagem' => 15,
-                'preco_viagem' => rand(10000.00,100000.00),
-                'status_viagem' => 1,
-                'estrelas_viagem' => 1,
-            ],
-        ];
-
-        foreach ($viagens as $viagem) {
-            $this->cadastrar(
-                $viagem['titulo_viagem'],
-                $viagem['desc_viagem'],
-                $viagem['cod_dificuldade'],
-                $viagem['EmDestaque_viagem'],
-                $viagem['duracao_viagem'],
-                $viagem['vagas_viagem'],
-                $viagem['preco_viagem'],
-                $viagem['status_viagem'],
-                $viagem['estrelas_viagem']
-            );
-        }
+        $this->cadastrar('Pacote Mínimo Luanda I', 'Viagem de Avião Para Luanda', rand(1,3), 0, 2, 1, 95866.70, 1, 1);
+        $this->cadastrar('Pacote Mínimo Luanda II', 'Viagem de Carro Para Luanda', rand(1,3), 0, 3, 5, 62089.65, 1, 1);
+        $this->cadastrar('Pacote Mínimo Benguela I', 'Viagem de Avião Para Benguela', rand(1,3), 0, 5, 4, 66529.98, 1, 1);
+        $this->cadastrar('Pacote Mínimo Benguela II', 'Viagem de Carro Para Benguela', 1, 0, 2, 2, 55918.55, 1, 1);
+        $this->cadastrar('Pacote Mínimo Huíla I', 'Viagem de Avião Para Huíla', rand(1,3), 0, 4, 4, 91485.11, 1, 1);
+        $this->cadastrar('Pacote Mínimo Huíla II', 'Viagem de Carro Para Huíla', rand(1,3), 0, 5, 1, 71501.00, 1, 1);
+        $this->cadastrar('Pacote Mínimo Namibe I', 'Viagem de Avião Para Namibe', rand(1,3), 0, 1, 3, 67860.11, 1, 1);
+        $this->cadastrar('Pacote Mínimo Namibe II', 'Viagem de Carro Para Namibe', rand(1,3), 0, 4, 3, 94462.71, 1, 1);
     }
 
     public function cadastrar(

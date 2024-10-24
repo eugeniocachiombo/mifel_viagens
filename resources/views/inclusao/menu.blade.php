@@ -69,6 +69,25 @@
             </div>
         </li>
 
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#pacoterefeicao" aria-expanded="false"
+                aria-controls="pacoterefeicao">
+                <i class="menu-icon mdi mdi-food"></i>
+                <span class="menu-title">Pacote de Refeição</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="pacoterefeicao">
+                <ul class="nav flex-column sub-menu">
+                    @if (Auth::user()->id_acesso == 1)
+                        <li class="nav-item"><a class="nav-link"
+                                href="{{ route('pacote.refeicao.cadastrar') }}">Criar Pacote</a>
+                        </li>
+                    @endif
+                    <li class="nav-item"><a class="nav-link" href="{{ route('pacote.refeicao.lista') }}">Listar</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
 
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#pacotehospedagem" aria-expanded="false"
@@ -90,45 +109,10 @@
             </div>
         </li>
 
-        <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#pacoterefeicao" aria-expanded="false"
-                aria-controls="pacoterefeicao">
-                <i class="menu-icon mdi mdi-food"></i>
-                <span class="menu-title">Pacote de Refeição</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="pacoterefeicao">
-                <ul class="nav flex-column sub-menu">
-                    @if (Auth::user()->id_acesso == 1)
-                        <li class="nav-item"><a class="nav-link"
-                                href="{{ route('pacote.refeicao.cadastrar') }}">Criar Pacote</a>
-                        </li>
-                    @endif
-                    <li class="nav-item"><a class="nav-link" href="{{ route('pacote.refeicao.lista') }}">Listar</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
+        
 
         <!-- Novos itens com submenus CRUD -->
         <li class="nav-item nav-category">Actividades e Viagens</li>
-        <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#actividades" aria-expanded="false"
-                aria-controls="actividades">
-                <i class="menu-icon mdi mdi-format-list-bulleted"></i>
-                <span class="menu-title">Actividades</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="actividades">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="{{ route('actividades.cadastrar') }}">Adicionar</a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('actividades.lista') }}">Listar</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-        
         @if (Auth::user()->id_acesso == 1)
             <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#clientes" aria-expanded="false"
@@ -157,6 +141,42 @@
                     <li class="nav-item"><a class="nav-link" href="{{ route('reserva.reservar') }}">Reservar</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('reserva.lista') }}">Listar</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#actividades" aria-expanded="false"
+                aria-controls="actividades">
+                <i class="menu-icon mdi mdi-format-list-bulleted"></i>
+                <span class="menu-title">Actividades</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="actividades">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"><a class="nav-link" href="{{ route('actividades.cadastrar') }}">Adicionar</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('actividades.lista') }}">Listar</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#catpreco" aria-expanded="false"
+                aria-controls="catpreco">
+                <i class="menu-icon mdi mdi-tag"></i>
+                <span class="menu-title">Categoria de Preço</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="catpreco">
+                <ul class="nav flex-column sub-menu">
+                    @if (Auth::user()->id_acesso == 1)
+                    <li class="nav-item"><a class="nav-link" href="{{ route('cat.preco.cadastrar') }}">Cadastrar</a>
+                    </li>
+                    @endif
+                    <li class="nav-item"><a class="nav-link" href="{{ route('cat.preco.lista') }}">Listar</a>
                     </li>
                 </ul>
             </div>
@@ -246,23 +266,6 @@
                     <li class="nav-item"><a class="nav-link" href="mapaviagem/listar.html">Listar</a></li>
                     <li class="nav-item"><a class="nav-link" href="mapaviagem/editar.html">Editar</a></li>
                     <li class="nav-item"><a class="nav-link" href="mapaviagem/deletar.html">Deletar</a></li>
-                </ul>
-            </div>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#catpreco" aria-expanded="false"
-                aria-controls="catpreco">
-                <i class="menu-icon mdi mdi-tag"></i>
-                <span class="menu-title">Categoria de Preço</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="catpreco">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="{{ route('cat.preco.cadastrar') }}">Cadastrar</a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('cat.preco.lista') }}">Listar</a>
-                    </li>
                 </ul>
             </div>
         </li>
