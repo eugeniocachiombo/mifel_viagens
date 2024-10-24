@@ -126,7 +126,8 @@
                 </div>
             </li>
         @endif
-
+        
+        @if (Auth::user()->id_acesso == 2)
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#reservas" aria-expanded="false"
                 aria-controls="reservas">
@@ -143,6 +144,7 @@
                 </ul>
             </div>
         </li>
+        @endif
 
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#actividades" aria-expanded="false"
@@ -236,57 +238,46 @@
             </li>
         @endif
 
-        <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#galeriaviagens" aria-expanded="false"
-                aria-controls="galeriaviagens">
-                <i class="menu-icon mdi mdi-image"></i>
-                <span class="menu-title">Galeria de Viagens</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="galeriaviagens">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="galeriaviagens/criar.html">Criar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="galeriaviagens/listar.html">Listar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="galeriaviagens/editar.html">Editar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="galeriaviagens/deletar.html">Deletar</a></li>
-                </ul>
-            </div>
-        </li>
+        @if (Auth::user()->id_acesso == 1)
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#galeriaviagens" aria-expanded="false"
+                    aria-controls="galeriaviagens">
+                    <i class="menu-icon mdi mdi-image"></i>
+                    <span class="menu-title">Galeria de Viagens</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="galeriaviagens">
+                    <ul class="nav flex-column sub-menu">
+                    </ul>
+                </div>
+            </li>
 
-        <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#mapaviagem" aria-expanded="false"
-                aria-controls="mapaviagem">
-                <i class="menu-icon mdi mdi-map"></i>
-                <span class="menu-title">Mapa da Viagem</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="mapaviagem">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="mapaviagem/criar.html">Criar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="mapaviagem/listar.html">Listar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="mapaviagem/editar.html">Editar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="mapaviagem/deletar.html">Deletar</a></li>
-                </ul>
-            </div>
-        </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#mapaviagem" aria-expanded="false"
+                    aria-controls="mapaviagem">
+                    <i class="menu-icon mdi mdi-map"></i>
+                    <span class="menu-title">Mapa da Viagem</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="mapaviagem">
+                    <ul class="nav flex-column sub-menu">
+                    </ul>
+                </div>
+            </li>
 
-        <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#perguntasfrequentes" aria-expanded="false"
-                aria-controls="perguntasfrequentes">
-                <i class="menu-icon mdi mdi-help-circle"></i>
-                <span class="menu-title">Perguntas Frequentes</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="perguntasfrequentes">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="perguntasfrequentes/criar.html">Criar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="perguntasfrequentes/listar.html">Listar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="perguntasfrequentes/editar.html">Editar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="perguntasfrequentes/deletar.html">Deletar</a></li>
-                </ul>
-            </div>
-        </li>
-
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#perguntasfrequentes" aria-expanded="false"
+                    aria-controls="perguntasfrequentes">
+                    <i class="menu-icon mdi mdi-help-circle"></i>
+                    <span class="menu-title">Perguntas Frequentes</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="perguntasfrequentes">
+                    <ul class="nav flex-column sub-menu">
+                    </ul>
+                </div>
+            </li>
+        @endif
         </ul>
     @endif
 </nav>
