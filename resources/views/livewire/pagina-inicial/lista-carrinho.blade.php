@@ -5,8 +5,4 @@
     @endif
 </a>
 
-<script>
-    setInterval(function() {
-        Livewire.emit('carrinhoEmTempoReal');
-    }, 5000);
-</script>
+
