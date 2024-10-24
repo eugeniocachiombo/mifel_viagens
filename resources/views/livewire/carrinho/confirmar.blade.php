@@ -1,4 +1,4 @@
-<div class="main-panel">
+<div class="main-panel pt-3">
     <div class="content-wrapper">
         <h4 class="card-title">
             <i class="fas fa-shopping-cart pe-2"></i> <span class="fw-bold">Listagem de Itens do Carrinho</span>

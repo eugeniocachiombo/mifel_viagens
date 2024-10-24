@@ -1,4 +1,4 @@
-<div class="main-panel">
+<div class="main-panel pt-3">
     <div class="content-wrapper">
         <h4 class="card-title"><i class="fas fa-users pe-2"></i> Listagem de Clientes</h4>
         <div class="table-responsive mt-4">
@@ -6,8 +6,7 @@
                 <thead class="bg-dark text-light">
                     <tr class="text-center">
                         <th>Id</th>
-                        <th>Nome</th>
-                        <th>Sobrenome</th>
+                        <th>Nome Completo</th>
                         <th>Email</th>
                         <th>Número</th>
                         <th>Status</th>
@@ -18,8 +17,7 @@
                     @forelse ($clientes as $cliente)
                         <tr class="border">
                             <td class="border">{{ $cliente->id }}</td>
-                            <td class="border">{{ $cliente->nome_cliente }}</td>
-                            <td class="border">{{ $cliente->sobrenome_cliente }}</td>
+                            <td class="border">{{ ucwords($cliente->nome_cliente) }} {{ ucwords($cliente->sobrenome_cliente) }}</td>
                             <td class="border">{{ $this->dadosUser($cliente->id_usuario)->email }}</td>
                             <td class="border">{{ $this->dadosUser($cliente->id_usuario)->telefone }}</td>
                             <td class="text-center border">

@@ -1,4 +1,4 @@
-<div class="main-panel">
+<div class="main-panel pt-3">
     <div class="content-wrapper">
         <h4 class="card-title"><i class="fas fa-list pe-2"></i> Listagem de Pacotes de Viagens</h4>
         <div class="table-responsive mt-4">
