@@ -142,33 +142,29 @@ class Reservar extends Component
     {
         $this->validate();
 
-        if (Auth::user()) {
-            $dataBD = $this->verificarData($this->data_resevada);
-            if (!$dataBD) {
-                $reserva = Reservas::create([
-                    "cod_viagem" => $this->viagemEscolhida,
-                    "data_resevada" => $this->data_resevada,
-                    "num_viajantes" => $this->num_viajantes,
-                    "total_reserva" => $this->precoFinal,
-                    "cod_refeicao_reserva" => $this->pacoteRefId,
-                    "cod_hospedagem_reserva" => $this->pacoteHospId,
-                    "status_reservas" => 'Pendente',
-                    "status_pgt_reserva" => 0,
-                    'id_usuario' => Auth::user()->id,
-                ]);
+        $dataBD = $this->verificarData($this->data_resevada);
+        if (!$dataBD) {
+            $reserva = Reservas::create([
+                "cod_viagem" => $this->viagemEscolhida,
+                "data_resevada" => $this->data_resevada,
+                "num_viajantes" => $this->num_viajantes,
+                "total_reserva" => $this->precoFinal,
+                "cod_refeicao_reserva" => $this->pacoteRefId,
+                "cod_hospedagem_reserva" => $this->pacoteHospId,
+                "status_reservas" => 'Pendente',
+                "status_pgt_reserva" => 0,
+                'id_usuario' => Auth::user()->id,
+            ]);
 
-                Carrinho::create([
-                    "id_usuario" => Auth::user()->id,
-                    "id_pacotehospedagems" => $this->pacoteHospId,
-                    "id_pacoterefeicaos" => $this->pacoteRefId,
-                    "id_reserva" => $reserva->id,
-                ]);
+            Carrinho::create([
+                "id_usuario" => Auth::user()->id,
+                "id_pacotehospedagems" => $this->pacoteHospId,
+                "id_pacoterefeicaos" => $this->pacoteRefId,
+                "id_reserva" => $reserva->id,
+            ]);
 
-                $this->emit('alerta', ['mensagem' => 'Adicionado ao carrinho com sucesso', 'icon' => 'success', 'tempo' => 4000]);
-                $this->limparCampos();
-            }
-        } else {
-            $this->emit('loginTab');
+            $this->emit('alerta', ['mensagem' => 'Adicionado ao carrinho com sucesso', 'icon' => 'success', 'tempo' => 4000]);
+            $this->limparCampos();
         }
     }
 
@@ -220,7 +216,6 @@ class Reservar extends Component
             } else {
                 $this->emit('alerta', ['mensagem' => 'Verifique os seus dados', 'icon' => 'error', 'tempo' => 3000]);
             }
-
         } catch (QueryException $th) {
             $this->emit('alerta', ['mensagem' => 'Nenhuma conexão com a Base de dados', 'icon' => 'error', 'tempo' => 3000]);
         }

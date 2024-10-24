@@ -1,4 +1,3 @@
-
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true" wire:ignore>
     <div class="modal-dialog">
         <div class="modal-content">
@@ -15,11 +14,9 @@
 </div>
 
 <script>
-    document.addEventListener('livewire:load', function () {
-    Livewire.on('fecharModal', function (data) {
-        $('#loginModal').hide();
+    document.addEventListener('livewire:load', function() {
+        Livewire.on('fecharModal', function(data) {
+            $('#loginModal').modal('hide');
+        });
     });
-});
 </script>
-
-

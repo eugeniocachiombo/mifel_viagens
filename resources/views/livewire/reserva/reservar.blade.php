@@ -80,14 +80,6 @@
                                                             </button>
                                                         @endif
                                                     </div>
-
-                                                    <script>
-                                                        document.addEventListener('livewire:load', function() {
-                                                            Livewire.on('loginTab', function(data) {
-                                                                window.open('/usuario/logar', '_blank');
-                                                            });
-                                                        });
-                                                    </script>
                                                 </form>
 
                                                 <!-- Modal para Login -->
