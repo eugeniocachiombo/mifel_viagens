@@ -259,10 +259,10 @@
             </a>
             <div class="collapse" id="catpreco">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="catpreco/criar.html">Criar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="catpreco/listar.html">Listar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="catpreco/editar.html">Editar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="catpreco/deletar.html">Deletar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('cat.preco.cadastrar') }}">Actividades</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('cat.preco.lista') }}">Listar</a>
+                    </li>
                 </ul>
             </div>
         </li>

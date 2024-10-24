@@ -35,7 +35,8 @@ class CreateViagemsTable extends Migration
         $this->cadastrarViagens();
     }
 
-    public function cadastrarViagens() {
+    public function cadastrarViagens()
+    {
         $viagens = [
             [
                 'titulo_viagem' => 'Aventura na Praia do Futuro',
@@ -59,7 +60,28 @@ class CreateViagemsTable extends Migration
                 'status_viagem' => 1,
                 'estrelas_viagem' => 1,
             ],
-           
+            [
+                'titulo_viagem' => 'Exploração na Serra da Estrela',
+                'desc_viagem' => 'Descubra o icônico Vale do Loire nesta viagem de dia inteiro saindo de Tours. Visite 2 vinícolas, prove vinhos locais e pare na pitoresca Chinon, conhecida por seus vinhos tintos e arquitetura renascentista.',
+                'cod_dificuldade' => 2,
+                'EmDestaque_viagem' => 0,
+                'duracao_viagem' => 10,
+                'vagas_viagem' => 15,
+                'preco_viagem' => 35000,
+                'status_viagem' => 1,
+                'estrelas_viagem' => 1,
+            ],
+            [
+                'titulo_viagem' => 'Exploração na Serra da Estrela',
+                'desc_viagem' => 'Descubra o icônico Vale do Loire nesta viagem de dia inteiro saindo de Tours. Visite 2 vinícolas, prove vinhos locais e pare na pitoresca Chinon, conhecida por seus vinhos tintos e arquitetura renascentista.',
+                'cod_dificuldade' => 2,
+                'EmDestaque_viagem' => 0,
+                'duracao_viagem' => 10,
+                'vagas_viagem' => 15,
+                'preco_viagem' => 35000,
+                'status_viagem' => 1,
+                'estrelas_viagem' => 1,
+            ],
             [
                 'titulo_viagem' => 'Escalada ao monte Everest',
                 'desc_viagem' => 'Descubra o icônico Vale do Loire nesta viagem de dia inteiro saindo de Tours. Visite 2 vinícolas, prove vinhos locais e pare na pitoresca Chinon, conhecida por seus vinhos tintos e arquitetura renascentista.',
@@ -71,8 +93,19 @@ class CreateViagemsTable extends Migration
                 'status_viagem' => 1,
                 'estrelas_viagem' => 1,
             ],
+            [
+                'titulo_viagem' => 'Exploração na Serra da Estrela',
+                'desc_viagem' => 'Descubra o icônico Vale do Loire nesta viagem de dia inteiro saindo de Tours. Visite 2 vinícolas, prove vinhos locais e pare na pitoresca Chinon, conhecida por seus vinhos tintos e arquitetura renascentista.',
+                'cod_dificuldade' => 2,
+                'EmDestaque_viagem' => 0,
+                'duracao_viagem' => 10,
+                'vagas_viagem' => 15,
+                'preco_viagem' => 35000,
+                'status_viagem' => 1,
+                'estrelas_viagem' => 1,
+            ],
         ];
-    
+
         foreach ($viagens as $viagem) {
             $this->cadastrar(
                 $viagem['titulo_viagem'],
@@ -87,7 +120,6 @@ class CreateViagemsTable extends Migration
             );
         }
     }
-    
 
     public function cadastrar(
         $titulo_viagem,
