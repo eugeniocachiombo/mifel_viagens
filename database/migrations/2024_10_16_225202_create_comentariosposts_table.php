@@ -37,7 +37,7 @@ class CreateComentariospostsTable extends Migration
             $table->index('cod_cliente_comentarios');
         });
 
-        $this->cadastrar(2, 5, 'louco, este pacote é bom demais', '2024-07-09', 'Aprovado');
+       // $this->cadastrar(2, 5, 'louco, este pacote é bom demais', '2024-07-09', 'Aprovado');
     }
 
     public function cadastrar($cod_viagem_comentarios, $cod_cliente_comentarios, $desc_comentario, $data_comentario, $status_comentario)

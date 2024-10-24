@@ -268,39 +268,6 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#tag" aria-expanded="false" aria-controls="tag">
-                <i class="menu-icon mdi mdi-tag-outline"></i>
-                <span class="menu-title">Tag</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="tag">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="tag/criar.html">Criar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="tag/listar.html">Listar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="tag/editar.html">Editar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="tag/deletar.html">Deletar</a></li>
-                </ul>
-            </div>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#inclusoes" aria-expanded="false"
-                aria-controls="inclusoes">
-                <i class="menu-icon mdi mdi-check-circle"></i>
-                <span class="menu-title">Inclusões</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="inclusoes">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="inclusoes/criar.html">Criar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="inclusoes/listar.html">Listar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="inclusoes/editar.html">Editar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="inclusoes/deletar.html">Deletar</a></li>
-                </ul>
-            </div>
-        </li>
-
-        <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#perguntasfrequentes" aria-expanded="false"
                 aria-controls="perguntasfrequentes">
                 <i class="menu-icon mdi mdi-help-circle"></i>
@@ -313,40 +280,6 @@
                     <li class="nav-item"><a class="nav-link" href="perguntasfrequentes/listar.html">Listar</a></li>
                     <li class="nav-item"><a class="nav-link" href="perguntasfrequentes/editar.html">Editar</a></li>
                     <li class="nav-item"><a class="nav-link" href="perguntasfrequentes/deletar.html">Deletar</a></li>
-                </ul>
-            </div>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#comentariospost" aria-expanded="false"
-                aria-controls="comentariospost">
-                <i class="menu-icon mdi mdi-comment-text-outline"></i>
-                <span class="menu-title">Comentários</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="comentariospost">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="comentariospost/criar.html">Criar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="comentariospost/listar.html">Listar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="comentariospost/editar.html">Editar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="comentariospost/deletar.html">Deletar</a></li>
-                </ul>
-            </div>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#favoritos" aria-expanded="false"
-                aria-controls="favoritos">
-                <i class="menu-icon mdi mdi-heart"></i>
-                <span class="menu-title">Favoritos</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="favoritos">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="favoritos/criar.html">Criar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="favoritos/listar.html">Listar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="favoritos/editar.html">Editar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="favoritos/deletar.html">Deletar</a></li>
                 </ul>
             </div>
         </li>
