@@ -68,13 +68,13 @@
             disponíveis para si</p>
     </div>
 
-    <div class="container">
+    <div class="container text-primary">
         <div class="row ">
             <div class="col-6 col-md-3 p-2 d-flex justify-content-center">
                 <div class="card text-center">
                     <i class="fas fa-plane-departure fa-3x p-3"></i>
                     <div class="card-body">
-                        <h5 class="card-title">Reservas de Voos</h5>
+                        <h5 class="card-title text-primary">Reservas de Voos</h5>
                         <p class="card-text">Reserve seu voo facilmente.</p>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                 <div class="card text-center">
                     <i class="fas fa-hotel fa-3x p-3"></i>
                     <div class="card-body">
-                        <h5 class="card-title">Hotéis</h5>
+                        <h5 class="card-title text-primary">Hotéis</h5>
                         <p class="card-text">Encontre o hotel perfeito para sua estadia.</p>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
                 <div class="card text-center">
                     <i class="fas fa-map fa-3x p-3"></i>
                     <div class="card-body">
-                        <h5 class="card-title">Guias de Viagem</h5>
+                        <h5 class="card-title text-primary">Guias de Viagem</h5>
                         <p class="card-text">Explore as melhores dicas e roteiros.</p>
                     </div>
                 </div>
@@ -104,7 +104,7 @@
                 <div class="card text-center">
                     <i class="fas fa-suitcase fa-3x p-3"></i>
                     <div class="card-body">
-                        <h5 class="card-title">Pacotes de Viagem</h5>
+                        <h5 class="card-title text-primary">Pacotes de Viagem</h5>
                         <p class="card-text">Pacotes exclusivos para você.</p>
                     </div>
                 </div>
