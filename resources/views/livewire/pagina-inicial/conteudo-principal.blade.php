@@ -47,8 +47,8 @@
                 @foreach ($destinos as $destino)
                     <div class="col-6 col-md-3 p-2 d-flex justify-content-center">
                         <div class="card" style="width: 12rem;">
-                            <a href="{{ asset('storage/' . $destino->img_destino) }}">
-                                <img src="{{ asset('storage/' . $destino->img_destino) }}"
+                            <a href="{{ asset('assets/' . $destino->img_destino) }}">
+                                <img src="{{ asset('assets/' . $destino->img_destino) }}"
                                     alt="{{ $destino->nome_destino }}" class="card-img-top">
                             </a>
                             <div class="card-body">

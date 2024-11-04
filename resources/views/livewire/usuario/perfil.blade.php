@@ -5,8 +5,8 @@
                 <h4 class="card-title"><i class="fas fa-user pe-2"></i> Dados do Usuário</h4>
                 <div class="text-center mb-3">
                     @if ($foto)
-                        <a href="{{ asset('storage/' . $foto) }}">
-                            <img src="{{ asset('storage/' . $foto) }}" alt="Foto de Perfil"
+                        <a href="{{ asset('assets/' . $foto) }}">
+                            <img src="{{ asset('assets/' . $foto) }}" alt="Foto de Perfil"
                                 class="img-fluid rounded-circle" style="width: 150px; height: 150px;">
                         </a>
                     @else

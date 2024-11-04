@@ -102,8 +102,8 @@
                 @if (Auth::user())
                     <li class="nav-item dropdown d-none d-lg-block user-dropdown">
                         @if ($user->foto)
-                            <a href="{{ asset('storage/' . $user->foto) }}">
-                                <img class="img-xs rounded-circle" src="{{ asset('storage/' . $user->foto) }}"
+                            <a href="{{ asset('assets/' . $user->foto) }}">
+                                <img class="img-xs rounded-circle" src="{{ asset('assets/' . $user->foto) }}"
                                     alt="Profile image">
                             </a>
                         @else
