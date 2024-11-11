@@ -15,6 +15,7 @@ use App\Models\Viagem;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use DateTime;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 
 class Confirmar extends Component
@@ -29,6 +30,23 @@ class Confirmar extends Component
 
     public function confirmar($id_carrinho)
     {
+       /* $num = 52075292;
+        $cod = 2400;
+        $quantia = 1;
+        $apiURL = env('api_url') . "/api/pagarComCartao/{$num}/{$cod}/{$quantia}";
+        $http = Http::get($apiURL);
+        if ($http->successful()) {
+            dd($http->json());
+        } else {
+            dd($apiURL);
+        }*/
+        
+        $reserva = $this->actualizarReserva($id_carrinho);
+        $pdf = $this->gerarPDF($reserva);
+        return response()->download($pdf);
+    }
+
+    public function actualizarReserva($id_carrinho){
         $carrinho = Carrinho::find($id_carrinho);
         $reserva = Reservas::find($carrinho->id_reserva);
         $codReserva = $this->gerarCodReserva();
@@ -37,8 +55,11 @@ class Confirmar extends Component
             "status_reservas" => 'Reservado',
         ]);
         $this->emit('alerta', ['mensagem' => 'Reserva feita com sucesso', 'icon' => 'success', 'tempo' => 4000]);
-        
-        
+       return $reserva;
+    }
+
+    public function gerarPDF($reserva){
+        $carrinho = Carrinho::where("id_reserva", $reserva->id)->first();
         $hospedagem = $this->buscarPacoteHospedagem($reserva->cod_hospedagem_reserva);
         $refeicao = $this->buscarPacoteRefeicao($reserva->cod_refeicao_reserva);
         $viagem = $this->buscarViagem($reserva->cod_viagem);
@@ -67,10 +88,10 @@ class Confirmar extends Component
             mkdir($pdfDirectory, 0755, true);
         }
 
-        $pdfPath = "$pdfDirectory/comprovativo_reserva_$codReserva.pdf";
+        $pdfPath = "$pdfDirectory/comprovativo_reserva_$reserva->cod_reserva.pdf";
         $pdf->save($pdfPath);
         $carrinho->delete();
-        return response()->download($pdfPath);
+        return $pdfPath;
     }
 
     public function gerarCodReserva()
