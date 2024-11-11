@@ -28,6 +28,10 @@ class Confirmar extends Component
         return view('livewire.carrinho.confirmar');
     }
 
+    public function habilitarCardPagamento(){
+
+    }
+
     public function confirmar($id_carrinho)
     {
        /* $num = 52075292;
@@ -41,9 +45,11 @@ class Confirmar extends Component
             dd($apiURL);
         }*/
         
+        /*
         $reserva = $this->actualizarReserva($id_carrinho);
         $pdf = $this->gerarPDF($reserva);
         return response()->download($pdf);
+        */
     }
 
     public function actualizarReserva($id_carrinho){

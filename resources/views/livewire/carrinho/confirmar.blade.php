@@ -79,12 +79,15 @@
                                 <div class="d-flex flex-column justify-content-center">
                                     <center>
                                         <button class="btn btn-success btn-lg me-2 p-3"
-                                            wire:click.prevent='confirmar({{ $carrinho->id }})'>
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#pagamentoModal"
+                                            >
                                             Confirmar <i class="fas fa-check"></i>
                                         </button> <br> <br>
 
                                         <button class="btn btn-danger btn-lg p-3"
-                                            wire:click.prevent='cancelar({{ $carrinho->id }})'>
+                                            wire:click.prevent='cancelar({{ $carrinho->id }})'
+                                            >
                                             Cancelar <i class="fas fa-times"></i>
                                         </button>
                                     </center>
@@ -92,11 +95,16 @@
                             </td>
                         </tr>
                     </tbody>
+
+                    <!-- Modal para Login -->
+                    @include('livewire.carrinho.inclusao.modal-pagamento')
                 @endforeach
             </table>
             @if (count($carrinhos) == 0)
                 <h1 class="alert alert-danger text-dark display-1 fw-bold">Nenhuma informação no carrinho</h1>
             @endif
         </div>
+
+        
     </div>
 </div>
