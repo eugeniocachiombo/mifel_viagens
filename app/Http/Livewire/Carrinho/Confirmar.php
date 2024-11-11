@@ -51,6 +51,7 @@ class Confirmar extends Component
             $requisicao = $http->json();
             $estado = $requisicao[0];
             $msg = $requisicao[1];
+            
           
             if ($estado) {
                 $reserva = $this->actualizarReserva($id_carrinho);

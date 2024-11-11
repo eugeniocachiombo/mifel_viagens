@@ -12,6 +12,7 @@
                         <div class="row g-3">
                             <div class="col-12 text-primary">
                                 <h3><i class="fas fa-credit-card"></i> Validação System-Bank</h3>
+                                <p>Informe os dados do seu cartão</p>
                             </div>
 
                             <div class="col-12 col-md-6">
