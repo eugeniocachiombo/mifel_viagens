@@ -78,7 +78,7 @@
                             <td class="text-center border">
                                 <div class="d-flex flex-column justify-content-center">
                                     <center>
-                                        <button class="btn btn-success btn-lg me-2 p-3"
+                                        <button type="button" class="btn btn-success btn-lg me-2 p-3"
                                             data-bs-toggle="modal"
                                             data-bs-target="#pagamentoModal"
                                             >

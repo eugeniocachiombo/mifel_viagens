@@ -20,7 +20,17 @@ use Livewire\Component;
 
 class Confirmar extends Component
 {
-    public $carrinhos;
+    public $carrinhos, $numero, $codigo;
+
+    protected $rules = [
+        'numero' => 'required',
+        'codigo' => 'required',
+    ];
+
+    protected $messages = [
+        'numero.required' => 'O número é obrigatório.',
+        'codigo.required' => 'O código é obrigatório.',
+    ];
 
     public function render()
     {
@@ -28,31 +38,35 @@ class Confirmar extends Component
         return view('livewire.carrinho.confirmar');
     }
 
-    public function habilitarCardPagamento(){
-
-    }
-
-    public function confirmar($id_carrinho)
+    public function confirmar($id_carrinho, $totalReserva)
     {
-       /* $num = 52075292;
-        $cod = 2400;
-        $quantia = 1;
+        $num = $this->numero;
+        $cod = $this->codigo;
+
+        $quantia = $totalReserva;
         $apiURL = env('api_url') . "/api/pagarComCartao/{$num}/{$cod}/{$quantia}";
         $http = Http::get($apiURL);
+
         if ($http->successful()) {
-            dd($http->json());
+            $requisicao = $http->json();
+            $estado = $requisicao[0];
+            $msg = $requisicao[1];
+          
+            if ($estado) {
+                $reserva = $this->actualizarReserva($id_carrinho);
+                $pdf = $this->gerarPDF($reserva);
+                return response()->download($pdf);
+                $this->emit('fecharModal');
+            } else {
+                $this->emit('alerta', ['mensagem' => $msg, 'icon' => 'error', 'tempo' => 3000]);
+            }
         } else {
-            dd($apiURL);
-        }*/
-        
-        /*
-        $reserva = $this->actualizarReserva($id_carrinho);
-        $pdf = $this->gerarPDF($reserva);
-        return response()->download($pdf);
-        */
+            $this->emit('alerta', ['mensagem' => 'Falha no pagamento', 'icon' => 'error']);
+        }
     }
 
-    public function actualizarReserva($id_carrinho){
+    public function actualizarReserva($id_carrinho)
+    {
         $carrinho = Carrinho::find($id_carrinho);
         $reserva = Reservas::find($carrinho->id_reserva);
         $codReserva = $this->gerarCodReserva();
@@ -61,10 +75,11 @@ class Confirmar extends Component
             "status_reservas" => 'Reservado',
         ]);
         $this->emit('alerta', ['mensagem' => 'Reserva feita com sucesso', 'icon' => 'success', 'tempo' => 4000]);
-       return $reserva;
+        return $reserva;
     }
 
-    public function gerarPDF($reserva){
+    public function gerarPDF($reserva)
+    {
         $carrinho = Carrinho::where("id_reserva", $reserva->id)->first();
         $hospedagem = $this->buscarPacoteHospedagem($reserva->cod_hospedagem_reserva);
         $refeicao = $this->buscarPacoteRefeicao($reserva->cod_refeicao_reserva);
@@ -74,11 +89,10 @@ class Confirmar extends Component
         $tipoViagem_v = Tipoviagem_viagens::where("cod_viagens", $viagem->id)->first();
         $tipoViagem = Tipoviagem::find($tipoViagem_v->cod_tipoviagem);
         $data = $this->formatarData($reserva->data_resevada);
-        
-        
+
         // PDF
         $pdf = FacadePdf::loadView('pdf.comprovativo', [
-            'reserva' => $reserva, 
+            'reserva' => $reserva,
             'carrinho' => $carrinho,
             'hospedagem' => $hospedagem,
             'refeicao' => $refeicao,

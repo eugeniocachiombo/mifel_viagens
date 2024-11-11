@@ -15,7 +15,7 @@
                             </div>
 
                             <div class="col-12 col-md-6">
-                                <div class="form-group">
+                                <div >
                                     <label for="numero"><i class="fas fa-keyboard"></i> Número: </label>
                                     <input type="text" class="form-control" id="numero" wire:model="numero"
                                         placeholder="Digite o número do cartão">
@@ -26,7 +26,7 @@
                             </div>
 
                             <div class="col-12 col-md-6">
-                                <div class="form-group">
+                                <div >
                                     <label for="codigo"><i class="fas fa-lock pe-2"></i>Código:</label>
                                     <input type="password" class="form-control" id="codigo" wire:model="codigo"
                                         placeholder="Digite o código">
@@ -37,8 +37,8 @@
                             </div>
 
                             <div class="col">
-                                <button class="btn btn-primary btn-lg me-2 p-3"
-                                    wire:click.prevent='confirmar({{ $carrinho->id }})'>
+                                <button type="submit" class="btn btn-primary btn-lg me-2 p-3"
+                                    wire:click.prevent='confirmar({{ $carrinho->id }}, {{$totalReserva}})'>
                                     Confirmar
                                 </button>
                             </div>
@@ -49,3 +49,11 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('livewire:load', function() {
+        Livewire.on('fecharModal', function(data) {
+            $('#pagamentoModal').modal('hide');
+        });
+    });
+</script>
