@@ -42,9 +42,10 @@ class Confirmar extends Component
     {
         $num = $this->numero;
         $cod = $this->codigo;
+        $descricao = "Pagamento de reserva de viagem, na Agência Mifel Viagens";
 
         $quantia = $totalReserva;
-        $apiURL = env('api_url') . "/api/pagarComCartao/{$num}/{$cod}/{$quantia}";
+        $apiURL = env('api_url') . "/api/pagarComCartao/{$num}/{$cod}/{$quantia}/{$descricao}";
         $http = Http::get($apiURL);
 
         if ($http->successful()) {
