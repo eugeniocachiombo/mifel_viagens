@@ -12,7 +12,7 @@ class Lista extends Component
     public function render()
     {
         $this->dificuldadeViagems = DificuldadeViagem::all();
-        return view('livewire.dificuldade-viagem.lista'); 
+        return view('livewire.dificuldade-viagem.lista')->layout("layouts.usuario.app");
     }
 
     public function eliminar($id)

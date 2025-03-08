@@ -8,10 +8,11 @@ use Livewire\Component;
 class Lista extends Component
 {
     public $destinos;
+    
     public function render()
     {
         $this->destinos = Destino::all();
-        return view('livewire.destino.lista');
+        return view('livewire.destino.lista')->layout("layouts.usuario.app");
     }
 
     public function eliminar($id){

@@ -14,7 +14,7 @@ class Lista extends Component
     public function render()
     {
         $this->viagens = Viagem::where("status_viagem", 1)->get();
-        return view('livewire.viagem.lista');
+        return view('livewire.viagem.lista')->layout("layouts.usuario.app");
     }
 
     public function buscarUsuario($id)

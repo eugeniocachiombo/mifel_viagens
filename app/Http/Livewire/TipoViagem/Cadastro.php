@@ -26,6 +26,11 @@ class Cadastro extends Component
         'status_tipoViagem.required' => 'O status do tipo de viagem é obrigatório.',
     ];
 
+    public function render()
+    {
+        return view('livewire.tipo-viagem.cadastro')->layout("layouts.usuario.app");
+    }
+
     public function cadastrar()
     {
         $this->validate();
@@ -40,8 +45,5 @@ class Cadastro extends Component
         $this->reset();
     }
 
-    public function render()
-    {
-        return view('livewire.tipo-viagem.cadastro');
-    }
+    
 }

@@ -15,6 +15,11 @@ class Lista extends Component
         $this->clientes = Cliente::all();
     }
 
+    public function render()
+    {
+        return view('livewire.cliente.lista')->layout("layouts.usuario.app");
+    }
+
     public function eliminar($id)
     {
         if ($cliente = Cliente::find($id)) {
@@ -31,8 +36,5 @@ class Lista extends Component
         return User::find($id);
     }
 
-    public function render()
-    {
-        return view('livewire.cliente.lista');
-    }
+    
 }

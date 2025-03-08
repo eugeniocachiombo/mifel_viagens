@@ -32,6 +32,11 @@ class Cadastro extends Component
         'status_destino.required' => 'O status do destino é obrigatório.',
     ];
 
+    public function render()
+    {
+        return view('livewire.destino.cadastro')->layout("layouts.usuario.app");
+    }
+
     public function cadastrar()
     {
         $this->validate();
@@ -47,8 +52,5 @@ class Cadastro extends Component
         $this->reset();
     }
 
-    public function render()
-    {
-        return view('livewire.destino.cadastro');
-    }
+   
 }

@@ -81,7 +81,7 @@ class Cadastro extends Component
 
     public function render()
     {
-        return view('livewire.viagem.cadastro');
+        return view('livewire.viagem.cadastro')->layout("layouts.usuario.app");
     }
 
     public function cadastrar()

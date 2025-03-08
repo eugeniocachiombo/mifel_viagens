@@ -43,6 +43,11 @@ class Cadastro extends Component
         'status_catPreco.boolean' => 'O status deve ser verdadeiro ou falso.',
     ];
 
+    public function render()
+    {
+        return view('livewire.cat-preco.cadastro')->layout("layouts.usuario.app");
+    }
+
     public function cadastrar()
     {
         $this->validate();
@@ -61,9 +66,6 @@ class Cadastro extends Component
         $this->reset();
     }
 
-    public function render()
-    {
-        return view('livewire.cat-preco.cadastro');
-    }
+    
 }
 

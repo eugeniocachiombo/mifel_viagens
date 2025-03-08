@@ -50,7 +50,7 @@ class Actualizar extends Component
 
     public function render()
     {
-        return view('livewire.cat-preco.actualizar');
+        return view('livewire.cat-preco.actualizar')->layout("layouts.usuario.app");
     }
 
     public function actualizar()

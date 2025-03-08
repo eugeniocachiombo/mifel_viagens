@@ -68,7 +68,7 @@ class Reservar extends Component
 
     public function render()
     {
-        return view('livewire.reserva.reservar');
+        return view('livewire.reserva.reservar')->layout("layouts.usuario.app");
     }
 
     public function pacoteHospListar()

@@ -43,7 +43,7 @@ class Actualizar extends Component
 
     public function render()
     {
-        return view('livewire.actividades.actualizar');
+        return view('livewire.actividades.actualizar')->layout("layouts.usuario.app");
     }
 
     public function actualizar()

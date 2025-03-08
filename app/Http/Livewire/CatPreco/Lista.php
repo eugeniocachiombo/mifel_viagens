@@ -12,7 +12,7 @@ class Lista extends Component
     public function render()
     {
         $this->catprecos = CatPreco::all();
-        return view('livewire.cat-preco.lista');
+        return view('livewire.cat-preco.lista')->layout("layouts.usuario.app");
     }
 
     public function eliminar($id)

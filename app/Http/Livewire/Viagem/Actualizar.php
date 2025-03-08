@@ -8,6 +8,6 @@ class Actualizar extends Component
 {
     public function render()
     {
-        return view('livewire.viagem.actualizar');
+        return view('livewire.viagem.actualizar')->layout("layouts.usuario.app");
     }
 }

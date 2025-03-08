@@ -36,7 +36,7 @@ class Actualizar extends Component
 
     public function render()
     {
-        return view('livewire.tipo-viagem.actualizar');
+        return view('livewire.tipo-viagem.actualizar')->layout("layouts.usuario.app");
     }
 
     public function atualizar()

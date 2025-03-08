@@ -12,7 +12,7 @@ class Lista extends Component
     public function render()
     {
         $this->tipoviagems = Tipoviagem::all();
-        return view('livewire.tipo-viagem.lista'); 
+        return view('livewire.tipo-viagem.lista')->layout("layouts.usuario.app");
     }
 
     public function eliminar($id)

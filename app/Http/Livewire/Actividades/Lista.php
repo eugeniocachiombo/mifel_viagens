@@ -12,7 +12,7 @@ class Lista extends Component
     public function render()
     {
         $this->actividades = Actividade::all();
-        return view('livewire.actividades.lista');
+        return view('livewire.actividades.lista')->layout("layouts.usuario.app");
     }
 
     public function eliminar($id)

@@ -6,7 +6,7 @@
         min-height: 100vh;
     }
     .content {
-        padding-bottom: 100px; /* Espaço para o rodapé */
+        padding-bottom: 100px;
     }
     .footer {
         position: absolute;

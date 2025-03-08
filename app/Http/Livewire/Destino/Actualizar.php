@@ -9,7 +9,6 @@ use Livewire\WithFileUploads;
 class Actualizar extends Component
 {
     use WithFileUploads;
-
     
     public $nome_destino;
     public $desc_destino;
@@ -45,7 +44,7 @@ class Actualizar extends Component
 
     public function render()
     {
-        return view('livewire.destino.actualizar');
+        return view('livewire.destino.actualizar')->layout("layouts.usuario.app");
     }
 
     public function cadastrar()

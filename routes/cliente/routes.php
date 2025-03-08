@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\Cliente\ClienteController;
+use App\Http\Livewire\Cliente\Lista;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix("cliente")->name("cliente.")->group(function () {
-    Route::get("/lista", [ClienteController::class, "listar"])->name("lista")->middleware("usuario.logado");
+    Route::get("/lista", Lista::class)->name("lista")->middleware("usuario.logado");
 });

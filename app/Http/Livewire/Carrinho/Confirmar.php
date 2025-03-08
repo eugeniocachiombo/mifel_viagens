@@ -35,7 +35,7 @@ class Confirmar extends Component
     public function render()
     {
         $this->carrinhos = Carrinho::where("id_usuario", Auth::user()->id)->get();
-        return view('livewire.carrinho.confirmar');
+        return view('livewire.carrinho.confirmar')->layout("layouts.usuario.app");
     }
 
     public function confirmar($id_carrinho, $totalReserva)

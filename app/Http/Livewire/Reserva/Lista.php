@@ -32,7 +32,7 @@ class Lista extends Component
 
     public function render()
     {
-        return view('livewire.reserva.lista');
+        return view('livewire.reserva.lista')->layout("layouts.usuario.app");
     }
 
     public function buscarReserva($id)
