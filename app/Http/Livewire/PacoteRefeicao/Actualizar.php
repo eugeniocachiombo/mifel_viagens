@@ -47,6 +47,11 @@ class Actualizar extends Component
         $this->status_pacoteRefeicao = $pacoteRefeicao->status_pacoteRefeicao;
     }
 
+    public function render()
+    {
+        return view('livewire.pacote-refeicao.actualizar')->layout("layouts.usuario.app");
+    }
+
     public function actualizar()
     {
         $this->validate();
@@ -62,10 +67,5 @@ class Actualizar extends Component
 
         $this->emit('alerta', ['mensagem' => 'Pacote de Refeição Actualizado com sucesso', 'icon' => 'success']);
         $this->reset();
-    }
-
-    public function render()
-    {
-        return view('livewire.pacote-refeicao.actualizar');
     }
 }

@@ -51,6 +51,11 @@ class Actualizar extends Component
         }
     }
 
+    public function render()
+    {
+        return view('livewire.pacote-hospedagem.actualizar')->layout("layouts.usuario.app");
+    }
+
     public function actualizar()
     {
         $this->validate();
@@ -69,8 +74,5 @@ class Actualizar extends Component
         $this->reset();
     }
 
-    public function render()
-    {
-        return view('livewire.pacote-hospedagem.actualizar');
-    }
+    
 }

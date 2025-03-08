@@ -9,6 +9,11 @@ class Lista extends Component
 {
     public $pacoteHospedagems;
 
+    public function render()
+    {
+        $this->pacoteHospedagems = PacoteHospedagem::all();
+        return view('livewire.pacote-hospedagem.lista')->layout("layouts.usuario.app");
+    }
 
     public function eliminar($id)
     {
@@ -21,9 +26,5 @@ class Lista extends Component
         }
     }
 
-    public function render()
-    {
-        $this->pacoteHospedagems = PacoteHospedagem::all();
-        return view('livewire.pacote-hospedagem.lista');
-    }
+    
 }

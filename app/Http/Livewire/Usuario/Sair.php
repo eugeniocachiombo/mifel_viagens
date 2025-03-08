@@ -10,6 +10,7 @@ class Sair extends Component
     public function render()
     {
         Auth::logout();
-        return redirect()->route("anonimo");
+         redirect()->route("anonimo");
+         return view('livewire.usuario.sair');
     }
 }

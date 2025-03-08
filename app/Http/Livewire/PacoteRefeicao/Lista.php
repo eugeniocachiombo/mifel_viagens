@@ -10,6 +10,12 @@ class Lista extends Component
 
     public $pacoteRefeicaos;
 
+    public function render()
+    {
+        $this->pacoteRefeicaos = PacoteRefeicao::all();
+        return view('livewire.pacote-refeicao.lista')->layout("layouts.usuario.app");
+    }
+
     public function eliminar($id)
     {
         $pacoteRefeicao = Pacoterefeicao::find($id);
@@ -21,9 +27,5 @@ class Lista extends Component
         }
     }
 
-    public function render()
-    {
-        $this->pacoteRefeicaos = PacoteRefeicao::all();
-        return view('livewire.pacote-refeicao.lista');
-    }
+    
 }

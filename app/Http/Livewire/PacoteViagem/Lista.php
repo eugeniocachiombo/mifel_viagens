@@ -14,7 +14,7 @@ class Lista extends Component
     public function render()
     {
         $this->pacotesViagem = PacoteViagem::all();
-        return view('livewire.pacote-viagem.lista');
+        return view('livewire.pacote-viagem.lista')->layout("layouts.usuario.app");
     }
 
     public function eliminar($id)

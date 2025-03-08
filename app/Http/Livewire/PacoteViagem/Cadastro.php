@@ -41,6 +41,14 @@ class Cadastro extends Component
         'duracao_viagem.required' => 'A duração da viagem é obrigatória.',
     ];
 
+    public function render()
+    {
+        return view('livewire.pacote-viagem.cadastro', [
+            'destinos' => Destino::all(),
+            'tiposViagem' => Tipoviagem::all(),
+        ])->layout("layouts.usuario.app");
+    }
+
     public function cadastrar()
     {
         $this->validate();
@@ -59,13 +67,5 @@ class Cadastro extends Component
 
         $this->emit('alerta', ['mensagem' => 'Pacote de Viagem cadastrado com sucesso', 'icon' => 'success']);
         $this->reset();
-    }
-
-    public function render()
-    {
-        return view('livewire.pacote-viagem.cadastro', [
-            'destinos' => Destino::all(),
-            'tiposViagem' => Tipoviagem::all(),
-        ]);
     }
 }

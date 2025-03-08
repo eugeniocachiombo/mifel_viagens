@@ -36,6 +36,11 @@ class Cadastro extends Component
         'max_qtd_pessoas.min' => 'A máxima quantidade de pessoas deve ser pelo menos 1.',
     ];
 
+    public function render()
+    {
+        return view('livewire.pacote-hospedagem.cadastro')->layout("layouts.usuario.app");
+    }
+
     public function cadastrar()
     {
         $this->validate();
@@ -53,8 +58,5 @@ class Cadastro extends Component
         $this->reset();
     }
 
-    public function render()
-    {
-        return view('livewire.pacote-hospedagem.cadastro');
-    }
+    
 }

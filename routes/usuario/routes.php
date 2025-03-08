@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Usuario\UsuarioController;
 use App\Http\Livewire\PaginaInicial\Index;
 use App\Http\Livewire\Usuario\ActualizarDados;
 use App\Http\Livewire\Usuario\AlterarSenha;

@@ -1,11 +1,13 @@
 <?php
 
-use App\Http\Controllers\PacoteRefeicao\PacoteRefeicaocontroller;
+use App\Http\Livewire\PacoteRefeicao\Cadastro;
+use App\Http\Livewire\PacoteRefeicao\Lista;
+use App\Http\Livewire\PacoteRefeicao\Actualizar;
 use Illuminate\Support\Facades\Route;
 
 
 Route::prefix("pacote/refeicao")->name("pacote.refeicao.")->group(function () {
-    Route::get("/cadastrar", [PacoteRefeicaocontroller::class, "cadastrar"])->name("cadastrar")->middleware("usuario.logado");
-    Route::get("/lista", [PacoteRefeicaocontroller::class, "listar"])->name("lista")->middleware("usuario.logado");
-    Route::get("/actualizar/{id}", [PacoteRefeicaocontroller::class, "actualizar"])->name("actualizar")->middleware("usuario.logado");
+    Route::get("/cadastrar", Cadastro::class)->name("cadastrar")->middleware("usuario.logado");
+    Route::get("/lista", Lista::class)->name("lista")->middleware("usuario.logado");
+    Route::get("/actualizar/{id}", Actualizar::class)->name("actualizar")->middleware("usuario.logado");
 });

@@ -58,7 +58,7 @@ class Actualizar extends Component
         return view('livewire.pacote-viagem.actualizar', [
             'destinos' => Destino::all(),
             'tiposViagem' => Tipoviagem::all(),
-        ]);
+        ])->layout("layouts.usuario.app");
     }
 
     public function actualizar()
