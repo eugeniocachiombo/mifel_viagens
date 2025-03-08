@@ -68,6 +68,12 @@ class ActualizarDados extends Component
         $this->id_acesso = $user->id_acesso;
     }
 
+    public function render()
+    {
+        return view('livewire.usuario.actualizar-dados')
+        ->layout("layouts.usuario.dados-pessoais");
+    }
+
     public function actualizar()
     {
         $this->validate();
@@ -97,10 +103,5 @@ class ActualizarDados extends Component
         }
 
         $this->emit('alerta', ['mensagem' => 'Actualizado com sucesso', 'icon' => 'success']);
-    }
-
-    public function render()
-    {
-        return view('livewire.usuario.actualizar-dados');
     }
 }

@@ -28,6 +28,11 @@ class AlterarSenha extends Component
         'confirmarSenha.same' => 'A confirmação da nova senha deve ser igual à nova senha.', // Mensagem personalizada
     ];
     
+    public function render()
+    {
+        return view('livewire.usuario.alterar-senha')
+        ->layout("layouts.usuario.dados-pessoais");
+    }
 
     public function alterarSenha()
     {
@@ -47,9 +52,4 @@ class AlterarSenha extends Component
         $this->confirmarSenha = '';
     }
     
-
-    public function render()
-    {
-        return view('livewire.usuario.alterar-senha');
-    }
 }

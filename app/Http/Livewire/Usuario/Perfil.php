@@ -47,6 +47,12 @@ class Perfil extends Component
         }
     }
 
+    public function render()
+    {
+        return view('livewire.usuario.perfil')
+        ->layout("layouts.usuario.dados-pessoais");
+    }
+
     public function uploadPhoto()
     {
         $this->validate([
@@ -64,10 +70,5 @@ class Perfil extends Component
             $this->novaFoto = null;
             $this->emit('alerta', ['mensagem' => 'Foto atualizada com sucesso!', 'icon' => 'success']);
         }
-    }
-
-    public function render()
-    {
-        return view('livewire.usuario.perfil');
     }
 }

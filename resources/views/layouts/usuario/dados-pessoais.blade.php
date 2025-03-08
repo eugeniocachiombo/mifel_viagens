@@ -9,7 +9,7 @@
     @include('inclusao.header')
     <div class="container-fluid page-body-wrapper">
         @include('inclusao.menu')
-        @livewire('usuario.alterar-senha')
+        {{$slot}}
     </div>
     @include('inclusao.footer')
 </div>
