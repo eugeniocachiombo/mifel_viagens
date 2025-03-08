@@ -9,7 +9,7 @@
     <div class="container d-flex justify-content-center align-items-center page-body-wrapper">
         <div class="col-md-6 grid-margin stretch-card">
             <div class="card">
-                @livewire('usuario.login')
+               {{$slot}}
             </div>
         </div>
     </div>

@@ -5,6 +5,6 @@
     }
 </style>
 
-@livewire('usuario.cadastro')
+{{$slot}}
 
 @include('inclusao.foot')

@@ -1,6 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PaginaInicial\AnonimoController;
+use App\Http\Livewire\PaginaInicial\Anonimo;
 
-Route::get("/", [AnonimoController::class, "irEmInicio"])->name("anonimo")->middleware("usuario.terminado");
+Route::get("/", Anonimo::class)->name("anonimo")->middleware("usuario.terminado");

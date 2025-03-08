@@ -5,13 +5,14 @@ namespace App\Http\Livewire\PaginaInicial;
 use App\Models\Destino;
 use Livewire\Component;
 
-class ConteudoPrincipal extends Component
+class Index extends Component
 {
     public $destinos;
 
     public function render()
     {
         $this->destinos = Destino::all();
-        return view('livewire.pagina-inicial.conteudo-principal');
+        return view('livewire.pagina-inicial.index')
+        ->layout("layouts.usuario.logado");
     }
 }

@@ -10,7 +10,6 @@
 
     .card i {
         color: #007bff;
-        /* Cor dos ícones */
     }
 
     .animated-button {
@@ -24,7 +23,6 @@
 
     .animated-button:hover {
         transform: scale(1.1);
-        /* Aumenta um pouco ao passar o mouse */
     }
 
     @keyframes bounce {
@@ -42,7 +40,6 @@
     .button-container {
         display: flex;
         gap: 15px;
-        /* Espaçamento entre os botões */
     }
 </style>
 
@@ -50,7 +47,7 @@
     @include('inclusao.header')
     <div class="container-fluid page-body-wrapper">
         @include('inclusao.menu')
-        @livewire('pagina-inicial.conteudo-principal')
+        {{$slot}}
     </div>
     @include('inclusao.footer')
 </div>

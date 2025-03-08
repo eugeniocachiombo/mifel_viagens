@@ -8,15 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class UsuarioController extends Controller
 {
-   
-    public function cadastrar(){
-        return view("usuario.cadastro");
-    }
-
-    public function logar() {
-        return view('usuario.login');
-    }
-
+  
     public function actualizarDados($id) {
         return view('usuario.actualizar-dados', ["id"=> $id]);
     }

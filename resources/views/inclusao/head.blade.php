@@ -46,11 +46,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/jquery.dataTables.min.css') }}">
     <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/ellipsis.js') }}"></script>
-
-
-    @livewireScripts
     @livewireStyles
-
 </head>
 
 <body>

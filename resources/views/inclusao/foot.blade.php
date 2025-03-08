@@ -39,6 +39,7 @@
         });
     });
 </script>
+@livewireScripts
 </body>
 
 </html>

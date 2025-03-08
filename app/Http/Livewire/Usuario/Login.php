@@ -14,7 +14,8 @@ class Login extends Component
 
     public function render()
     {
-        return view('livewire.usuario.login');
+        return view('livewire.usuario.login')
+        ->layout("layouts.login.app");
     }
 
     public function logar()
@@ -25,13 +26,13 @@ class Login extends Component
                 ->first();
 
             if ($usuario && Hash::check($this->senha, $usuario->password)) {
-                Auth::login($usuario);
 
+                Auth::login($usuario);
                 if ($this->lembreMe == true) {
                     cookie("milfe_sessao_iniciada", "milfe_sessao_iniciada", 60);
                 }
-
                 return redirect()->route('usuario.pagina_inicial');
+                
             } else {
                 $this->emit('alerta', ['mensagem' => 'Verifique os seus dados', 'icon' => 'error', 'tempo' => 3000]);
             }
