@@ -62,7 +62,7 @@ class Confirmar extends Component
                 $reserva = $this->actualizarReserva($this->id_carrinho);
                 $pdf = $this->gerarPDF($reserva);
                 $this->emit('fecharModal');
-                $this->numero = $this->codigo = null;
+                $this->numero = $this->codigo = $this->id_carrinho = null;
                 return response()->download($pdf);
             } else {
                 $this->emit('alerta', ['mensagem' => $msg, 'icon' => 'error', 'tempo' => 3000]);
