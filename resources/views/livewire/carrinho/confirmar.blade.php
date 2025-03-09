@@ -82,7 +82,8 @@
                                 <div class="d-flex flex-column justify-content-center">
                                     <center>
                                         <button type="button" class="btn btn-success btn-lg me-2 p-3"
-                                            data-bs-toggle="modal" data-bs-target="#pagamentoModal">
+                                            data-bs-toggle="modal" data-bs-target="#pagamentoModal"
+                                            wire:click.prevent='escolherReserva({{ $carrinho->id }})'>
                                             Confirmar <i class="fas fa-check"></i>
                                         </button> <br> <br>
 
@@ -95,10 +96,10 @@
                             </td>
                         </tr>
                     </tbody>
-                    <!-- Modal para Login -->
-                    @include('livewire.carrinho.inclusao.modal-pagamento')
                 @endforeach
             </table>
+            <!-- Modal para Login -->
+            @include('livewire.carrinho.inclusao.modal-pagamento')
             @if (count($carrinhos) == 0)
                 <h1 class="alert alert-danger text-dark display-1 fw-bold">Nenhuma informação no carrinho</h1>
             @endif

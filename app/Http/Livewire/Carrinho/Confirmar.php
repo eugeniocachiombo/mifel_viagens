@@ -16,7 +16,7 @@ use Livewire\Component;
 
 class Confirmar extends Component
 {
-    public $carrinhos, $numero, $codigo;
+    public $id_carrinho, $carrinhos, $numero, $codigo;
 
     protected $rules = [
         'numero' => 'required',
@@ -34,13 +34,17 @@ class Confirmar extends Component
         return view('livewire.carrinho.confirmar')->layout("layouts.usuario.app");
     }
 
-    public function confirmar($id_carrinho)
+    public function escolherReserva($id_carrinho){
+        $this->id_carrinho = $id_carrinho;
+    }
+
+    public function confirmar()
     {
         $num = $this->numero;
         $cod = $this->codigo;
         $descricao = "Pagamento de reserva de viagem, na Agência Mifel Viagens";
 
-        $carrinho = Carrinho::find($id_carrinho);
+        $carrinho = Carrinho::find($this->id_carrinho);
         $preco_viagem = $carrinho->buscarReserva->buscarPacoteViagem->preco_viagem;
         $preco_hospedagem = $carrinho->buscarPacoteHospedagem->preco_pacoteHospedagem;
         $preco_refeicao = $carrinho->buscarPacoteRefeicao->preco_pacoteRefeicao;
@@ -55,7 +59,7 @@ class Confirmar extends Component
             $msg = $requisicao[1];
 
             if ($estado) {
-                $reserva = $this->actualizarReserva($id_carrinho);
+                $reserva = $this->actualizarReserva($this->id_carrinho);
                 $pdf = $this->gerarPDF($reserva);
                 $this->emit('fecharModal');
                 $this->numero = $this->codigo = null;
