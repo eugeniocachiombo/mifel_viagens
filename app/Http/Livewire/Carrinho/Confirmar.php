@@ -5,13 +5,9 @@ namespace App\Http\Livewire\Carrinho;
 use App\Models\Carrinho;
 use App\Models\Destino;
 use App\Models\Destinosviagem;
-use App\Models\DificuldadeViagem;
-use App\Models\Pacotehospedagem;
-use App\Models\Pacoterefeicao;
 use App\Models\Reservas;
 use App\Models\Tipoviagem;
 use App\Models\Tipoviagem_viagens;
-use App\Models\Viagem;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use DateTime;
 use Illuminate\Support\Facades\Auth;
@@ -38,13 +34,18 @@ class Confirmar extends Component
         return view('livewire.carrinho.confirmar')->layout("layouts.usuario.app");
     }
 
-    public function confirmar($id_carrinho, $totalReserva)
+    public function confirmar($id_carrinho)
     {
         $num = $this->numero;
         $cod = $this->codigo;
         $descricao = "Pagamento de reserva de viagem, na Agência Mifel Viagens";
 
-        $quantia = $totalReserva;
+        $carrinho = Carrinho::find($id_carrinho);
+        $preco_viagem = $carrinho->buscarReserva->buscarPacoteViagem->preco_viagem;
+        $preco_hospedagem = $carrinho->buscarPacoteHospedagem->preco_pacoteHospedagem;
+        $preco_refeicao = $carrinho->buscarPacoteRefeicao->preco_pacoteRefeicao;
+        $quantia =  $preco_viagem + $preco_hospedagem + $preco_refeicao;
+
         $apiURL = env('api_url') . "/api/pagarComCartao/{$num}/{$cod}/{$quantia}/{$descricao}";
         $http = Http::get($apiURL);
 
@@ -52,13 +53,13 @@ class Confirmar extends Component
             $requisicao = $http->json();
             $estado = $requisicao[0];
             $msg = $requisicao[1];
-            
-          
+
             if ($estado) {
                 $reserva = $this->actualizarReserva($id_carrinho);
                 $pdf = $this->gerarPDF($reserva);
-                return response()->download($pdf);
                 $this->emit('fecharModal');
+                $this->numero = $this->codigo = null;
+                return response()->download($pdf);
             } else {
                 $this->emit('alerta', ['mensagem' => $msg, 'icon' => 'error', 'tempo' => 3000]);
             }
@@ -83,9 +84,9 @@ class Confirmar extends Component
     public function gerarPDF($reserva)
     {
         $carrinho = Carrinho::where("id_reserva", $reserva->id)->first();
-        $hospedagem = $this->buscarPacoteHospedagem($reserva->cod_hospedagem_reserva);
-        $refeicao = $this->buscarPacoteRefeicao($reserva->cod_refeicao_reserva);
-        $viagem = $this->buscarViagem($reserva->cod_viagem);
+        $hospedagem = $carrinho->buscarPacoteHospedagem;
+        $refeicao = $carrinho->buscarPacoteRefeicao;
+        $viagem = $carrinho->buscarReserva->buscarPacoteViagem;
         $destino_v = Destinosviagem::where("cod_viagens_dv", $viagem->id)->first();
         $destino = Destino::find($destino_v->cod_destinos_dv);
         $tipoViagem_v = Tipoviagem_viagens::where("cod_viagens", $viagem->id)->first();
@@ -132,51 +133,6 @@ class Confirmar extends Component
         $carrinho->delete();
         $reserva->delete();
         $this->emit('alerta', ['mensagem' => 'Reserva cancelada', 'icon' => 'warning', 'tempo' => 4000]);
-    }
-
-    public function buscarReserva($id)
-    {
-        return Reservas::find($id);
-    }
-
-    public function buscarDestino($id)
-    {
-        return Destino::find($id);
-    }
-
-    public function buscarDestinoViagem($idViagem)
-    {
-        return Destinosviagem::where("cod_viagens_dv", $idViagem)->first();
-    }
-
-    public function buscarTipoViagem($id)
-    {
-        return Tipoviagem::find($id);
-    }
-
-    public function buscarTipoViagemViagens($idViagem)
-    {
-        return Tipoviagem_viagens::where("cod_viagens", $idViagem)->first();
-    }
-
-    public function buscarPacoteHospedagem($id)
-    {
-        return Pacotehospedagem::find($id);
-    }
-
-    public function buscarPacoteRefeicao($id)
-    {
-        return Pacoterefeicao::find($id);
-    }
-
-    public function buscarViagem($id)
-    {
-        return Viagem::find($id);
-    }
-
-    public function buscarDificuldade($id)
-    {
-        return DificuldadeViagem::find($id);
     }
 
     public function formatarData($data)

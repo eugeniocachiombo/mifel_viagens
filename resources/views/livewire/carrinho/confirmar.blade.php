@@ -16,41 +16,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @php
-                            $reserva = $this->buscarReserva($carrinho->id_reserva);
-                            $pacoteViagem = $this->buscarViagem($reserva->cod_viagem);
-                            $pacoteHospedagem = $this->buscarPacoteHospedagem($carrinho->id_pacotehospedagems);
-                            $pacoteRefeicao = $this->buscarPacoteRefeicao($carrinho->id_pacoterefeicaos);
-                            
-                            $totalReserva =
-                                $pacoteViagem->preco_viagem +
-                                $pacoteHospedagem->preco_pacoteHospedagem +
-                                $pacoteRefeicao->preco_pacoteRefeicao; 
-                        @endphp
                         <tr class="border">
                             <td class="border">
                                 <div class="card mb-2 animate__animated animate__fadeIn">
                                     <div class="card-body">
                                         <h5 class="card-title"><i
-                                                class="fas fa-plane-departure pe-2"></i>{{ $pacoteViagem->titulo_viagem }}
+                                                class="fas fa-plane-departure pe-2"></i>{{ $carrinho->buscarReserva->buscarPacoteViagem->titulo_viagem }}
                                         </h5>
-                                        <p class="card-text">{{ $pacoteViagem->desc_viagem }}</p>
-                                        <h6 class="text-success">
-                                            Preço: {{ number_format($pacoteViagem->preco_viagem, 2, ',', '.') }} kz
-                                        </h6>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="border">
-                                <div class="card mb-2 animate__animated animate__fadeIn">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><i
-                                                class="fas fa-bed pe-2"></i>{{ $pacoteHospedagem->titulo_pacoteHospedagem }}
-                                        </h5>
-                                        <p class="card-text">{{ $pacoteHospedagem->desc_pacoteHospedagem }}</p>
+                                        <p class="card-text">
+                                            {{ $carrinho->buscarReserva->buscarPacoteViagem->desc_viagem }}
+                                        </p>
                                         <h6 class="text-success">
                                             Preço:
-                                            {{ number_format($pacoteHospedagem->preco_pacoteHospedagem, 2, ',', '.') }}
+                                            {{ number_format($carrinho->buscarReserva->buscarPacoteViagem->preco_viagem, 2, ',', '.') }}
                                             kz
                                         </h6>
                                     </div>
@@ -60,18 +38,43 @@
                                 <div class="card mb-2 animate__animated animate__fadeIn">
                                     <div class="card-body">
                                         <h5 class="card-title"><i
-                                                class="fas fa-utensils pe-2"></i>{{ $pacoteRefeicao->titulo_pacoteRefeicao }}
+                                                class="fas fa-bed pe-2"></i>{{ $carrinho->buscarPacoteHospedagem->titulo_pacoteHospedagem }}
                                         </h5>
-                                        <p class="card-text">{{ $pacoteRefeicao->desc_pacoteRefeicao }}</p>
+                                        <p class="card-text">
+                                            {{ $carrinho->buscarPacoteHospedagem->desc_pacoteHospedagem }}
+                                        </p>
                                         <h6 class="text-success">
                                             Preço:
-                                            {{ number_format($pacoteRefeicao->preco_pacoteRefeicao, 2, ',', '.') }} kz
+                                            {{ number_format($carrinho->buscarPacoteHospedagem->preco_pacoteHospedagem, 2, ',', '.') }}
+                                            kz
+                                        </h6>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="border">
+                                <div class="card mb-2 animate__animated animate__fadeIn">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><i
+                                                class="fas fa-utensils pe-2"></i>{{ $carrinho->buscarPacoteRefeicao->titulo_pacoteRefeicao }}
+                                        </h5>
+                                        <p class="card-text">{{ $carrinho->buscarPacoteRefeicao->desc_pacoteRefeicao }}
+                                        </p>
+                                        <h6 class="text-success">
+                                            Preço:
+                                            {{ number_format($carrinho->buscarPacoteRefeicao->preco_pacoteRefeicao, 2, ',', '.') }}
+                                            kz
                                         </h6>
                                     </div>
                                 </div>
                             </td>
                             <td class="text-center border">
                                 <h6 class="text-dark">
+                                    @php
+                                        $preco_viagem = $carrinho->buscarReserva->buscarPacoteViagem->preco_viagem;
+                                        $preco_hospedagem = $carrinho->buscarPacoteHospedagem->preco_pacoteHospedagem;
+                                        $preco_refeicao = $carrinho->buscarPacoteRefeicao->preco_pacoteRefeicao;
+                                        $totalReserva = $preco_viagem + $preco_hospedagem + $preco_refeicao;
+                                    @endphp
                                     <b> {{ number_format($totalReserva, 2, ',', '.') }} kz</b>
                                 </h6>
                             </td>
@@ -79,15 +82,12 @@
                                 <div class="d-flex flex-column justify-content-center">
                                     <center>
                                         <button type="button" class="btn btn-success btn-lg me-2 p-3"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#pagamentoModal"
-                                            >
+                                            data-bs-toggle="modal" data-bs-target="#pagamentoModal">
                                             Confirmar <i class="fas fa-check"></i>
                                         </button> <br> <br>
 
                                         <button class="btn btn-danger btn-lg p-3"
-                                            wire:click.prevent='cancelar({{ $carrinho->id }})'
-                                            >
+                                            wire:click.prevent='cancelar({{ $carrinho->id }})'>
                                             Cancelar <i class="fas fa-times"></i>
                                         </button>
                                     </center>
@@ -95,7 +95,6 @@
                             </td>
                         </tr>
                     </tbody>
-
                     <!-- Modal para Login -->
                     @include('livewire.carrinho.inclusao.modal-pagamento')
                 @endforeach
@@ -105,6 +104,6 @@
             @endif
         </div>
 
-        
+
     </div>
 </div>

@@ -23,4 +23,8 @@ class Reservas extends Model
         "cod_reserva",
         "id_usuario",
     ];
+
+    public function buscarPacoteViagem(){
+        return $this->belongsTo(Viagem::class, "cod_viagem", "id");
+    }
 }

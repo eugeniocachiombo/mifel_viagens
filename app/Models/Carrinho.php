@@ -15,4 +15,20 @@ class Carrinho extends Model
         "id_pacoterefeicaos",
         "id_reserva"
     ];
+
+    public function buscarUsuario(){
+        return $this->belongsTo(User::class, "id_usuario", "id");
+    }
+
+    public function buscarPacoteHospedagem(){
+        return $this->belongsTo(Pacotehospedagem::class, "id_pacotehospedagems", "id");
+    }
+
+    public function buscarPacoteRefeicao(){
+        return $this->belongsTo(Pacoterefeicao::class, "id_pacoterefeicaos", "id");
+    }
+
+    public function buscarReserva(){
+        return $this->belongsTo(Reservas::class, "id_reserva", "id");
+    }
 }

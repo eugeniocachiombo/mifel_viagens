@@ -39,7 +39,7 @@
 
                             <div class="col">
                                 <button type="submit" class="btn btn-primary btn-lg me-2 p-3"
-                                    wire:click.prevent='confirmar({{ $carrinho->id }}, {{$totalReserva}})'>
+                                    wire:click.prevent='confirmar({{ $carrinho->id }})'>
                                     Confirmar
                                 </button>
                             </div>
