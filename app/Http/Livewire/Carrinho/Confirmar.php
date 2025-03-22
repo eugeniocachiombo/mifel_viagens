@@ -11,6 +11,7 @@ use App\Models\Tipoviagem_viagens;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use DateTime;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 
@@ -40,9 +41,6 @@ class Confirmar extends Component
 
     public function confirmar()
     {
-        $num = $this->numero;
-        $cod = $this->codigo;
-        $descricao = "Pagamento de reserva de viagem, na Agência Mifel Viagens";
 
         $carrinho = Carrinho::find($this->id_carrinho);
         $preco_viagem = $carrinho->buscarReserva->buscarPacoteViagem->preco_viagem;
@@ -50,13 +48,17 @@ class Confirmar extends Component
         $preco_refeicao = $carrinho->buscarPacoteRefeicao->preco_pacoteRefeicao;
         $quantia =  $preco_viagem + $preco_hospedagem + $preco_refeicao;
 
-        $apiURL = env('api_url') . "/api/pagarComCartao/{$num}/{$cod}/{$quantia}/{$descricao}";
-        $http = Http::get($apiURL);
+        $http = Http::post(env('api_url') . "/api/pagar/com/cartao", [
+            "num" => $this->numero,
+            "codigo" => $this->codigo,
+            "quantia" => $quantia,
+            "descricao" => "Pagamento de reserva de viagem, na Agência Mifel Viagens"
+        ]);
 
         if ($http->successful()) {
             $requisicao = $http->json();
-            $estado = $requisicao[0];
-            $msg = $requisicao[1];
+            $estado = $requisicao["data"][0];
+            $msg = $requisicao["data"][1];
 
             if ($estado) {
                 $reserva = $this->actualizarReserva($this->id_carrinho);
